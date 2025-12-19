@@ -1,0 +1,140 @@
+@use "../functions/" as f;
+@use "../globals/states" as s;
+@use "sass:map";
+@use "sass:list";
+
+$colorsMap: (
+  // primary
+  gold-500: 39 89% 49%,
+  gold-600: 28 76% 44%,
+  blue-500: 230 89% 62%,
+  blue-700: 229 64% 46%,
+  red-600: 349 71% 52%,
+  red-800: 347 75% 35%,
+  purple-600: 261 73% 60%,
+  purple-700: 261 51% 44%,
+  light-blue-400: 189 59% 53%,
+  light-blue-500: 194 58% 42%,
+
+  // Neutral
+  navy-900: 229 25% 31%,
+  gray-600: 246 11% 37%,
+  bg-start: 214 47% 23%,
+  bg-end: 237 48% 15%,
+
+  white: 0 100% 100%,
+  background: var(--background),
+  foreground: var(--foreground)
+);
+
+$primary-color: map.get($colorsMap, navy-900);
+$link-color: map.get($colorsMap, blue-500);
+$text-color: map.get($colorsMap, white);
+$accent-color: map.get($colorsMap, blue-500);
+
+$exluded-variables: background foreground;
+
+:root {
+  & {
+    @each $name, $color in $colorsMap {
+      @if not list.index($exluded-variables, $name) {
+        --#{""+$name}: #{$color};
+      }
+    }
+  }
+  --background: #{$primary-color};
+  --foreground: #{$text-color};
+  --accent-color: #{$accent-color};
+  --link-color: #{$link-color};
+
+  // project specific
+  --element-bg: var(--white);
+  --input: var(--grey-400);
+  @media (prefers-color-scheme: dark) {
+    // --background: var(--background);
+    // --foreground: var(--foreground);
+
+    // project specific
+    --element-bg: var(--blue-900);
+    --input: var(--element-bg);
+  }
+  &[theme="dark"],
+  *[theme="dark"] {
+    // --background: var(--background);
+    // --foreground: var(--foreground);
+
+    // project specific
+    --element-bg: var(--blue-900);
+    --input: var(--element-bg);
+  }
+  &[theme="light"],
+  *[theme="light"] {
+    // --background: var(--background);
+    // --foreground: var(--foreground);
+    --accent-color: #{$accent-color};
+    --link-color: #{$link-color};
+
+    // project specific
+    --element-bg: var(--white);
+    --input: var(--grey-400);
+  }
+  --outstand: var(--element-bg);
+}
+
+@mixin active-colors($suffix) {
+  .active-#{$suffix}.active-#{$suffix} {
+    @include s.active-state {
+      @content;
+    }
+  }
+}
+
+@each $name, $color in $colorsMap {
+  .#{"" + $name},
+  .hv-#{"" + $name}:hover,
+  .a-#{"" + $name}:active,
+  .a-#{"" + $name}:focus {
+    background-color: hsl(var(--#{"" + $name}) / var(--bg-accent, 1));
+    transition: background-color ease-in-out 0.3s;
+  }
+  @include active-colors(#{"" + $name}) {
+    background-color: hsl(var(--#{"" + $name}) / var(--bg-accent, 1));
+    transition: background-color ease-in-out 0.3s;
+  }
+
+  .c-#{"" + $name}.c-#{"" + $name},
+  .hv-c-#{"" + $name}:hover,
+  .a-c-#{"" + $name}:active,
+  .a-c-#{"" + $name}:focus {
+    color: hsl(var(--#{"" + $name}) / var(--txt-accent, 1));
+    transition: color ease-in-out 0.3s;
+  }
+  @include active-colors(#{"c-" + $name}) {
+    color: hsl(var(--#{"" + $name}) / var(--txt-accent, 1));
+    transition: color ease-in-out 0.3s;
+  }
+
+  .b-#{"" + $name}.b-#{"" + $name},
+  .hv-b-#{"" + $name}.hv-b-#{"" + $name}:hover,
+  .a-b-#{"" + $name}.a-b-#{"" + $name}:active,
+  .a-b-#{"" + $name}.a-b-#{"" + $name}:focus {
+    border-color: hsl(var(--#{"" + $name}) / 1);
+    transition: border ease-in-out 0.3s;
+  }
+  @include active-colors(#{"b-" + $name}) {
+    border-color: hsl(var(--#{"" + $name}) / 1);
+    transition: border ease-in-out 0.3s;
+  }
+
+  .out-#{"" + $name},
+  .hv-out-#{"" + $name}:hover,
+  .a-out-#{"" + $name}:active,
+  .a-out-#{"" + $name}:focus {
+    outline-color: hsl(var(--#{"" + $name}) / 1);
+    transition: outline ease-in-out 0.3s;
+  }
+  @include active-colors(#{"out-" + $name}) {
+    outline-color: hsl(var(--#{"" + $name}) / 1);
+    transition: outline ease-in-out 0.3s;
+  }
+}

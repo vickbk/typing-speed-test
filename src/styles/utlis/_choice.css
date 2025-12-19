@@ -1,0 +1,21 @@
+.choice {
+  --transX: attr(data-left type(<percentage>), var(--transX, 0%));
+  --transY: attr(data-top type(<percentage>), var(--transY, 0%));
+  left: var(--transX);
+  top: var(--transY);
+}
+
+.winner {
+  @apply relative;
+  --out-accent: 0.4;
+  &::after,
+  &::before {
+    @apply absolute animate-pulse -z-20 p-8 inset-0 outline-32 rounded-full;
+    content: "";
+    outline-color: hsl(var(--gray-600) / var(--out-accent));
+  }
+  &::before {
+    @apply outline-64;
+    --out-accent: 0.2;
+  }
+}
