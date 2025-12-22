@@ -1,6 +1,6 @@
 import { Heading } from "../../shared/Heading";
 import { SROnly } from "../../shared/SROnly";
-import { PersonnelBest } from "./personnel-best";
+import { PersonalBest } from "./personal-best";
 import { default as logoSmall } from "@assets/images/logo-small.svg";
 import { default as logoLarge } from "@assets/images/logo-large.svg";
 
@@ -16,7 +16,7 @@ export const Header = () => {
           Typing speed test. Type as fast as you can in 60 seconds
         </SROnly>
       </Heading>
-      <PersonnelBest />
+      <PersonalBest />
     </header>
   );
 };
