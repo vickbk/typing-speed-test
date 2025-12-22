@@ -1,3 +1,4 @@
+import { EditorSetup } from "./components/app/editor/edittor-setup";
 import { Header } from "./components/app/header/header";
 import { HeadingCtx } from "./contexts/HeadingCtx";
 import "./styles/global.css";
@@ -11,7 +12,7 @@ function App() {
         <HeadingCtx value={0}>
           <Header />
           <Routes>
-            <Route path="/" element={<></>} />
+            <Route path="/" element={<EditorSetup />} />
           </Routes>
         </HeadingCtx>
       </BrowserRouter>
