@@ -3,6 +3,7 @@ import { Header } from "./components/app/header/header";
 import { HeadingCtx } from "./contexts/HeadingCtx";
 import "./styles/global.css";
 import "./styles/scss/global.scss";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {

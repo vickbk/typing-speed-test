@@ -1,29 +1,23 @@
-import { Article } from "../../../shared/Article";
+import { useState } from "react";
 import { Heading } from "../../../shared/Heading";
 import { SROnly } from "../../../shared/SROnly";
+import { ChallengeParams } from "./challenge-params";
 
 export const ChallengeOptions = () => {
+  const [difficulty, setDifficulty] = useState("hard");
   return (
-    <Article>
+    <ChallengeParams
+      name="level"
+      current={difficulty}
+      updateCurrent={setDifficulty}
+      options={["easy", "medium", "hard"]}
+    >
       <Heading>
-        <SROnly>Select your </SROnly>Difficulty<SROnly> level</SROnly>:
+        <SROnly>Select your </SROnly>
+        <span className="sr-only sm:not-sr-only">Difficulty</span>
+        <SROnly> level</SROnly>
+        <span className="sr-only sm:not-sr-only">:</span>
       </Heading>
-      <ul>
-        {["easy", "medium", "hard"].map((level) => (
-          <li key={level}>
-            <label>
-              <input
-                type="radio"
-                name="level"
-                value={level}
-                defaultChecked
-                className="sr-only"
-              />{" "}
-              {level}
-            </label>
-          </li>
-        ))}
-      </ul>
-    </Article>
+    </ChallengeParams>
   );
 };
