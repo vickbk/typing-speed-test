@@ -18,28 +18,31 @@ export const ChallengeParams = <T extends string | number>({
   children: React.ReactNode;
 }) => {
   return (
-    <Article className="grow">
+    <Article className="capitalize ">
       {children}
 
-      <CustomDetails className="relative text-center">
-        <summary className="marker:content-[''] p-2 border rounded-md cursor-pointer capitalize">
+      <CustomDetails className="relative">
+        <summary className="marker:content-[''] p-2 border rounded-md cursor-pointer text-center">
           <SROnly>Currently selected:</SROnly>
           {current} <Icon name="chevron-down" />
         </summary>
-        <ul className="absolute w-full">
+        <ul className="absolute w-full background mt-2 rounded-lg">
           {options.map((choice) => {
             const value = Array.isArray(choice) ? choice[0] : choice;
             const label = Array.isArray(choice) ? choice[1] : choice;
             return (
-              <li key={value}>
-                <label>
+              <li key={value} className="not-last:border-b">
+                <label className="flex gap-4 py-2 px-4 cursor-pointer">
                   <input
                     type="radio"
                     name={name}
                     value={value}
-                    checked={current === choice}
+                    checked={current === label}
                     className="sr-only"
                     onChange={() => updateCurrent(value)}
+                  />
+                  <Icon
+                    name={current === label ? "record-circle-fill" : "circle"}
                   />{" "}
                   {label}
                 </label>
