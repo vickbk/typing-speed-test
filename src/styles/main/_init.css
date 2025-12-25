@@ -1,12 +1,12 @@
 :root {
-  --ff-barlow: "Barlow Semi Condensed", sans-serif;
+  --ff-sora: "Sora", sans-serif;
 }
 
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
-  --font-sans: var(--ff-barlow);
-  --font-mono: var(--ff-barlow);
+  --font-sans: var(--ff-sora);
+  --font-mono: var(--ff-sora);
 }
 
 /* Styles for users who prefer reduced motion */
@@ -19,8 +19,8 @@
 }
 
 body {
-  background: linear-gradient(hsl(var(--bg-start)), hsl(var(--bg-end)));
-  /* background-color: hsl(var(--background)); */
+  /* background: linear-gradient(hsl(var(--bg-start)), hsl(var(--bg-end))); */
+  background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: var(--ff-sans);
   line-height: 1.6;

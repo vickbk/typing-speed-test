@@ -5,32 +5,24 @@
 
 $colorsMap: (
   // primary
-  gold-500: 39 89% 49%,
-  gold-600: 28 76% 44%,
-  blue-500: 230 89% 62%,
-  blue-700: 229 64% 46%,
-  red-600: 349 71% 52%,
-  red-800: 347 75% 35%,
-  purple-600: 261 73% 60%,
-  purple-700: 261 51% 44%,
-  light-blue-400: 189 59% 53%,
-  light-blue-500: 194 58% 42%,
-
-  // Neutral
-  navy-900: 229 25% 31%,
-  gray-600: 246 11% 37%,
-  bg-start: 214 47% 23%,
-  bg-end: 237 48% 15%,
-
-  white: 0 100% 100%,
+  neutral-900: 0 0% 7%,
+  neutral-800: 0 0% 15%,
+  neutral-500: 240 3% 46%,
+  neutral-400: 240 1% 59%,
+  neutral-0: 0 0% 100%,
+  blue-600: 214 100% 55%,
+  blue-400: 210 100% 65%,
+  red-500: 354 63% 57%,
+  green-500: 140 63% 57%,
+  yellow-400: 49 85% 70%,
   background: var(--background),
   foreground: var(--foreground)
 );
 
-$primary-color: map.get($colorsMap, navy-900);
-$link-color: map.get($colorsMap, blue-500);
-$text-color: map.get($colorsMap, white);
-$accent-color: map.get($colorsMap, blue-500);
+$primary-color: map.get($colorsMap, neutral-0);
+$link-color: map.get($colorsMap, blue-600);
+$text-color: map.get($colorsMap, neutral-900);
+$accent-color: map.get($colorsMap, blue-600);
 
 $exluded-variables: background foreground;
 
@@ -47,36 +39,21 @@ $exluded-variables: background foreground;
   --accent-color: #{$accent-color};
   --link-color: #{$link-color};
 
-  // project specific
-  --element-bg: var(--white);
-  --input: var(--grey-400);
   @media (prefers-color-scheme: dark) {
-    // --background: var(--background);
-    // --foreground: var(--foreground);
-
-    // project specific
-    --element-bg: var(--blue-900);
-    --input: var(--element-bg);
+    --background: #{$text-color};
+    --foreground: #{$primary-color};
   }
   &[theme="dark"],
   *[theme="dark"] {
-    // --background: var(--background);
-    // --foreground: var(--foreground);
-
-    // project specific
-    --element-bg: var(--blue-900);
-    --input: var(--element-bg);
+    --background: var(--foreground);
+    --foreground: var(--background);
   }
   &[theme="light"],
   *[theme="light"] {
-    // --background: var(--background);
-    // --foreground: var(--foreground);
+    --background: var(--background);
+    --foreground: var(--foreground);
     --accent-color: #{$accent-color};
     --link-color: #{$link-color};
-
-    // project specific
-    --element-bg: var(--white);
-    --input: var(--grey-400);
   }
   --outstand: var(--element-bg);
 }
