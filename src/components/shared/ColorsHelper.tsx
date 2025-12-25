@@ -10,7 +10,7 @@ export const ColorsHelper = () => {
   const [colors, setColors] = useState("");
   const sassColors = colors
     .split("\n")
-    .map((color) => color.replaceAll(/-|hsl\(|\)|,/g, "").split(":"));
+    .map((color) => color.replaceAll(/-|\*|hsl\(|\)|,/g, "").split(":"));
   return (
     <section>
       <label className="mb-4 flex gap-4">

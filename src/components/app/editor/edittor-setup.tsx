@@ -4,7 +4,7 @@ import { SettingBar } from "./settings/settings-bar";
 
 export const EditorSetup = () => {
   return (
-    <Main>
+    <Main className="flex flex-col pb-4">
       <SettingBar />
       <EditSpace />
     </Main>

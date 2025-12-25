@@ -4,7 +4,7 @@ import { TextToEdit } from "./text-to-edit";
 
 export const EditSpace = () => {
   return (
-    <Article>
+    <Article className="border-y py-4 relative isolate grow">
       <TextToEdit />
       <StartEdit />
     </Article>

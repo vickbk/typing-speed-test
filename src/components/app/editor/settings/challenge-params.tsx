@@ -22,11 +22,11 @@ export const ChallengeParams = <T extends string | number>({
       {children}
 
       <CustomDetails className="relative">
-        <summary className="marker:content-[''] p-2 border rounded-md cursor-pointer text-center">
+        <summary className="marker:content-[''] p-1 border rounded-md cursor-pointer text-center">
           <SROnly>Currently selected:</SROnly>
           {current} <Icon name="chevron-down" />
         </summary>
-        <ul className="absolute w-full background mt-2 rounded-lg">
+        <ul className="absolute z-10 w-full background mt-2 rounded-lg">
           {options.map((choice) => {
             const value = Array.isArray(choice) ? choice[0] : choice;
             const label = Array.isArray(choice) ? choice[1] : choice;
