@@ -9,9 +9,9 @@ export const ResultsShower = ({
   value: string;
 }) => {
   return (
-    <Article>
+    <Article className="grow not-first:border-l">
       <Heading>{index}</Heading>
-      <p>{value}</p>
+      <p className="font-bold text-3xl">{value}</p>
     </Article>
   );
 };
