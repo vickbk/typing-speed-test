@@ -5,12 +5,14 @@ import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
 
 export const PersonalBest = () => {
   return (
-    <Article>
+    <Article className="flex">
       <img src={bestIcon} alt="" />
-      <Heading>
-        <SROnly>Your</SROnly>Personal best <SROnly>is</SROnly>:{" "}
+      <Heading className="capitalize ml-2">
+        <SROnly>Your</SROnly>
+        <span className="sr-only sm:not-sr-only">Personal </span>best
+        <SROnly> is</SROnly>:{" "}
       </Heading>
-      <p>92WPM</p>
+      <p className="font-semibold">92WPM</p>
     </Article>
   );
 };

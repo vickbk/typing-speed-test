@@ -6,7 +6,7 @@ import { default as logoLarge } from "@assets/images/logo-large.svg";
 
 export const Header = () => {
   return (
-    <header>
+    <header className="flex justify-between items-center py-4">
       <Heading>
         <picture>
           <source media="(min-width: 576px)" srcSet={logoLarge} />
