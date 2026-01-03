@@ -12,7 +12,7 @@ export const StartEdit = () => {
             type="button"
             className="p-4 px-8 blue-600 rounded-xl text-2xl font-normal"
           >
-            Start Typing Text
+            Start Typing Test
           </button>
         </Heading>
         <p className="text-xl">

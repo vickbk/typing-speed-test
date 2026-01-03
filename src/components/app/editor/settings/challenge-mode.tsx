@@ -21,7 +21,7 @@ export const ChallengeMode = () => {
     >
       <Heading>
         <SROnly>Select your challenge </SROnly>
-        <span className="sr-only sm:not-sr-only">Mode:</span>
+        <span className="sr-only md:not-sr-only">Mode:</span>
       </Heading>
     </ChallengeParams>
   );

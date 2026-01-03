@@ -18,10 +18,10 @@ export const ChallengeParams = <T extends string | number>({
   children: React.ReactNode;
 }) => {
   return (
-    <Article className="capitalize ">
+    <Article className="capitalize md:flex gap-2 items-center">
       {children}
 
-      <CustomDetails className="relative">
+      <CustomDetails className="relative md:hidden">
         <summary className="marker:content-[''] p-1 border rounded-md b-neutral-500 cursor-pointer text-center">
           <SROnly>Currently selected:</SROnly>
           {current} <Icon name="chevron-down" />
@@ -55,13 +55,13 @@ export const ChallengeParams = <T extends string | number>({
           })}
         </ul>
       </CustomDetails>
-      <ul className="hidden">
+      <ul className="hidden md:flex overflow-x-auto gap-2">
         {options.map((choice) => {
           const value = Array.isArray(choice) ? choice[0] : choice;
           const label = Array.isArray(choice) ? choice[1] : choice;
           return (
-            <li key={value}>
-              <label>
+            <li key={value} className="shrink-0">
+              <label className="border rounded-md p-1 inline-block">
                 <input
                   type="radio"
                   name={name}

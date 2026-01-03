@@ -14,9 +14,9 @@ export const ChallengeOptions = () => {
     >
       <Heading>
         <SROnly>Select your </SROnly>
-        <span className="sr-only sm:not-sr-only">Difficulty</span>
+        <span className="sr-only md:not-sr-only">Difficulty</span>
         <SROnly> level</SROnly>
-        <span className="sr-only sm:not-sr-only">:</span>
+        <span className="sr-only md:not-sr-only">:</span>
       </Heading>
     </ChallengeParams>
   );
