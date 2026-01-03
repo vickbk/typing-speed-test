@@ -6,11 +6,16 @@ import { SettingBar } from "./settings/settings-bar";
 export const EditorSetup = () => {
   return (
     <>
-      <Main className="flex flex-col pb-4 hidden">
-        <SettingBar />
-        <EditSpace />
+      <Main className="flex flex-col pb-4">
+        {false && (
+          <>
+            <SettingBar />
+            <EditSpace />
+          </>
+        )}
+
+        <ResultsLanding />
       </Main>
-      <ResultsLanding />
     </>
   );
 };

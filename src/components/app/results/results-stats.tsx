@@ -13,19 +13,20 @@ export default function ResultsStats() {
     },
     {
       title: "Accuracy:",
-      content: <span className="text-red">{90}%</span>,
+      content: <span className="c-red-500">{90}%</span>,
     },
     {
       title: "Characters",
       content: (
-        <span>
-          120/<span className="color-red">5</span>
+        <span className="c-neutral-400">
+          <span className="c-green-500">120</span>/
+          <span className="c-red-500">5</span>
         </span>
       ),
     },
   ];
   return (
-    <section>
+    <section className="grid gap-4">
       {stats.map(({ title, content }) => (
         <ResultsShow title={title}>{content}</ResultsShow>
       ))}

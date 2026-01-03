@@ -1,4 +1,3 @@
-import { Main } from "../../shared/Main";
 import completed from "../../../assets/images/icon-personal-best.svg";
 import { Heading } from "../../shared/Heading";
 import { Icon } from "../../common/bi-icon";
@@ -6,18 +5,22 @@ import ResultsStats from "./results-stats";
 
 export const ResultsLanding = () => {
   return (
-    <Main>
-      <header>
-        <img src={completed} alt="" />
-        <Heading>Test Completed</Heading>
-        <p>Solid run. Keeo pushing to beat your high score.</p>
+    <div className="m-auto grid items-center gap-8">
+      <header className="grid gap-4 justify-items-center text-center">
+        <img className="w-12" src={completed} alt="" />
+        <Heading className="font-semibold text-3xl">Test Completed</Heading>
+        <p className="c-neutral-400">
+          Solid run. Keeo pushing to beat your high score.
+        </p>
       </header>
-      <section>
-        <ResultsStats />
-      </section>
-      <button type="button">
+
+      <ResultsStats />
+      <button
+        className="foreground c-background justify-self-center p-4 rounded-2xl font-bold text-2xl"
+        type="button"
+      >
         Go Again <Icon name="arrow-counterclockwise" />
       </button>
-    </Main>
+    </div>
   );
 };
