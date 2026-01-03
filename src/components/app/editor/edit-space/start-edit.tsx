@@ -19,7 +19,7 @@ export const StartEdit = () => {
           Or <SROnly>You can</SROnly> click the text and start typing
         </p>
       </Article>
-      <Article className="border-t pt-4">
+      <Article className="border-t b-neutral-500 pt-4">
         <button
           type="button"
           className="p-2 px-4 mx-auto block border rounded-lg"

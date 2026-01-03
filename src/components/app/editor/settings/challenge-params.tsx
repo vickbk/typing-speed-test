@@ -22,7 +22,7 @@ export const ChallengeParams = <T extends string | number>({
       {children}
 
       <CustomDetails className="relative">
-        <summary className="marker:content-[''] p-1 border rounded-md cursor-pointer text-center">
+        <summary className="marker:content-[''] p-1 border rounded-md b-neutral-500 cursor-pointer text-center">
           <SROnly>Currently selected:</SROnly>
           {current} <Icon name="chevron-down" />
         </summary>
@@ -31,7 +31,7 @@ export const ChallengeParams = <T extends string | number>({
             const value = Array.isArray(choice) ? choice[0] : choice;
             const label = Array.isArray(choice) ? choice[1] : choice;
             return (
-              <li key={value} className="not-last:border-b">
+              <li key={value} className="not-last:border-b b-neutral-400">
                 <label className="flex gap-4 py-2 px-4 cursor-pointer">
                   <input
                     type="radio"
