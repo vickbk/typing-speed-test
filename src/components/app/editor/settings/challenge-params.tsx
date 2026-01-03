@@ -26,7 +26,7 @@ export const ChallengeParams = <T extends string | number>({
           <SROnly>Currently selected:</SROnly>
           {current} <Icon name="chevron-down" />
         </summary>
-        <ul className="absolute z-10 w-full background mt-2 rounded-lg">
+        <ul className="absolute z-10 w-full neutral-800 mt-2 rounded-lg">
           {options.map((choice) => {
             const value = Array.isArray(choice) ? choice[0] : choice;
             const label = Array.isArray(choice) ? choice[1] : choice;
@@ -42,7 +42,11 @@ export const ChallengeParams = <T extends string | number>({
                     onChange={() => updateCurrent(value)}
                   />
                   <Icon
-                    name={current === label ? "record-circle-fill" : "circle"}
+                    name={
+                      current === label
+                        ? "record-circle-fill c-blue-400"
+                        : "circle"
+                    }
                   />{" "}
                   {label}
                 </label>

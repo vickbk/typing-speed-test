@@ -7,14 +7,14 @@ export const EditorSetup = () => {
   return (
     <>
       <Main className="flex flex-col pb-4">
-        {false && (
+        {true && (
           <>
             <SettingBar />
             <EditSpace />
           </>
         )}
 
-        <ResultsLanding />
+        {false && <ResultsLanding />}
       </Main>
     </>
   );

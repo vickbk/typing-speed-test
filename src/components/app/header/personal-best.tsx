@@ -7,12 +7,12 @@ export const PersonalBest = () => {
   return (
     <Article className="flex">
       <img src={bestIcon} alt="" />
-      <Heading className="capitalize ml-2">
+      <Heading className="capitalize ml-2 c-neutral-400">
         <SROnly>Your</SROnly>
         <span className="sr-only sm:not-sr-only">Personal </span>best
         <SROnly> is</SROnly>:{" "}
       </Heading>
-      <p className="font-semibold">92WPM</p>
+      <p className="">92WPM</p>
     </Article>
   );
 };

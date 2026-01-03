@@ -10,7 +10,7 @@ export const ResultsShower = ({
 }) => {
   return (
     <Article className="grow not-first:border-l">
-      <Heading>{index}</Heading>
+      <Heading className="c-neutral-400">{index}:</Heading>
       <p className="font-bold text-3xl">{value}</p>
     </Article>
   );
