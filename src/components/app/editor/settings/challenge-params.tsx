@@ -31,7 +31,10 @@ export const ChallengeParams = <T extends string | number>({
             const value = Array.isArray(choice) ? choice[0] : choice;
             const label = Array.isArray(choice) ? choice[1] : choice;
             return (
-              <li key={value} className="not-last:border-b b-neutral-400">
+              <li
+                key={value}
+                className="not-last:border-b b-neutral-500 b-neutral-400"
+              >
                 <label className="flex gap-4 py-2 px-4 cursor-pointer">
                   <input
                     type="radio"

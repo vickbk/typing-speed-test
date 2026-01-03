@@ -14,7 +14,7 @@ export const ChallengeOptions = () => {
     >
       <Heading>
         <SROnly>Select your </SROnly>
-        <span className="sr-only md:not-sr-only">Difficulty</span>
+        <span className="sr-only md:not-sr-only c-neutral-400">Difficulty</span>
         <SROnly> level</SROnly>
         <span className="sr-only md:not-sr-only">:</span>
       </Heading>
