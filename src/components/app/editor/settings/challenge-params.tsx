@@ -17,7 +17,7 @@ export const ChallengeParams = <T extends string | number>({
   options: (T | [T, string])[];
   children: React.ReactNode;
 }) => {
-  function refCaller(node: HTMLElement | null) {
+  function desktopScrolltoCurrent(node: HTMLElement | null) {
     node?.scrollIntoView({
       inline: "nearest",
       behavior: "smooth",
@@ -76,7 +76,7 @@ export const ChallengeParams = <T extends string | number>({
                   "border rounded-md p-1 inline-block cursor-pointer",
                   current === label ? "b-blue-400 c-blue-400" : "",
                 ].join(" ")}
-                ref={current === label ? refCaller : undefined}
+                ref={current === label ? desktopScrolltoCurrent : undefined}
               >
                 <input
                   type="radio"
