@@ -9,7 +9,7 @@ export const ResultsShower = ({
   value: string;
 }) => {
   return (
-    <Article className="grow not-first:border-l b-neutral-500 sm:flex sm:gap-2 lg:grow-0 px-4 items-center justify-center">
+    <Article className="grow not-first:border-l b-neutral-500 sm:flex sm:gap-2 lg:grow-0 lg:not-first:pl-4 lg:not-last:pr-4 items-center justify-center">
       <Heading className="c-neutral-400 sm:text-xl">{index}:</Heading>
       <p className="font-bold text-3xl sm:text-xl">{value}</p>
     </Article>

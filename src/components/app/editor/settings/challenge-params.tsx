@@ -4,6 +4,14 @@ import { Icon } from "../../../common/bi-icon";
 import { CustomDetails } from "../../../shared/CustomDetails";
 import type React from "react";
 
+function desktopScrolltoCurrent(node: HTMLElement | null) {
+  node?.scrollIntoView({
+    inline: "nearest",
+    behavior: "smooth",
+    block: "start",
+  });
+}
+
 export const ChallengeParams = <T extends string | number>({
   current,
   name,
@@ -17,15 +25,8 @@ export const ChallengeParams = <T extends string | number>({
   options: (T | [T, string])[];
   children: React.ReactNode;
 }) => {
-  function desktopScrolltoCurrent(node: HTMLElement | null) {
-    node?.scrollIntoView({
-      inline: "nearest",
-      behavior: "smooth",
-      block: "start",
-    });
-  }
   return (
-    <Article className="capitalize md:flex gap-2 items-center">
+    <Article className="capitalize md:grid md:grid-cols-[auto_1fr] gap-2 items-center min-w-0">
       {children}
 
       <CustomDetails className="relative md:hidden">
@@ -65,18 +66,21 @@ export const ChallengeParams = <T extends string | number>({
           })}
         </ul>
       </CustomDetails>
-      <ul className="hidden md:grid grid-flow-col auto-cols-max overflow-x-scroll overscroll-contain gap-2">
+      <ul className="hidden md:flex overflow-x-scroll overscroll-contain gap-2">
         {options.map((choice) => {
           const value = Array.isArray(choice) ? choice[0] : choice;
           const label = Array.isArray(choice) ? choice[1] : choice;
           return (
-            <li key={value} className="shrink-0 basis-100">
+            <li
+              key={value}
+              className="shrink-0"
+              ref={current === label ? desktopScrolltoCurrent : undefined}
+            >
               <label
                 className={[
                   "border rounded-md p-1 inline-block cursor-pointer",
                   current === label ? "b-blue-400 c-blue-400" : "",
                 ].join(" ")}
-                ref={current === label ? desktopScrolltoCurrent : undefined}
               >
                 <input
                   type="radio"
