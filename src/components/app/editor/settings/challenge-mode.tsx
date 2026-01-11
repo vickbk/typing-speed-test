@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Heading } from "../../../shared/Heading";
 import { SROnly } from "../../../shared/SROnly";
 import { ChallengeParams } from "./challenge-params";
+import { TypingContext } from "../../../../contexts/TypingContext";
+import type { ModeType } from "../../../../libs/types/typing-speed-types";
 
 const times = [
   ...[15, 30, 60, 120].map((time) => [time, `Timed (${time}s)`]),
@@ -9,8 +11,13 @@ const times = [
 ];
 
 export const ChallengeMode = () => {
-  const [mode, setMode] = useState<string | number>("");
-
+  const {
+    state: { mode },
+    dispatch,
+  } = useContext(TypingContext);
+  function setMode<T = ModeType>(mode: T) {
+    dispatch({ action: "mode", payload: mode as ModeType });
+  }
   const [, modeDisplay] = times.find(([value]) => value === mode)!;
   return (
     <ChallengeParams

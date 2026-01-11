@@ -21,7 +21,7 @@ export const ChallengeParams = <T extends string | number>({
 }: {
   name: string;
   current: T;
-  updateCurrent: React.Dispatch<React.SetStateAction<T>>;
+  updateCurrent: <T extends string | number>(payload: T) => void;
   options: (T | [T, string])[];
   children: React.ReactNode;
 }) => {
