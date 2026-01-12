@@ -10,6 +10,7 @@ export type AppState = {
   difference?: number;
   text: string;
   input?: string;
+  errorCount: number;
 };
 
 export type ActionKeys =

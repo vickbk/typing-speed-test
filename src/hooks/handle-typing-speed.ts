@@ -8,6 +8,7 @@ import type {
 } from "../libs/types/typing-speed-types";
 import { default as textes } from "../assets/data.json";
 import { getRandomElement } from "../libs/random-gen";
+import { getErrorsNumber } from "../libs/accuracy-helper";
 
 export function handleTypingSpeed(
   state: AppState,
@@ -30,6 +31,7 @@ export function handleTypingSpeed(
         difference: 0,
         text: getRandomElement(textes[state.difficulty]).text,
         input: "",
+        errorCount: 0,
       };
     },
     updateTimer() {
@@ -41,8 +43,13 @@ export function handleTypingSpeed(
     },
     updateInput() {
       const input = payload as string;
-      const typing = input.length !== state.text.length;
-      return { ...state, input, typing };
+      const errorCount = getErrorsNumber(state, input);
+      return {
+        ...state,
+        input,
+        typing: input.length !== state.text.length,
+        errorCount,
+      };
     },
   };
   return actions?.[action]();
@@ -54,6 +61,7 @@ export function useTypingSpeed() {
     difficulty: "easy",
     typing: false,
     text: getRandomElement(textes["easy"]).text,
+    errorCount: 0,
   });
   return { state, dispatch };
 }
