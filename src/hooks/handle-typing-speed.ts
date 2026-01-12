@@ -6,6 +6,8 @@ import type {
   Difficulty,
   ModeType,
 } from "../libs/types/typing-speed-types";
+import { default as textes } from "../assets/data.json";
+import { getRandomElement } from "../libs/random-gen";
 
 export function handleTypingSpeed(
   state: AppState,
@@ -26,6 +28,8 @@ export function handleTypingSpeed(
         startTyping: time,
         lastTyping: time,
         difference: 0,
+        text: getRandomElement(textes[state.difficulty]).text,
+        input: "",
       };
     },
     updateTimer() {
@@ -34,6 +38,9 @@ export function handleTypingSpeed(
       const difference = (lastTyping - startTyping!) / 1000;
       const typing = mode === "" || difference < mode;
       return { ...state, lastTyping, typing, difference };
+    },
+    updateInput() {
+      return { ...state, input: payload as string };
     },
   };
   return actions?.[action]();
@@ -44,6 +51,7 @@ export function useTypingSpeed() {
     mode: "",
     difficulty: "easy",
     typing: false,
+    text: getRandomElement(textes["easy"]).text,
   });
   return { state, dispatch };
 }

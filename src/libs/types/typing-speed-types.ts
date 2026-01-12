@@ -8,9 +8,16 @@ export type AppState = {
   startTyping?: EpochTimeStamp | null;
   lastTyping?: EpochTimeStamp | null;
   difference?: number;
+  text: string;
+  input?: string;
 };
 
-export type ActionKeys = "startTyping" | "difficulty" | "mode" | "updateTimer";
+export type ActionKeys =
+  | "startTyping"
+  | "difficulty"
+  | "mode"
+  | "updateTimer"
+  | "updateInput";
 
 export type CallbackOption<Name extends ActionKeys, Type = undefined> = {
   action: Name;
@@ -20,4 +27,5 @@ export type CallbackOption<Name extends ActionKeys, Type = undefined> = {
 export type AllOptions =
   | CallbackOption<"difficulty", Difficulty>
   | CallbackOption<"mode", ModeType>
-  | CallbackOption<"startTyping" | "updateTimer">;
+  | CallbackOption<"startTyping" | "updateTimer">
+  | CallbackOption<"updateInput", string>;

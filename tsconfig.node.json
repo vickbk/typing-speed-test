@@ -25,7 +25,10 @@
     /* Custom paths */
     "paths": {
       "@/*": ["./src/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@context/*": ["./src/contexts/*"],
+      "@hooks/*": ["./src/hooks/*"]
     }
   },
   "include": ["vite.config.ts"]
