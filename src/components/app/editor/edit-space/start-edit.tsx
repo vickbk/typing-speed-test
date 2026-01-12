@@ -1,14 +1,17 @@
-import { Icon } from "../../../common/bi-icon";
+import { useContext } from "react";
 import { Article } from "../../../shared/Article";
 import { Heading } from "../../../shared/Heading";
 import { SROnly } from "../../../shared/SROnly";
+import { TypingContext } from "../../../../contexts/TypingContext";
 
 export const StartEdit = () => {
+  const { dispatch } = useContext(TypingContext);
   return (
     <>
       <Article className="absolute inset-0 flex flex-col gap-4 justify-center items-center text-center backdrop-blur-xs isolate">
         <Heading>
           <button
+            onClick={() => dispatch({ action: "startTyping" })}
             type="button"
             className="p-4 px-8 blue-600 rounded-xl text-2xl font-normal"
           >
@@ -18,14 +21,6 @@ export const StartEdit = () => {
         <p className="text-xl">
           Or <SROnly>You can</SROnly> click the text and start typing
         </p>
-      </Article>
-      <Article className="border-t b-neutral-500 pt-4">
-        <button
-          type="button"
-          className="p-2 px-4 mx-auto block border rounded-lg"
-        >
-          <Icon name="arrow-clockwise" /> Reset
-        </button>
       </Article>
     </>
   );

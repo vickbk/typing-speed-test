@@ -11,12 +11,15 @@ export default defineConfig([
   {
     plugins: {
       "unused-imports": unsedImport,
+      "react-hooks": reactHooks,
     },
 
     rules: {
       "no-unused-vars": "off",
       "react/jsx-uses-vars": "error",
       "react/jsx-uses-react": "error",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "error",
     },
     files: ["**/*.{ts,tsx}"],
     extends: [

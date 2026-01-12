@@ -1,5 +1,26 @@
+import { useContext, useEffect, useRef } from "react";
 import { ResultsShower } from "./result-shower";
+import { TypingContext } from "../../../../../contexts/TypingContext";
+import { getTimeDisplay } from "../../../../../libs/time-helper";
 
 export const Time = () => {
-  return <ResultsShower index="Time" value="0:60" />;
+  const { state, dispatch } = useContext(TypingContext);
+
+  // getting a correct display following the timing mode
+  const display = getTimeDisplay(state);
+  const { typing, difference } = state;
+
+  // handle timer update
+  const timer = useRef(0);
+
+  useEffect(() => {
+    if (typing) {
+      timer.current = setTimeout(
+        () => dispatch({ action: "updateTimer" }),
+        1000
+      );
+    } else clearTimeout(timer.current);
+  }, [typing, difference]);
+
+  return <ResultsShower index="Time" value={display} />;
 };
