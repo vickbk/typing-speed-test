@@ -26,7 +26,7 @@ export const ChallengeParams = <T extends string | number>({
   children: React.ReactNode;
 }) => {
   return (
-    <Article className="capitalize md:grid md:grid-cols-[auto_1fr] gap-2 items-center min-w-0">
+    <Article className="capitalize md:grid md:grid-cols-[auto_1fr] gap-2 items-center w-1/2">
       {children}
 
       <CustomDetails className="relative md:hidden">
