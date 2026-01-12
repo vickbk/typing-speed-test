@@ -40,7 +40,9 @@ export function handleTypingSpeed(
       return { ...state, lastTyping, typing, difference };
     },
     updateInput() {
-      return { ...state, input: payload as string };
+      const input = payload as string;
+      const typing = input.length !== state.text.length;
+      return { ...state, input, typing };
     },
   };
   return actions?.[action]();
