@@ -1,10 +1,18 @@
 import { useContext, useEffect, useRef } from "react";
 import { ResultsShower } from "./result-shower";
 import { TypingContext } from "../../../../../contexts/TypingContext";
-import { getTimeDisplay } from "../../../../../libs/time-helper";
+import { getTimeDisplay, getTimeRange } from "../../../../../libs/time-helper";
 
 export const Time = () => {
   const { state, dispatch } = useContext(TypingContext);
+
+  const color = {
+    excellent: "",
+    good: "c-blue-400",
+    ok: "c-green-500",
+    bad: "c-yellow-400",
+    worse: "c-red-500",
+  }[getTimeRange(state)];
 
   // getting a correct display following the timing mode
   const display = getTimeDisplay(state);
@@ -22,5 +30,5 @@ export const Time = () => {
     } else clearTimeout(timer.current);
   }, [typing, difference]);
 
-  return <ResultsShower index="Time" value={display} />;
+  return <ResultsShower index="Time" value={display} valueColor={color} />;
 };

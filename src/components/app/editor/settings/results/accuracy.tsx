@@ -8,5 +8,11 @@ export const Accuracy = () => {
 
   const accuracy = calculateAccuracy(state);
 
-  return <ResultsShower index="Accuracy" value={`${accuracy}%`} />;
+  return (
+    <ResultsShower
+      index="Accuracy"
+      value={`${accuracy}%`}
+      valueColor={accuracy !== "100" ? "c-red-500" : ""}
+    />
+  );
 };
