@@ -8,7 +8,7 @@ import type {
 } from "../libs/types/typing-speed-types";
 import { default as textes } from "../assets/data.json";
 import { getRandomElement } from "../libs/random-gen";
-import { getErrorsNumber } from "../libs/accuracy-helper";
+import { getErrorsNumber } from "../libs/calculation-helper";
 
 export function handleTypingSpeed(
   state: AppState,
@@ -36,10 +36,11 @@ export function handleTypingSpeed(
       };
     },
     updateTimer() {
-      const { mode, startTyping } = state;
+      const { mode, startTyping, finish } = state;
       const lastTyping = new Date().getTime();
       const difference = (lastTyping - startTyping!) / 1000;
-      const typing = mode === "" || difference < mode;
+      const typing =
+        (mode === "" && !finish) || (mode !== "" && difference < mode);
       return { ...state, lastTyping, typing, difference, finish: !typing };
     },
     updateInput() {

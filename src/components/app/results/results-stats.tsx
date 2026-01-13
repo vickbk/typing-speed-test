@@ -42,7 +42,7 @@ export default function ResultsStats() {
     },
   ];
   return (
-    <section className="grid gap-4">
+    <section className="grid gap-4 md:grid-cols-3">
       {stats.map(({ title, content }) => (
         <ResultsShow title={title}>{content}</ResultsShow>
       ))}
