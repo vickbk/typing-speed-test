@@ -38,7 +38,7 @@ export const Editor = () => {
         }}
         className="p-2 px-4 mx-auto block border rounded-lg active-button"
       >
-        <Icon name="arrow-clockwise" /> Reset
+        Restart Test <Icon name="arrow-counterclockwise" />
       </button>
     </div>
   );
