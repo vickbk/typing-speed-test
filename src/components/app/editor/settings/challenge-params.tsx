@@ -18,7 +18,7 @@ export const ChallengeParams = <T extends string | number>({
     Array.isArray(choice) ? choice : ([choice, choice + ""] as [T, string])
   );
   return (
-    <Article className="capitalize md:grid md:grid-cols-[auto_1fr] gap-2 items-center">
+    <Article className="capitalize md:grid md:grid-cols-[auto_1fr] gap-2 items-center not-last:md:border-r">
       {children}
 
       <MobileParams {...other} options={normalizedOptions} />
