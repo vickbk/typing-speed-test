@@ -10,6 +10,7 @@ import {
   calculateWPM,
 } from "../../../libs/calculation-helper";
 import setMemoItem from "../../../libs/memorization/set-item";
+import type { TypeScore } from "../../../libs/types/typing-speed-types";
 
 export const ResultsLanding = () => {
   const { dispatch, state } = useContext(TypingContext);
@@ -22,9 +23,7 @@ export const ResultsLanding = () => {
   function loadOtherResults(node: HTMLElement | null) {
     if (node) {
       const scores =
-        getMemoItem<{ accuracy: number; wpm: number; time: EpochTimeStamp }[]>(
-          `score.${state.difficulty}`
-        ) || [];
+        getMemoItem<TypeScore[]>(`score.${state.difficulty}`) || [];
 
       const currentWPM = +calculateWPM(state);
       if (scores.length === 0) {
@@ -46,8 +45,8 @@ export const ResultsLanding = () => {
       }
       scores.push({
         wpm: currentWPM,
-        accuracy: +calculateAccuracy(state),
         time: new Date().getTime(),
+        session: state,
       });
       setMemoItem(`score.${state.difficulty}`, scores);
     }

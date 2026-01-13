@@ -31,3 +31,9 @@ export type AllOptions =
   | CallbackOption<"mode", ModeType>
   | CallbackOption<"startTyping" | "updateTimer">
   | CallbackOption<"updateInput", string>;
+
+export type TypeScore = {
+  wpm: number;
+  time: EpochTimeStamp;
+  session: AppState;
+};
