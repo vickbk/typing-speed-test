@@ -32,6 +32,7 @@ export function handleTypingSpeed(
         text: getRandomElement(textes[state.difficulty]).text,
         input: "",
         errorCount: 0,
+        finish: false,
       };
     },
     updateTimer() {
@@ -39,16 +40,18 @@ export function handleTypingSpeed(
       const lastTyping = new Date().getTime();
       const difference = (lastTyping - startTyping!) / 1000;
       const typing = mode === "" || difference < mode;
-      return { ...state, lastTyping, typing, difference };
+      return { ...state, lastTyping, typing, difference, finish: !typing };
     },
     updateInput() {
       const input = payload as string;
       const errorCount = getErrorsNumber(state, input);
+      const finish = input.length === state.text.length;
       return {
         ...state,
         input,
-        typing: input.length !== state.text.length,
+        typing: !finish,
         errorCount,
+        finish,
       };
     },
   };
@@ -62,6 +65,7 @@ export function useTypingSpeed() {
     typing: false,
     text: getRandomElement(textes["easy"]).text,
     errorCount: 0,
+    finish: false,
   });
   return { state, dispatch };
 }

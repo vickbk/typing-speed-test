@@ -11,6 +11,7 @@ export type AppState = {
   text: string;
   input?: string;
   errorCount: number;
+  finish: boolean;
 };
 
 export type ActionKeys =
