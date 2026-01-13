@@ -1,7 +1,19 @@
+import { useContext } from "react";
+import {
+  calculateAccuracy,
+  calculateWPM,
+} from "../../../libs/calculation-helper";
 import { WPMText } from "../../common/wpm-text";
 import { ResultsShow } from "./results-show";
+import { TypingContext } from "../../../contexts/TypingContext";
 
 export default function ResultsStats() {
+  const { state } = useContext(TypingContext);
+  const [WPM, accuracy] = [calculateWPM, calculateAccuracy].map((func) =>
+    func(state)
+  );
+  const { errorCount, input = "" } = state;
+
   const stats = [
     {
       title: (
@@ -9,18 +21,22 @@ export default function ResultsStats() {
           <WPMText />:
         </>
       ),
-      content: 85,
+      content: WPM,
     },
     {
       title: "Accuracy:",
-      content: <span className="c-red-500">{90}%</span>,
+      content: (
+        <span className={accuracy !== "100" ? "c-red-500" : ""}>
+          {accuracy}%
+        </span>
+      ),
     },
     {
       title: "Characters",
       content: (
         <span className="c-neutral-400">
-          <span className="c-green-500">120</span>/
-          <span className="c-red-500">5</span>
+          <span className="c-green-500">{input.length}</span>/
+          <span className="c-red-500">{errorCount}</span>
         </span>
       ),
     },

@@ -7,6 +7,7 @@ import { TypingContext } from "../../../contexts/TypingContext";
 
 export const ResultsLanding = () => {
   const { dispatch } = useContext(TypingContext);
+
   return (
     <div className="m-auto grid items-center gap-8">
       <header className="grid gap-4 justify-items-center text-center">

@@ -19,3 +19,8 @@ export function calculateAccuracy({ input = "", errorCount }: AppState) {
     (input.length || 1)
   ).toFixed();
 }
+
+export function calculateWPM({ input = "", difference }: AppState) {
+  const words = input.length === 0 ? [] : input.split(" ");
+  return ((words.length * 60) / (difference || 1)).toFixed();
+}
