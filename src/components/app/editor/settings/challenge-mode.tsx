@@ -1,9 +1,9 @@
+import { Heading } from "@/components/shared/Heading";
+import { SROnly } from "@/components/shared/SROnly";
+import { TypingContext } from "@/contexts/TypingContext";
+import type { ModeType } from "@/libs/types/typing-speed-types";
 import { useContext } from "react";
-import { Heading } from "../../../shared/Heading";
-import { SROnly } from "../../../shared/SROnly";
 import { ChallengeParams } from "./challenge-params";
-import { TypingContext } from "../../../../contexts/TypingContext";
-import type { ModeType } from "../../../../libs/types/typing-speed-types";
 
 const times = [
   ...[15, 30, 60, 120].map((time) => [time, `Timed (${time}s)`]),

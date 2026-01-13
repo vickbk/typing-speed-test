@@ -1,9 +1,9 @@
+import { Main } from "@/components/shared/Main";
+import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
-import { Main } from "../../shared/Main";
-import { ResultsLanding } from "../results/results-landing";
-import { EditSpace } from "./edit-space/edit-space";
 import { SettingBar } from "./settings/settings-bar";
-import { TypingContext } from "../../../contexts/TypingContext";
+import { EditSpace } from "./edit-space/edit-space";
+import { ResultsLanding } from "../results/results-landing";
 
 export const EditorSetup = () => {
   const {

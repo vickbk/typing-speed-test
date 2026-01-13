@@ -1,7 +1,7 @@
-import { Article } from "../../../shared/Article";
 import type React from "react";
 import { MobileParams } from "./mobile-params";
 import { DesktopParams } from "./desktop-params";
+import { Article } from "@/components/shared/Article";
 
 export const ChallengeParams = <T extends string | number>({
   options,

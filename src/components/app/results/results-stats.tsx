@@ -1,11 +1,8 @@
+import { WPMText } from "@/components/common/wpm-text";
+import { TypingContext } from "@/contexts/TypingContext";
+import { calculateWPM, calculateAccuracy } from "@/libs/calculation-helper";
 import { useContext } from "react";
-import {
-  calculateAccuracy,
-  calculateWPM,
-} from "../../../libs/calculation-helper";
-import { WPMText } from "../../common/wpm-text";
 import { ResultsShow } from "./results-show";
-import { TypingContext } from "../../../contexts/TypingContext";
 
 export default function ResultsStats() {
   const { state } = useContext(TypingContext);

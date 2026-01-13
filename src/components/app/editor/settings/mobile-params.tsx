@@ -1,6 +1,6 @@
-import { Icon } from "../../../common/bi-icon";
-import { SROnly } from "../../../shared/SROnly";
-import { CustomDetails } from "../../../shared/CustomDetails";
+import { Icon } from "@/components/common/bi-icon";
+import { CustomDetails } from "@/components/shared/CustomDetails";
+import { SROnly } from "@/components/shared/SROnly";
 
 export const MobileParams = <T extends string | number>({
   options,

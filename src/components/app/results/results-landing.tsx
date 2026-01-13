@@ -1,22 +1,20 @@
-import completed from "../../../assets/images/icon-personal-best.svg";
-import { Heading } from "../../shared/Heading";
-import { Icon } from "../../common/bi-icon";
+import completed from "@assets/images/icon-personal-best.svg";
+import { Heading } from "@components/shared/Heading";
 import ResultsStats from "./results-stats";
 import { useContext, useRef } from "react";
-import { TypingContext } from "../../../contexts/TypingContext";
-import getMemoItem from "../../../libs/memorization/get-item";
-import {
-  calculateAccuracy,
-  calculateWPM,
-} from "../../../libs/calculation-helper";
-import setMemoItem from "../../../libs/memorization/set-item";
-import type { TypeScore } from "../../../libs/types/typing-speed-types";
+import { Icon } from "@components/common/bi-icon";
+import { TypingContext } from "@/contexts/TypingContext";
+import getMemoItem from "@/libs/memorization/get-item";
+import { calculateWPM } from "@/libs/calculation-helper";
+import setMemoItem from "@/libs/memorization/set-item";
+import type { TypeScore } from "@/libs/types/typing-speed-types";
 
 export const ResultsLanding = () => {
   const { dispatch, state } = useContext(TypingContext);
   const results = useRef({
     title: "Test Completed",
-    text: "",
+    text: "Solid run. Keep pushing to beat your high score.",
+    button: "Go Again",
     first: true,
     best: false,
   });
@@ -31,6 +29,7 @@ export const ResultsLanding = () => {
           ...results.current,
           title: "Baseline Established!",
           text: "You've set the bar. Now the real challenge begins--time to beat it.",
+          button: "Beat This Score",
         };
       } else {
         results.current = { ...results.current, first: false };
@@ -41,6 +40,7 @@ export const ResultsLanding = () => {
             best: true,
             title: "Hight Score Smashed!",
             text: "You're getting faster. That was incredible typing.",
+            button: "Beat This Score",
           };
       }
       scores.push({

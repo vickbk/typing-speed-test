@@ -1,7 +1,7 @@
+import { TypingContext } from "@/contexts/TypingContext";
+import { getTimeRange, getTimeDisplay } from "@/libs/time-helper";
 import { useContext, useEffect, useRef } from "react";
 import { ResultsShower } from "./result-shower";
-import { TypingContext } from "../../../../../contexts/TypingContext";
-import { getTimeDisplay, getTimeRange } from "../../../../../libs/time-helper";
 
 export const Time = () => {
   const { state, dispatch } = useContext(TypingContext);

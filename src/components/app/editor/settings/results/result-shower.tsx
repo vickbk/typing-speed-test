@@ -1,5 +1,5 @@
-import { Article } from "../../../../shared/Article";
-import { Heading } from "../../../../shared/Heading";
+import { Article } from "@/components/shared/Article";
+import { Heading } from "@/components/shared/Heading";
 
 export const ResultsShower = ({
   index,

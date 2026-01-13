@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-import { Article } from "../../shared/Article";
-import { Heading } from "../../shared/Heading";
-import { SROnly } from "../../shared/SROnly";
 import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
-import { TypingContext } from "../../../contexts/TypingContext";
-import getMemoItem from "../../../libs/memorization/get-item";
-import type { TypeScore } from "../../../libs/types/typing-speed-types";
+import { TypingContext } from "@/contexts/TypingContext";
+import getMemoItem from "@/libs/memorization/get-item";
+import { Article } from "@/components/shared/Article";
+import { Heading } from "@/components/shared/Heading";
+import { SROnly } from "@/components/shared/SROnly";
+import type { TypeScore } from "@/libs/types/typing-speed-types";
 
 export const PersonalBest = () => {
   const {

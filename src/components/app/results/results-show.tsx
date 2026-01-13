@@ -1,6 +1,6 @@
+import { Article } from "@/components/shared/Article";
+import { Heading } from "@/components/shared/Heading";
 import type React from "react";
-import { Article } from "../../shared/Article";
-import { Heading } from "../../shared/Heading";
 
 export function ResultsShow({
   title,

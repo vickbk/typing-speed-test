@@ -1,6 +1,6 @@
+import { Icon } from "@/components/common/bi-icon";
+import { TypingContext } from "@/contexts/TypingContext";
 import { useContext, useEffect, useRef } from "react";
-import { Icon } from "../../../common/bi-icon";
-import { TypingContext } from "../../../../contexts/TypingContext";
 
 function focusTextarea(node: HTMLTextAreaElement | null) {
   node?.focus();

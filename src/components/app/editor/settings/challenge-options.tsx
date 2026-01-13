@@ -1,9 +1,9 @@
+import { Heading } from "@/components/shared/Heading";
+import { SROnly } from "@/components/shared/SROnly";
+import { TypingContext } from "@/contexts/TypingContext";
+import type { Difficulty } from "@/libs/types/typing-speed-types";
 import { useContext } from "react";
-import { Heading } from "../../../shared/Heading";
-import { SROnly } from "../../../shared/SROnly";
 import { ChallengeParams } from "./challenge-params";
-import { TypingContext } from "../../../../contexts/TypingContext";
-import type { Difficulty } from "../../../../libs/types/typing-speed-types";
 
 export const ChallengeOptions = () => {
   const {
