@@ -18,7 +18,7 @@ export const DesktopParams = <T extends string | number>({
   updateCurrent: <T extends string | number>(payload: T) => void;
 }) => {
   return (
-    <ul className="hidden md:flex overflow-x-scroll overscroll-contain gap-2">
+    <ul className="hidden md:flex overflow-x-scroll overscroll-contain max-w-full gap-2">
       {options.map(([value, label]) => {
         return (
           <li

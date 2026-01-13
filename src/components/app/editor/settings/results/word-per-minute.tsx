@@ -8,7 +8,7 @@ export const WordPerMinute = () => {
     state: { difference = 0, input = "" },
   } = useContext(TypingContext);
   const words = input.length === 0 ? [] : input.split(" ");
-  const WPM = (words.length * 60) / difference;
+  const WPM = (words.length * 60) / (difference || 1);
 
   return <ResultsShower index={<WPMText />} value={WPM.toFixed()} />;
 };
