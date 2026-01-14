@@ -36,6 +36,7 @@ export function handleTypingSpeed(
       };
     },
     updateTimer() {
+      if (!state.typing) return state;
       const { mode, startTyping, finish } = state;
       const lastTyping = new Date().getTime();
       const difference = (lastTyping - startTyping!) / 1000;
