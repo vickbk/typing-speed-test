@@ -1,4 +1,4 @@
-import { default as completed } from "@/assets/images/icon-personal-best.svg";
+import { default as completed } from "@/assets/images/icon-completed.svg";
 import { default as newPB } from "@/assets/images/icon-new-pb.svg";
 import { default as confetti } from "@/assets/images/pattern-confetti.svg";
 import { default as start1 } from "@/assets/images/pattern-star-1.svg";
@@ -76,7 +76,9 @@ export const ResultsLanding = () => {
       ref={loadOtherResults}
     >
       <header className="grid gap-4 justify-items-center text-center">
-        <img className="w-12" src={icon} alt="" />
+        <div className={isBestScore ? "icon-bounce" : "icon-waves"}>
+          <img className="w-12" src={icon} alt="" />
+        </div>
         <Heading className="font-semibold text-3xl">{title}</Heading>
         <p className="c-neutral-400">{text}</p>
       </header>
