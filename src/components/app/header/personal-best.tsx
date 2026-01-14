@@ -6,6 +6,7 @@ import { Article } from "@/components/shared/Article";
 import { Heading } from "@/components/shared/Heading";
 import { SROnly } from "@/components/shared/SROnly";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
+import { Icon } from "@/components/common/bi-icon";
 
 export const PersonalBest = () => {
   const {
@@ -27,7 +28,7 @@ export const PersonalBest = () => {
   );
 
   return (
-    <Article className="flex" ref={loadResults}>
+    <Article className="best" ref={loadResults}>
       <img src={bestIcon} alt="" />
       <Heading className="capitalize ml-2 c-neutral-400">
         <SROnly>Your</SROnly>
@@ -35,6 +36,10 @@ export const PersonalBest = () => {
         <SROnly> is</SROnly>:{" "}
       </Heading>
       <p className="">{best}WPM</p>
+      <button type="button" className="active-button best__history">
+        <Icon name="clock" />
+        <SROnly>Show history</SROnly>
+      </button>
     </Article>
   );
 };
