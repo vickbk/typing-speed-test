@@ -6,9 +6,9 @@ import type {
   Difficulty,
   ModeType,
 } from "@/libs/types/typing-speed-types";
-import { default as textes } from "@/assets/data.json";
 import { getRandomElement } from "@/libs/random-gen";
 import { getErrorsNumber } from "@/libs/calculation-helper";
+import { default as textes } from "@/assets/data.json";
 
 export function handleTypingSpeed(
   state: AppState,
