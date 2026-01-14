@@ -15,6 +15,7 @@ export const StartEdit = () => {
             type="button"
             className="p-4 px-8 blue-600 rounded-xl text-2xl font-normal"
           >
+            <span className="absolute inset-0"></span>
             Start Typing Test
           </button>
         </Heading>
