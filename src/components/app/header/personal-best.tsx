@@ -1,4 +1,4 @@
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useState } from "react";
 import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
 import { TypingContext } from "@/contexts/TypingContext";
 import getMemoItem from "@/libs/memorization/get-item";
@@ -7,6 +7,7 @@ import { Heading } from "@/components/shared/Heading";
 import { SROnly } from "@/components/shared/SROnly";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 import { Icon } from "@/components/common/bi-icon";
+import { ScoreHistory } from "./score-history";
 
 export const PersonalBest = () => {
   const {
@@ -27,6 +28,8 @@ export const PersonalBest = () => {
     [difficulty, best]
   );
 
+  const [show, toggleShow] = useState(false);
+
   return (
     <Article className="best" ref={loadResults}>
       <img src={bestIcon} alt="" />
@@ -36,10 +39,15 @@ export const PersonalBest = () => {
         <SROnly> is</SROnly>:{" "}
       </Heading>
       <p className="">{best}WPM</p>
-      <button type="button" className="active-button best__history">
+      <button
+        type="button"
+        className="active-button best__history"
+        onClick={() => toggleShow(!show)}
+      >
         <Icon name="clock" />
         <SROnly>Show history</SROnly>
       </button>
+      {show && <ScoreHistory onClose={toggleShow} />}
     </Article>
   );
 };
