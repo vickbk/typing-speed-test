@@ -11,6 +11,7 @@ import getMemoItem from "@/libs/memorization/get-item";
 import ResultsStats from "../results/results-stats";
 import { formatDateTime } from "@/libs/time-helper";
 import { Paging } from "@/components/common/paging/paging-element";
+import { EmptyScore } from "./empty-score";
 
 const PAGESIZE = 10;
 
@@ -44,7 +45,7 @@ export const ScoreHistory = ({
   );
   return (
     <CustomDialog
-      className="m-auto p-4 rounded-lg background c-foreground relative"
+      className="m-auto p-4 rounded-lg background c-foreground relative overflow-hidden"
       isOpen
       onClose={closeDialog}
     >
@@ -73,7 +74,7 @@ export const ScoreHistory = ({
             <Icon name="trash" />
           </button>
         </div>
-        <section className="grid gap-8 overflow-y-auto max-h-[60vh]">
+        <section className="grid gap-8 overflow-y-auto max-h-[70vh]">
           {historyDisplay.map(({ session, time }) => (
             <Article>
               <Heading className="mb-4">
@@ -83,6 +84,7 @@ export const ScoreHistory = ({
               <ResultsStats state={session} />
             </Article>
           ))}
+          {historyDisplay.length === 0 && <EmptyScore onClose={onClose} />}
         </section>
         {totalPages > 1 && (
           <div className="absolute bottom-0 mx-auto inset-x-0">

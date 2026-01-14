@@ -11,7 +11,7 @@ import { ScoreHistory } from "./score-history";
 
 export const PersonalBest = () => {
   const {
-    state: { difficulty, best },
+    state: { difficulty, best, typing },
     dispatch,
   } = useContext(TypingContext);
 
@@ -47,7 +47,7 @@ export const PersonalBest = () => {
         <Icon name="alarm" />
         <SROnly>Show history</SROnly>
       </button>
-      {show && <ScoreHistory onClose={toggleShow} />}
+      {!typing && show && <ScoreHistory onClose={toggleShow} />}
     </Article>
   );
 };
