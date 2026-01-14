@@ -18,3 +18,7 @@ function setNested(memo: MemoObject, path: string[], value: unknown) {
   }
   current[path[path.length - 1]] = value;
 }
+
+export function clearMemoItem(path: string) {
+  setMemoItem(path, null);
+}

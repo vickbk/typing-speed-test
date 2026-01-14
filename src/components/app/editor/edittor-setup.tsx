@@ -1,20 +1,25 @@
-import { Main } from "../../shared/Main";
-import { ResultsLanding } from "../results/results-landing";
-import { EditSpace } from "./edit-space/edit-space";
+import { Main } from "@/components/shared/Main";
+import { TypingContext } from "@/contexts/TypingContext";
+import { useContext } from "react";
 import { SettingBar } from "./settings/settings-bar";
+import { EditSpace } from "./edit-space/edit-space";
+import { ResultsLanding } from "../results/results-landing";
 
 export const EditorSetup = () => {
+  const {
+    state: { finish },
+  } = useContext(TypingContext);
   return (
     <>
       <Main className="flex flex-col pb-4">
-        {true && (
+        {!finish && (
           <>
             <SettingBar />
             <EditSpace />
           </>
         )}
 
-        {false && <ResultsLanding />}
+        {finish && <ResultsLanding />}
       </Main>
     </>
   );

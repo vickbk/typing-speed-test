@@ -11,6 +11,8 @@ export type AppState = {
   text: string;
   input?: string;
   errorCount: number;
+  finish: boolean;
+  best: number;
 };
 
 export type ActionKeys =
@@ -18,7 +20,8 @@ export type ActionKeys =
   | "difficulty"
   | "mode"
   | "updateTimer"
-  | "updateInput";
+  | "updateInput"
+  | "updateHighScore";
 
 export type CallbackOption<Name extends ActionKeys, Type = undefined> = {
   action: Name;
@@ -29,4 +32,11 @@ export type AllOptions =
   | CallbackOption<"difficulty", Difficulty>
   | CallbackOption<"mode", ModeType>
   | CallbackOption<"startTyping" | "updateTimer">
-  | CallbackOption<"updateInput", string>;
+  | CallbackOption<"updateInput", string>
+  | CallbackOption<"updateHighScore", number>;
+
+export type TypeScore = {
+  wpm: number;
+  time: EpochTimeStamp;
+  session: AppState;
+};

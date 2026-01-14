@@ -5,10 +5,10 @@ import type {
   AppState,
   Difficulty,
   ModeType,
-} from "../libs/types/typing-speed-types";
-import { default as textes } from "../assets/data.json";
-import { getRandomElement } from "../libs/random-gen";
-import { getErrorsNumber } from "../libs/accuracy-helper";
+} from "@/libs/types/typing-speed-types";
+import { default as textes } from "@/assets/data.json";
+import { getRandomElement } from "@/libs/random-gen";
+import { getErrorsNumber } from "@/libs/calculation-helper";
 
 export function handleTypingSpeed(
   state: AppState,
@@ -32,24 +32,32 @@ export function handleTypingSpeed(
         text: getRandomElement(textes[state.difficulty]).text,
         input: "",
         errorCount: 0,
+        finish: false,
       };
     },
     updateTimer() {
-      const { mode, startTyping } = state;
+      if (!state.typing) return state;
+      const { mode, startTyping, finish } = state;
       const lastTyping = new Date().getTime();
       const difference = (lastTyping - startTyping!) / 1000;
-      const typing = mode === "" || difference < mode;
-      return { ...state, lastTyping, typing, difference };
+      const typing =
+        (mode === "" && !finish) || (mode !== "" && difference < mode);
+      return { ...state, lastTyping, typing, difference, finish: !typing };
     },
     updateInput() {
       const input = payload as string;
       const errorCount = getErrorsNumber(state, input);
+      const finish = input.length === state.text.length;
       return {
         ...state,
         input,
-        typing: input.length !== state.text.length,
+        typing: !finish,
         errorCount,
+        finish,
       };
+    },
+    updateHighScore() {
+      return { ...state, best: payload as number };
     },
   };
   return actions?.[action]();
@@ -62,6 +70,8 @@ export function useTypingSpeed() {
     typing: false,
     text: getRandomElement(textes["easy"]).text,
     errorCount: 0,
+    finish: false,
+    best: 0,
   });
   return { state, dispatch };
 }

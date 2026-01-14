@@ -1,7 +1,14 @@
-import { WPMText } from "../../common/wpm-text";
+import { WPMText } from "@/components/common/wpm-text";
+import { calculateWPM, calculateAccuracy } from "@/libs/calculation-helper";
 import { ResultsShow } from "./results-show";
+import type { AppState } from "@/libs/types/typing-speed-types";
 
-export default function ResultsStats() {
+export default function ResultsStats({ state }: { state: AppState }) {
+  const [WPM, accuracy] = [calculateWPM, calculateAccuracy].map((func) =>
+    func(state)
+  );
+  const { errorCount, input = "" } = state;
+
   const stats = [
     {
       title: (
@@ -9,26 +16,32 @@ export default function ResultsStats() {
           <WPMText />:
         </>
       ),
-      content: 85,
+      content: WPM,
     },
     {
       title: "Accuracy:",
-      content: <span className="c-red-500">{90}%</span>,
+      content: (
+        <span className={accuracy !== "100" ? "c-red-500" : ""}>
+          {accuracy}%
+        </span>
+      ),
     },
     {
       title: "Characters",
       content: (
         <span className="c-neutral-400">
-          <span className="c-green-500">120</span>/
-          <span className="c-red-500">5</span>
+          <span className="c-green-500">{input.length}</span>/
+          <span className="c-red-500">{errorCount}</span>
         </span>
       ),
     },
   ];
   return (
-    <section className="grid gap-4">
-      {stats.map(({ title, content }) => (
-        <ResultsShow title={title}>{content}</ResultsShow>
+    <section className="grid gap-4 md:grid-cols-3">
+      {stats.map(({ title, content }, key) => (
+        <ResultsShow title={title} key={key}>
+          {content}
+        </ResultsShow>
       ))}
     </section>
   );

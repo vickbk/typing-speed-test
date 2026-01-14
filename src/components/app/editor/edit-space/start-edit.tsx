@@ -1,8 +1,8 @@
+import { Article } from "@/components/shared/Article";
+import { Heading } from "@/components/shared/Heading";
+import { SROnly } from "@/components/shared/SROnly";
+import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
-import { Article } from "../../../shared/Article";
-import { Heading } from "../../../shared/Heading";
-import { SROnly } from "../../../shared/SROnly";
-import { TypingContext } from "../../../../contexts/TypingContext";
 
 export const StartEdit = () => {
   const { dispatch } = useContext(TypingContext);
@@ -15,6 +15,7 @@ export const StartEdit = () => {
             type="button"
             className="p-4 px-8 blue-600 rounded-xl text-2xl font-normal"
           >
+            <span className="absolute inset-0"></span>
             Start Typing Test
           </button>
         </Heading>

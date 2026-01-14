@@ -1,9 +1,9 @@
+import { Article } from "@/components/shared/Article";
+import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
-import { Article } from "../../../shared/Article";
+import { Editor } from "./editor";
 import { StartEdit } from "./start-edit";
 import { TextToEdit } from "./text-to-edit";
-import { TypingContext } from "../../../../contexts/TypingContext";
-import { Editor } from "./editor";
 
 export const EditSpace = () => {
   const {

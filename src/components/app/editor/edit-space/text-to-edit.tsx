@@ -1,7 +1,7 @@
+import { Article } from "@/components/shared/Article";
+import { Heading } from "@/components/shared/Heading";
+import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
-import { Article } from "../../../shared/Article";
-import { Heading } from "../../../shared/Heading";
-import { TypingContext } from "../../../../contexts/TypingContext";
 
 export const TextToEdit = () => {
   const {

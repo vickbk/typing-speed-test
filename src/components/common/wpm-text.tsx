@@ -1,4 +1,4 @@
-import { SROnly } from "../shared/SROnly";
+import { SROnly } from "@components/shared/SROnly";
 
 export function WPMText() {
   return (

@@ -6,7 +6,7 @@ export const SettingBar = () => {
   return (
     <section className="flex flex-wrap lg:grid lg:grid-cols-2 py-4 gap-4">
       <Results />
-      <div className="grow">
+      <div className="grow grid grid-cols-2 gap-4">
         <ChallengeOptions />
         <ChallengeMode />
       </div>

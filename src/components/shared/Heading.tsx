@@ -1,5 +1,5 @@
+import { HeadingCtx } from "@/contexts/HeadingCtx";
 import { forwardRef, useContext, type HTMLAttributes } from "react";
-import { HeadingCtx } from "../../contexts/HeadingCtx";
 
 export const Heading = forwardRef<
   HTMLHeadingElement,

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ResultsShower } from "./result-shower";
-import { TypingContext } from "../../../../../contexts/TypingContext";
-import { calculateAccuracy } from "../../../../../libs/accuracy-helper";
+import { TypingContext } from "@/contexts/TypingContext";
+import { calculateAccuracy } from "@/libs/calculation-helper";
 
 export const Accuracy = () => {
   const { state } = useContext(TypingContext);

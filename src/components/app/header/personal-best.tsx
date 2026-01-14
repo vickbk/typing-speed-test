@@ -1,18 +1,53 @@
-import { Article } from "../../shared/Article";
-import { Heading } from "../../shared/Heading";
-import { SROnly } from "../../shared/SROnly";
+import { useCallback, useContext, useState } from "react";
 import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
+import { TypingContext } from "@/contexts/TypingContext";
+import getMemoItem from "@/libs/memorization/get-item";
+import { Article } from "@/components/shared/Article";
+import { Heading } from "@/components/shared/Heading";
+import { SROnly } from "@/components/shared/SROnly";
+import type { TypeScore } from "@/libs/types/typing-speed-types";
+import { Icon } from "@/components/common/bi-icon";
+import { ScoreHistory } from "./score-history";
 
 export const PersonalBest = () => {
+  const {
+    state: { difficulty, best, typing },
+    dispatch,
+  } = useContext(TypingContext);
+
+  const loadResults = useCallback(
+    (node: HTMLElement | null) => {
+      if (node !== null) {
+        const results = getMemoItem<TypeScore[]>(`score.${difficulty}`) || [];
+        const [higher] = results.sort(
+          ({ wpm: aWPM }, { wpm: bWPM }) => bWPM - aWPM
+        );
+        dispatch({ action: "updateHighScore", payload: higher?.wpm ?? 0 });
+      }
+    },
+    [difficulty, best]
+  );
+
+  const [show, toggleShow] = useState(false);
+
   return (
-    <Article className="flex">
+    <Article className="best" ref={loadResults}>
       <img src={bestIcon} alt="" />
       <Heading className="capitalize ml-2 c-neutral-400">
         <SROnly>Your</SROnly>
         <span className="sr-only sm:not-sr-only">Personal </span>best
         <SROnly> is</SROnly>:{" "}
       </Heading>
-      <p className="">92WPM</p>
+      <p className="">{best}WPM</p>
+      <button
+        type="button"
+        className="active-button best__history"
+        onClick={() => toggleShow(!show)}
+      >
+        <Icon name="alarm" />
+        <SROnly>Show history</SROnly>
+      </button>
+      {!typing && show && <ScoreHistory onClose={toggleShow} />}
     </Article>
   );
 };

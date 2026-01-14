@@ -1,8 +1,8 @@
-import { Heading } from "../../shared/Heading";
-import { SROnly } from "../../shared/SROnly";
 import { PersonalBest } from "./personal-best";
 import { default as logoSmall } from "@assets/images/logo-small.svg";
 import { default as logoLarge } from "@assets/images/logo-large.svg";
+import { Heading } from "@/components/shared/Heading";
+import { SROnly } from "@/components/shared/SROnly";
 
 export const Header = () => {
   return (
