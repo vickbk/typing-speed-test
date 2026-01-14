@@ -29,7 +29,7 @@ export const ChallengeOptions = () => {
       name="level"
       current={difficulty}
       updateCurrent={setDifficulty}
-      options={["easy", "medium", "hard"]}
+      options={["easy", "medium", "hard", "quote"]}
       key={difficulty}
     >
       <Heading>
