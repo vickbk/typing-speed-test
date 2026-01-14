@@ -11,9 +11,9 @@ export const EditSpace = () => {
   } = useContext(TypingContext);
   return (
     <Article className="border-t b-neutral-500 py-4 relative isolate grow flex flex-col">
+      {typing && <Editor />}
       <TextToEdit />
       {!typing && <StartEdit />}
-      {typing && <Editor />}
     </Article>
   );
 };
