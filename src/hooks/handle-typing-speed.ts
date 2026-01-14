@@ -5,7 +5,7 @@ import type {
   AppState,
   Difficulty,
   ModeType,
-} from "../libs/types/typing-speed-types";
+} from "@/libs/types/typing-speed-types";
 import { default as textes } from "@/assets/data.json";
 import { getRandomElement } from "@/libs/random-gen";
 import { getErrorsNumber } from "@/libs/calculation-helper";
@@ -55,6 +55,9 @@ export function handleTypingSpeed(
         finish,
       };
     },
+    updateHighScore() {
+      return { ...state, best: payload as number };
+    },
   };
   return actions?.[action]();
 }
@@ -67,6 +70,7 @@ export function useTypingSpeed() {
     text: getRandomElement(textes["easy"]).text,
     errorCount: 0,
     finish: false,
+    best: 0,
   });
   return { state, dispatch };
 }

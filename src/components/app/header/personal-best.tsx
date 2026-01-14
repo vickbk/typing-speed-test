@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext } from "react";
 import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
 import { TypingContext } from "@/contexts/TypingContext";
 import getMemoItem from "@/libs/memorization/get-item";
@@ -9,21 +9,22 @@ import type { TypeScore } from "@/libs/types/typing-speed-types";
 
 export const PersonalBest = () => {
   const {
-    state: { difficulty },
+    state: { difficulty, best },
+    dispatch,
   } = useContext(TypingContext);
 
-  const [score, setScore] = useState(0);
-
-  function loadResults(node: HTMLElement | null) {
-    if (node !== null) {
-      const results = getMemoItem<TypeScore[]>(`score.${difficulty}`) || [];
-      const [higher] = results.sort(
-        ({ wpm: aWPM }, { wpm: bWPM }) => bWPM - aWPM
-      );
-      setScore(higher?.wpm ?? 0);
-      console.log(results, higher);
-    }
-  }
+  const loadResults = useCallback(
+    (node: HTMLElement | null) => {
+      if (node !== null) {
+        const results = getMemoItem<TypeScore[]>(`score.${difficulty}`) || [];
+        const [higher] = results.sort(
+          ({ wpm: aWPM }, { wpm: bWPM }) => bWPM - aWPM
+        );
+        dispatch({ action: "updateHighScore", payload: higher?.wpm ?? 0 });
+      }
+    },
+    [difficulty, best]
+  );
 
   return (
     <Article className="flex" ref={loadResults}>
@@ -33,7 +34,7 @@ export const PersonalBest = () => {
         <span className="sr-only sm:not-sr-only">Personal </span>best
         <SROnly> is</SROnly>:{" "}
       </Heading>
-      <p className="">{score}WPM</p>
+      <p className="">{best}WPM</p>
     </Article>
   );
 };

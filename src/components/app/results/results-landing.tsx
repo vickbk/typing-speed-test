@@ -1,7 +1,7 @@
 import completed from "@assets/images/icon-personal-best.svg";
 import { Heading } from "@components/shared/Heading";
 import ResultsStats from "./results-stats";
-import { useContext, useRef } from "react";
+import { useCallback, useContext, useRef } from "react";
 import { Icon } from "@components/common/bi-icon";
 import { TypingContext } from "@/contexts/TypingContext";
 import getMemoItem from "@/libs/memorization/get-item";
@@ -18,40 +18,47 @@ export const ResultsLanding = () => {
     first: true,
     best: false,
   });
-  function loadOtherResults(node: HTMLElement | null) {
-    if (node) {
-      const scores =
-        getMemoItem<TypeScore[]>(`score.${state.difficulty}`) || [];
+  const { best, finish } = state;
+  const loadOtherResults = useCallback(
+    (node: HTMLElement | null) => {
+      if (node) {
+        const scores =
+          getMemoItem<TypeScore[]>(`score.${state.difficulty}`) || [];
 
-      const currentWPM = +calculateWPM(state);
-      if (scores.length === 0) {
-        results.current = {
-          ...results.current,
-          title: "Baseline Established!",
-          text: "You've set the bar. Now the real challenge begins--time to beat it.",
-          button: "Beat This Score",
-        };
-      } else {
-        results.current = { ...results.current, first: false };
-        const hasHigher = scores.some(({ wpm }) => wpm < currentWPM);
-        if (!hasHigher)
+        const currentWPM = +calculateWPM(state);
+        if (best === 0) {
           results.current = {
             ...results.current,
-            best: true,
-            title: "Hight Score Smashed!",
-            text: "You're getting faster. That was incredible typing.",
+            title: "Baseline Established!",
+            text: "You've set the bar. Now the real challenge begins--time to beat it.",
             button: "Beat This Score",
           };
+        } else {
+          results.current = { ...results.current, first: false };
+
+          if (best < currentWPM) {
+            results.current = {
+              ...results.current,
+              best: true,
+              title: "Hight Score Smashed!",
+              text: "You're getting faster. That was incredible typing.",
+              button: "Beat This Score",
+            };
+          }
+        }
+        scores.push({
+          wpm: currentWPM,
+          time: new Date().getTime(),
+          session: state,
+        });
+        setMemoItem(`score.${state.difficulty}`, scores);
+        if (results.current.best || results.current.first)
+          dispatch({ action: "updateHighScore", payload: currentWPM });
       }
-      scores.push({
-        wpm: currentWPM,
-        time: new Date().getTime(),
-        session: state,
-      });
-      setMemoItem(`score.${state.difficulty}`, scores);
-    }
-  }
-  const { title, text } = results.current;
+    },
+    [finish]
+  );
+  const { title, text, button } = results.current;
   return (
     <div
       className="m-auto grid items-center gap-8 md:gap-12"
@@ -69,7 +76,7 @@ export const ResultsLanding = () => {
         type="button"
         onClick={() => dispatch({ action: "startTyping" })}
       >
-        Go Again <Icon name="arrow-counterclockwise" />
+        {button} <Icon name="arrow-counterclockwise" />
       </button>
     </div>
   );
