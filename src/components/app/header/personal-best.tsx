@@ -44,7 +44,7 @@ export const PersonalBest = () => {
         className="active-button best__history"
         onClick={() => toggleShow(!show)}
       >
-        <Icon name="clock" />
+        <Icon name="alarm" />
         <SROnly>Show history</SROnly>
       </button>
       {show && <ScoreHistory onClose={toggleShow} />}

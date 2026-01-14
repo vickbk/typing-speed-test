@@ -1,11 +1,9 @@
 import { WPMText } from "@/components/common/wpm-text";
-import { TypingContext } from "@/contexts/TypingContext";
 import { calculateWPM, calculateAccuracy } from "@/libs/calculation-helper";
-import { useContext } from "react";
 import { ResultsShow } from "./results-show";
+import type { AppState } from "@/libs/types/typing-speed-types";
 
-export default function ResultsStats() {
-  const { state } = useContext(TypingContext);
+export default function ResultsStats({ state }: { state: AppState }) {
   const [WPM, accuracy] = [calculateWPM, calculateAccuracy].map((func) =>
     func(state)
   );
@@ -40,8 +38,10 @@ export default function ResultsStats() {
   ];
   return (
     <section className="grid gap-4 md:grid-cols-3">
-      {stats.map(({ title, content }) => (
-        <ResultsShow title={title}>{content}</ResultsShow>
+      {stats.map(({ title, content }, key) => (
+        <ResultsShow title={title} key={key}>
+          {content}
+        </ResultsShow>
       ))}
     </section>
   );

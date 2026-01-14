@@ -32,3 +32,29 @@ export function getTimeRange({ typing, mode, difference }: AppState) {
   }) ?? ["excellent"];
   return range;
 }
+
+export function formatDateTime({
+  time,
+  options,
+}: {
+  time: number;
+  options?: Intl.DateTimeFormatOptions;
+}) {
+  const {
+    year = "numeric",
+    month = "long",
+    day = "numeric",
+    weekday = "long",
+    hour = "numeric",
+    minute = "numeric",
+  } = options || {};
+
+  return new Intl.DateTimeFormat(undefined, {
+    year,
+    month,
+    day,
+    weekday,
+    hour,
+    minute,
+  }).format(time);
+}

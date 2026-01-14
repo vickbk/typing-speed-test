@@ -83,7 +83,7 @@ export const ResultsLanding = () => {
         <p className="c-neutral-400">{text}</p>
       </header>
 
-      <ResultsStats />
+      <ResultsStats state={state} />
       <button
         className="foreground c-background justify-self-center px-4 py-2 rounded-2xl font-bold text-2xl md:rounded-lg md:text-lg"
         type="button"
@@ -91,15 +91,14 @@ export const ResultsLanding = () => {
       >
         {button} <Icon name="arrow-counterclockwise" />
       </button>
-      {isBestScore && (
+      {isBestScore ? (
         <div
           className="absolute w-full left-0 -z-10 bottom-0 translate-y-full transition-transform duration-1000"
           ref={bringInConfetti}
         >
           <img src={confetti} alt="" />
         </div>
-      )}
-      {!isBestScore && (
+      ) : (
         <div className="absolute inset-0 -z-10">
           <img className="bottom-5 right-5 absolute" src={start1} alt="" />
           <img className="absolute left-5 top-30" src={start2} alt="" />
