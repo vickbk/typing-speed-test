@@ -1,4 +1,8 @@
-import completed from "@assets/images/icon-personal-best.svg";
+import { default as completed } from "@/assets/images/icon-personal-best.svg";
+import { default as newPB } from "@/assets/images/icon-new-pb.svg";
+import { default as confetti } from "@/assets/images/pattern-confetti.svg";
+import { default as start1 } from "@/assets/images/pattern-star-1.svg";
+import { default as start2 } from "@/assets/images/pattern-star-2.svg";
 import { Heading } from "@components/shared/Heading";
 import ResultsStats from "./results-stats";
 import { useCallback, useContext, useRef } from "react";
@@ -9,6 +13,11 @@ import { calculateWPM } from "@/libs/calculation-helper";
 import setMemoItem from "@/libs/memorization/set-item";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 
+function bringInConfetti(node: HTMLElement | null) {
+  if (node) {
+    setTimeout(() => node.classList.remove("translate-y-full"), 100);
+  }
+}
 export const ResultsLanding = () => {
   const { dispatch, state } = useContext(TypingContext);
   const results = useRef({
@@ -17,6 +26,7 @@ export const ResultsLanding = () => {
     button: "Go Again",
     first: true,
     best: false,
+    icon: completed,
   });
   const { best, finish } = state;
   const loadOtherResults = useCallback(
@@ -43,6 +53,7 @@ export const ResultsLanding = () => {
               title: "Hight Score Smashed!",
               text: "You're getting faster. That was incredible typing.",
               button: "Beat This Score",
+              icon: newPB,
             };
           }
         }
@@ -58,14 +69,14 @@ export const ResultsLanding = () => {
     },
     [finish]
   );
-  const { title, text, button } = results.current;
+  const { title, text, button, icon, best: isBestScore } = results.current;
   return (
     <div
       className="m-auto grid items-center gap-8 md:gap-12"
       ref={loadOtherResults}
     >
       <header className="grid gap-4 justify-items-center text-center">
-        <img className="w-12" src={completed} alt="" />
+        <img className="w-12" src={icon} alt="" />
         <Heading className="font-semibold text-3xl">{title}</Heading>
         <p className="c-neutral-400">{text}</p>
       </header>
@@ -78,6 +89,20 @@ export const ResultsLanding = () => {
       >
         {button} <Icon name="arrow-counterclockwise" />
       </button>
+      {isBestScore && (
+        <div
+          className="absolute w-full left-0 -z-10 bottom-0 translate-y-full transition-transform duration-1000"
+          ref={bringInConfetti}
+        >
+          <img src={confetti} alt="" />
+        </div>
+      )}
+      {!isBestScore && (
+        <div className="absolute inset-0 -z-10">
+          <img className="bottom-5 right-5 absolute" src={start1} alt="" />
+          <img className="absolute left-5 top-30" src={start2} alt="" />
+        </div>
+      )}
     </div>
   );
 };
