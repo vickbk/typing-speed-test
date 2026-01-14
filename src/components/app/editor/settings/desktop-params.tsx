@@ -2,7 +2,7 @@ function desktopScrolltoCurrent(node: HTMLElement | null) {
   node?.scrollIntoView({
     inline: "nearest",
     behavior: "smooth",
-    block: "start",
+    block: "nearest",
   });
 }
 

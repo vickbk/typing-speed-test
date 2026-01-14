@@ -4,12 +4,15 @@ import CustomDialog from "@/components/shared/CustomDialog";
 import { Heading } from "@/components/shared/Heading";
 import { SROnly } from "@/components/shared/SROnly";
 import { TypingContext } from "@/contexts/TypingContext";
-import { useCallback, useContext, useRef } from "react";
+import { useCallback, useContext, useRef, useState } from "react";
 import { ChallengeOptions } from "../editor/settings/challenge-options";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 import getMemoItem from "@/libs/memorization/get-item";
 import ResultsStats from "../results/results-stats";
 import { formatDateTime } from "@/libs/time-helper";
+import { Paging } from "@/components/common/paging/paging-element";
+
+const PAGESIZE = 10;
 
 export const ScoreHistory = ({
   onClose,
@@ -33,9 +36,15 @@ export const ScoreHistory = ({
     },
     [difficulty]
   );
+  const [page, setPage] = useState(0);
+  const totalPages = Math.ceil(results.current.length / PAGESIZE);
+  const historyDisplay = results.current.slice(
+    page * PAGESIZE,
+    (page + 1) * PAGESIZE
+  );
   return (
     <CustomDialog
-      className="m-auto p-4 rounded-lg background c-foreground relative overflow-hidden"
+      className="m-auto p-4 rounded-lg background c-foreground relative"
       isOpen
       onClose={closeDialog}
     >
@@ -64,8 +73,8 @@ export const ScoreHistory = ({
             <Icon name="trash" />
           </button>
         </div>
-        <section className="grid gap-8 overflow-y-auto max-h-[70vh]">
-          {results.current.map(({ session, time }) => (
+        <section className="grid gap-8 overflow-y-auto max-h-[60vh]">
+          {historyDisplay.map(({ session, time }) => (
             <Article>
               <Heading className="mb-4">
                 <SROnly>Results for date</SROnly>
@@ -75,6 +84,15 @@ export const ScoreHistory = ({
             </Article>
           ))}
         </section>
+        {totalPages > 1 && (
+          <div className="absolute bottom-0 mx-auto inset-x-0">
+            <Paging
+              page={page}
+              totalPages={totalPages}
+              updateFunction={setPage}
+            />
+          </div>
+        )}
       </Article>
     </CustomDialog>
   );
