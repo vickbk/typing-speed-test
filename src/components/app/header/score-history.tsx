@@ -12,6 +12,7 @@ import ResultsStats from "../results/results-stats";
 import { formatDateTime } from "@/libs/time-helper";
 import { Paging } from "@/components/common/paging/paging-element";
 import { EmptyScore } from "./empty-score";
+import { clearMemoItem } from "@/libs/memorization/set-item";
 
 const PAGESIZE = 10;
 
@@ -24,7 +25,8 @@ export const ScoreHistory = ({
     onClose(false);
   }
   const {
-    state: { difficulty },
+    state: { difficulty, best },
+    dispatch,
   } = useContext(TypingContext);
 
   const results = useRef<TypeScore[]>([]);
@@ -35,7 +37,7 @@ export const ScoreHistory = ({
           getMemoItem<TypeScore[]>(`score.${difficulty}`) || []
         ).sort(({ time: aT }, { time: bT }) => bT - aT);
     },
-    [difficulty]
+    [difficulty, best]
   );
   const [page, setPage] = useState(0);
   const totalPages = Math.ceil(results.current.length / PAGESIZE);
@@ -70,6 +72,10 @@ export const ScoreHistory = ({
             type="button"
             title="Clear history"
             className="active-button px-4 rounded-lg outline-1"
+            onClick={() => {
+              clearMemoItem(`score.${difficulty}`);
+              dispatch({ action: "updateHighScore", payload: 0 });
+            }}
           >
             <Icon name="trash" />
           </button>
