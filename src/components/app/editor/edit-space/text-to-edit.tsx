@@ -3,6 +3,9 @@ import { Heading } from "@/components/shared/Heading";
 import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
 
+function scrollIntoView(node: HTMLElement | null) {
+  node?.scrollIntoView({ block: "center", behavior: "smooth" });
+}
 export const TextToEdit = () => {
   const {
     state: { text, input = "" },
@@ -24,6 +27,7 @@ export const TextToEdit = () => {
                 : "",
             ].join(" ")}
             key={index}
+            ref={current === index ? scrollIntoView : undefined}
           >
             {input?.[index] ?? char}
           </span>
