@@ -4,7 +4,7 @@ import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
 
 function scrollIntoView(node: HTMLElement | null) {
-  node?.scrollIntoView({ block: "center", behavior: "smooth" });
+  node?.scrollIntoView({ block: "center", behavior: "instant" });
 }
 export const TextToEdit = () => {
   const {

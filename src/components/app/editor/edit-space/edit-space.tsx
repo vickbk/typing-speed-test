@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Editor } from "./editor";
 import { StartEdit } from "./start-edit";
 import { TextToEdit } from "./text-to-edit";
+import { EditTextField } from "./edit-text-field";
 
 export const EditSpace = () => {
   const {
@@ -11,6 +12,7 @@ export const EditSpace = () => {
   } = useContext(TypingContext);
   return (
     <Article className="border-t b-neutral-500 py-4 relative isolate grow flex flex-col overflow-y-auto max-h-[80vh]">
+      {typing && <EditTextField />}
       <TextToEdit />
       {!typing && <StartEdit />}
       {typing && <Editor />}
