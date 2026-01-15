@@ -15,7 +15,7 @@ export function getErrorsNumber({ errorCount, text }: AppState, input: string) {
 
 export function calculateAccuracy({ input = "", errorCount }: AppState) {
   return (
-    ((input.length - errorCount || 1) * 100) /
+    ((input.length !== 0 ? input.length - errorCount : 1) * 100) /
     (input.length || 1)
   ).toFixed();
 }
