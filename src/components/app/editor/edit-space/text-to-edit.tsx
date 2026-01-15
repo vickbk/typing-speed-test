@@ -1,6 +1,8 @@
+import { Icon } from "@/components/common/bi-icon";
 import { Article } from "@/components/shared/Article";
 import { Heading } from "@/components/shared/Heading";
 import { TypingContext } from "@/contexts/TypingContext";
+import { joinClasses } from "@/libs/other-helpers";
 import { useContext } from "react";
 
 function scrollIntoView(node: HTMLElement | null) {
@@ -17,20 +19,34 @@ export const TextToEdit = () => {
       <Heading className="sr-only">Here is the text you will be typing</Heading>
       <p className="text-2xl sm:text-5xl c-neutral-500">
         {text.split("").map((char, index) => (
-          <span
-            className={[
-              current === index ? "neutral-800 animate-pulse" : "",
-              char === input?.charAt(index)
-                ? "c-green-500"
-                : index < input.length
-                ? "c-red-500 underline"
-                : "",
-            ].join(" ")}
-            key={index}
-            ref={current === index ? scrollIntoView : undefined}
-          >
-            {input?.[index] ?? char}
-          </span>
+          <>
+            {char !== "\n" ? (
+              <span
+                className={joinClasses([
+                  current === index && "neutral-800 animate-pulse",
+                  (char === input?.charAt(index) && "c-green-500") ||
+                    (index < input.length && "c-red-500 underline"),
+                ])}
+                key={index}
+                ref={current === index ? scrollIntoView : undefined}
+              >
+                {input?.[index] ?? char}
+              </span>
+            ) : (
+              <>
+                {" "}
+                <Icon
+                  name={joinClasses([
+                    "arrow-return-left",
+                    current === index && "neutral-800 animate-pulse",
+                    (char === input?.charAt(index) && "c-green-500") ||
+                      (index < input.length && "c-red-500 underline"),
+                  ])}
+                />
+                <br />
+              </>
+            )}
+          </>
         ))}
       </p>
     </Article>
