@@ -21,7 +21,7 @@ export const DesktopParams = <T extends string | number>({
 }) => {
   const [query] = useSearchParams();
   return (
-    <ul className="hidden md:flex overflow-x-scroll overscroll-contain max-w-full gap-2">
+    <ul className="hidden md:flex overflow-x-scroll gap-2">
       {options.map(([value, label]) => {
         query.set(name, value + "");
         return (

@@ -8,7 +8,7 @@ export const StartEdit = () => {
   const { dispatch } = useContext(TypingContext);
   return (
     <>
-      <Article className="absolute inset-0 flex flex-col gap-4 justify-center items-center text-center backdrop-blur-xs isolate">
+      <Article className="absolute inset-0 flex flex-col gap-4 justify-center items-center text-center backdrop-blur-sm isolate">
         <Heading>
           <button
             onClick={() => dispatch({ action: "startTyping" })}
