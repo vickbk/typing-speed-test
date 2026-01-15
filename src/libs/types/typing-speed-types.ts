@@ -1,5 +1,5 @@
 export type ModeType = "" | 15 | 45 | 30 | 60 | 120;
-export type Difficulty = "easy" | "medium" | "hard" | "quote";
+export type Difficulty = "easy" | "medium" | "hard" | "quote" | "code";
 
 export type AppState = {
   mode: ModeType;
