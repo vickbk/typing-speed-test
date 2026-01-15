@@ -6,7 +6,7 @@ import { SROnly } from "@/components/shared/SROnly";
 
 export const Header = () => {
   return (
-    <header className="flex justify-between items-center py-4">
+    <header className="flex justify-between items-center py-4 w-full max-w-300 m-auto">
       <Heading>
         <picture>
           <source media="(min-width: 576px)" srcSet={logoLarge} />

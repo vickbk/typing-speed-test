@@ -13,16 +13,14 @@ import { formatDateTime } from "@/libs/time-helper";
 import { Paging } from "@/components/common/paging/paging-element";
 import { EmptyScore } from "./empty-score";
 import { clearMemoItem } from "@/libs/memorization/set-item";
+import { useNavigate } from "react-router-dom";
 
 const PAGESIZE = 10;
 
-export const ScoreHistory = ({
-  onClose,
-}: {
-  onClose: (param: false) => void;
-}) => {
+export const ScoreHistory = () => {
+  const navigate = useNavigate();
   function closeDialog() {
-    onClose(false);
+    navigate("/home");
   }
   const {
     state: { difficulty, best },
@@ -82,7 +80,7 @@ export const ScoreHistory = ({
         </div>
         <section className="grid gap-8 overflow-y-auto max-h-[70vh]">
           {historyDisplay.map(({ session, time }) => (
-            <Article>
+            <Article key={time}>
               <Heading className="mb-4">
                 <SROnly>Results for date</SROnly>
                 <time dateTime="">{formatDateTime({ time })}</time>
@@ -90,7 +88,7 @@ export const ScoreHistory = ({
               <ResultsStats state={session} />
             </Article>
           ))}
-          {historyDisplay.length === 0 && <EmptyScore onClose={onClose} />}
+          {historyDisplay.length === 0 && <EmptyScore onClose={closeDialog} />}
         </section>
         {totalPages > 1 && (
           <div className="absolute bottom-0 mx-auto inset-x-0">

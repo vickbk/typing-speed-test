@@ -7,7 +7,7 @@ import type {
   ModeType,
 } from "@/libs/types/typing-speed-types";
 import { getRandomElement } from "@/libs/random-gen";
-import { getErrorsNumber } from "@/libs/calculation-helper";
+import { saveTextes } from "@/libs/calculation-helper";
 import { default as textes } from "@/assets/data.json";
 
 export function handleTypingSpeed(
@@ -31,6 +31,7 @@ export function handleTypingSpeed(
         difference: 0,
         text: getRandomElement(textes[state.difficulty]).text,
         input: "",
+        oldMistakes: "",
         errorCount: 0,
         finish: false,
       };
@@ -45,15 +46,10 @@ export function handleTypingSpeed(
       return { ...state, lastTyping, typing, difference, finish: !typing };
     },
     updateInput() {
-      const input = payload as string;
-      const errorCount = getErrorsNumber(state, input);
-      const finish = input.length === state.text.length;
+      const textes = saveTextes(state, payload as string);
       return {
         ...state,
-        input,
-        typing: !finish,
-        errorCount,
-        finish,
+        ...textes,
       };
     },
     updateHighScore() {
@@ -72,6 +68,7 @@ export function useTypingSpeed() {
     errorCount: 0,
     finish: false,
     best: 0,
+    oldMistakes: "",
   });
   return { state, dispatch };
 }

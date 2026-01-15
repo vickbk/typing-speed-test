@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext } from "react";
 import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
 import { TypingContext } from "@/contexts/TypingContext";
 import getMemoItem from "@/libs/memorization/get-item";
@@ -7,11 +7,11 @@ import { Heading } from "@/components/shared/Heading";
 import { SROnly } from "@/components/shared/SROnly";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 import { Icon } from "@/components/common/bi-icon";
-import { ScoreHistory } from "./score-history";
+import { Link } from "react-router-dom";
 
 export const PersonalBest = () => {
   const {
-    state: { difficulty, best, typing },
+    state: { difficulty, best },
     dispatch,
   } = useContext(TypingContext);
 
@@ -28,8 +28,6 @@ export const PersonalBest = () => {
     [difficulty, best]
   );
 
-  const [show, toggleShow] = useState(false);
-
   return (
     <Article className="best" ref={loadResults}>
       <img src={bestIcon} alt="" />
@@ -39,15 +37,10 @@ export const PersonalBest = () => {
         <SROnly> is</SROnly>:{" "}
       </Heading>
       <p className="">{best}WPM</p>
-      <button
-        type="button"
-        className="active-button best__history"
-        onClick={() => toggleShow(!show)}
-      >
+      <Link to={"/history"} className="active-button best__history text-center">
         <Icon name="alarm" />
         <SROnly>Show history</SROnly>
-      </button>
-      {!typing && show && <ScoreHistory onClose={toggleShow} />}
+      </Link>
     </Article>
   );
 };

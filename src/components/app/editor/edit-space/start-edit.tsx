@@ -2,13 +2,25 @@ import { Article } from "@/components/shared/Article";
 import { Heading } from "@/components/shared/Heading";
 import { SROnly } from "@/components/shared/SROnly";
 import { TypingContext } from "@/contexts/TypingContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export const StartEdit = () => {
   const { dispatch } = useContext(TypingContext);
+  useEffect(() => {
+    function startOnKeyboardType({ key }: KeyboardEvent) {
+      const letters = "abcdefghijklmnopqrstuvwxyz";
+      const allLetters = `${letters}${letters.toUpperCase()}1234567890`
+        .split("")
+        .map((string) => `^${string}$`)
+        .join("|");
+      if (new RegExp(allLetters).test(key)) dispatch({ action: "startTyping" });
+    }
+    window.addEventListener("keyup", startOnKeyboardType);
+    return () => window.removeEventListener("keyup", startOnKeyboardType);
+  }, []);
   return (
     <>
-      <Article className="absolute inset-0 flex flex-col gap-4 justify-center items-center text-center backdrop-blur-xs isolate">
+      <Article className="absolute inset-0 flex flex-col gap-4 justify-center items-center text-center backdrop-blur-sm isolate">
         <Heading>
           <button
             onClick={() => dispatch({ action: "startTyping" })}

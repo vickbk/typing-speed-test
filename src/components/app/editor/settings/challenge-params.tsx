@@ -17,12 +17,13 @@ export const ChallengeParams = <T extends string | number>({
   const normalizedOptions = options.map((choice) =>
     Array.isArray(choice) ? choice : ([choice, choice + ""] as [T, string])
   );
+  const allOptions = { ...other, options: normalizedOptions };
   return (
     <Article className="capitalize md:flex gap-2 items-center not-last:md:border-r">
       {children}
 
-      <MobileParams {...other} options={normalizedOptions} />
-      <DesktopParams {...other} options={normalizedOptions} />
+      <MobileParams {...allOptions} />
+      <DesktopParams {...allOptions} />
     </Article>
   );
 };

@@ -1,5 +1,5 @@
 export type ModeType = "" | 15 | 45 | 30 | 60 | 120;
-export type Difficulty = "easy" | "medium" | "hard" | "quote";
+export type Difficulty = "easy" | "medium" | "hard" | "quote" | "code";
 
 export type AppState = {
   mode: ModeType;
@@ -9,6 +9,7 @@ export type AppState = {
   lastTyping?: EpochTimeStamp | null;
   difference?: number;
   text: string;
+  oldMistakes: string;
   input?: string;
   errorCount: number;
   finish: boolean;
@@ -23,6 +24,10 @@ export type ActionKeys =
   | "updateInput"
   | "updateHighScore";
 
+export type SearchQuery = {
+  param: string;
+  value: string;
+};
 export type CallbackOption<Name extends ActionKeys, Type = undefined> = {
   action: Name;
   payload?: Type;
