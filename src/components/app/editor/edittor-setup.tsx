@@ -13,7 +13,7 @@ export const EditorSetup = () => {
 
   return (
     <>
-      <Main className="flex flex-col pb-4">
+      <Main className="flex flex-col pb-4 max-w-300 m-auto">
         {!finish && (
           <>
             <SettingBar />
