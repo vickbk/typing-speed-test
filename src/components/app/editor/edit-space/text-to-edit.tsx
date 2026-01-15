@@ -26,7 +26,10 @@ export const TextToEdit = () => {
             current === index && "neutral-800 animate-pulse",
             (char === inputC && "c-green-500") ||
               (index < input.length && "c-red-500 underline"),
-            char === inputC && oldC !== "" && char !== oldC && "yellow-400",
+            char === inputC &&
+              oldC !== "" &&
+              char !== oldC &&
+              "yellow-400 opacity-80",
           ];
           return (
             <>
