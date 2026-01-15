@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { ChallengeParams } from "./challenge-params";
 import setMemoItem from "@/libs/memorization/set-item";
 import getMemoItem from "@/libs/memorization/get-item";
-import { useCustomNavigation } from "@/hooks/handle-navigation";
+import { useSearchParams } from "react-router-dom";
 
 export const ChallengeOptions = () => {
   const {
@@ -14,12 +14,11 @@ export const ChallengeOptions = () => {
     dispatch,
   } = useContext(TypingContext);
 
-  const [queries, setQueries] = useCustomNavigation();
+  const [queries] = useSearchParams();
 
   function setDifficulty<T = Difficulty>(payload: T) {
     setMemoItem("difficulty", payload);
     dispatch({ action: "difficulty", payload: payload as Difficulty });
-    setQueries({ param: "difficulty", value: payload as Difficulty });
   }
 
   function loadDifficulty(node: HTMLElement | null) {
