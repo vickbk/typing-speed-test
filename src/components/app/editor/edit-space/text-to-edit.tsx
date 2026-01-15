@@ -36,6 +36,7 @@ export const TextToEdit = () => {
               <>
                 {" "}
                 <Icon
+                  key={index}
                   name={joinClasses([
                     "arrow-return-left",
                     current === index && "neutral-800 animate-pulse",
@@ -43,7 +44,7 @@ export const TextToEdit = () => {
                       (index < input.length && "c-red-500 underline"),
                   ])}
                 />
-                <br />
+                <br key={index + 2000} />
               </>
             )}
           </>
