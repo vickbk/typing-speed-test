@@ -13,6 +13,22 @@ export function getErrorsNumber({ errorCount, text }: AppState, input: string) {
   );
 }
 
+export function saveTextes(state: AppState, input: string) {
+  const { text, oldMistakes, input: prevIn = "" } = state;
+  const sLen = prevIn.length;
+  const isCorrecting = input.length < sLen;
+  const finish = text.length === input.length;
+  return {
+    input: isCorrecting ? text.substring(0, sLen) : input,
+    oldMistakes: isCorrecting
+      ? oldMistakes + input.substring(oldMistakes.length)
+      : oldMistakes,
+    errorCount: getErrorsNumber(state, input),
+    finish,
+    typing: !finish,
+  };
+}
+
 export function calculateAccuracy({ input = "", errorCount }: AppState) {
   return (
     ((input.length !== 0 ? input.length - errorCount : 1) * 100) /

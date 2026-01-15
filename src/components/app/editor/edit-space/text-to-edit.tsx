@@ -10,7 +10,7 @@ function scrollIntoView(node: HTMLElement | null) {
 }
 export const TextToEdit = () => {
   const {
-    state: { text, input = "" },
+    state: { text, input = "", oldMistakes },
   } = useContext(TypingContext);
 
   const current = input?.length || 0;
@@ -18,37 +18,39 @@ export const TextToEdit = () => {
     <Article className="grow overflow-y-auto max-h-full relative py-8">
       <Heading className="sr-only">Here is the text you will be typing</Heading>
       <p className="text-2xl sm:text-5xl c-neutral-500">
-        {text.split("").map((char, index) => (
-          <>
-            {char !== "\n" ? (
-              <span
-                className={joinClasses([
-                  current === index && "neutral-800 animate-pulse",
-                  (char === input?.charAt(index) && "c-green-500") ||
-                    (index < input.length && "c-red-500 underline"),
-                ])}
-                key={index}
-                ref={current === index ? scrollIntoView : undefined}
-              >
-                {input?.[index] ?? char}
-              </span>
-            ) : (
-              <>
-                {" "}
-                <Icon
+        {text.split("").map((char, index) => {
+          const [inputC, oldC] = [input, oldMistakes].map((t) =>
+            t.charAt(index)
+          );
+          const activeClasses = [
+            current === index && "neutral-800 animate-pulse",
+            (char === inputC && "c-green-500") ||
+              (index < input.length && "c-red-500 underline"),
+            char === inputC && oldC !== "" && char !== oldC && "yellow-400",
+          ];
+          return (
+            <>
+              {char !== "\n" ? (
+                <span
+                  className={joinClasses(activeClasses)}
                   key={index}
-                  name={joinClasses([
-                    "arrow-return-left",
-                    current === index && "neutral-800 animate-pulse",
-                    (char === input?.charAt(index) && "c-green-500") ||
-                      (index < input.length && "c-red-500 underline"),
-                  ])}
-                />
-                <br key={index + 2000} />
-              </>
-            )}
-          </>
-        ))}
+                  ref={current === index ? scrollIntoView : undefined}
+                >
+                  {input?.[index] ?? char}
+                </span>
+              ) : (
+                <>
+                  {" "}
+                  <Icon
+                    key={index}
+                    name={joinClasses(["arrow-return-left", ...activeClasses])}
+                  />
+                  <br key={index + 2000} />
+                </>
+              )}
+            </>
+          );
+        })}
       </p>
     </Article>
   );

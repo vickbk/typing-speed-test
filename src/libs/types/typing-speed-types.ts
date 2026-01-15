@@ -9,6 +9,7 @@ export type AppState = {
   lastTyping?: EpochTimeStamp | null;
   difference?: number;
   text: string;
+  oldMistakes: string;
   input?: string;
   errorCount: number;
   finish: boolean;
