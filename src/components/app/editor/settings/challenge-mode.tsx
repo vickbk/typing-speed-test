@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { ChallengeParams } from "./challenge-params";
 import setMemoItem from "@/libs/memorization/set-item";
 import getMemoItem from "@/libs/memorization/get-item";
+import { useCustomNavigation } from "@/hooks/handle-navigation";
 
 const times = [
   ...[15, 30, 60, 120].map((time) => [time, `Timed (${time}s)`]),
@@ -17,15 +18,24 @@ export const ChallengeMode = () => {
     state: { mode },
     dispatch,
   } = useContext(TypingContext);
+
+  const [queries, setQueries] = useCustomNavigation();
+
   function setMode<T = ModeType>(mode: T) {
     setMemoItem("mode", mode);
     dispatch({ action: "mode", payload: mode as ModeType });
+    setQueries({ param: "mode", value: mode + "" });
   }
+
   function loadMode(node: HTMLElement | null) {
     if (node) {
+      const mode = queries.get("mode");
       dispatch({
         action: "mode",
-        payload: getMemoItem<ModeType>("mode") || "",
+        payload:
+          (mode === "" ? "" : mode !== null ? (+mode as ModeType) : null) ??
+          getMemoItem<ModeType>("mode") ??
+          "",
       });
     }
   }

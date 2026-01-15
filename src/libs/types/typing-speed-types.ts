@@ -23,6 +23,10 @@ export type ActionKeys =
   | "updateInput"
   | "updateHighScore";
 
+export type SearchQuery = {
+  param: string;
+  value: string;
+};
 export type CallbackOption<Name extends ActionKeys, Type = undefined> = {
   action: Name;
   payload?: Type;

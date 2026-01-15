@@ -6,21 +6,29 @@ import { useContext } from "react";
 import { ChallengeParams } from "./challenge-params";
 import setMemoItem from "@/libs/memorization/set-item";
 import getMemoItem from "@/libs/memorization/get-item";
+import { useCustomNavigation } from "@/hooks/handle-navigation";
 
 export const ChallengeOptions = () => {
   const {
     state: { difficulty },
     dispatch,
   } = useContext(TypingContext);
+
+  const [queries, setQueries] = useCustomNavigation();
+
   function setDifficulty<T = Difficulty>(payload: T) {
     setMemoItem("difficulty", payload);
     dispatch({ action: "difficulty", payload: payload as Difficulty });
+    setQueries({ param: "difficulty", value: payload as Difficulty });
   }
+
   function loadDifficulty(node: HTMLElement | null) {
+    const difficulty = queries.get("difficulty");
     if (node) {
       dispatch({
         action: "difficulty",
-        payload: getMemoItem("difficulty") || "easy",
+        payload:
+          (difficulty as Difficulty) ?? getMemoItem("difficulty") ?? "easy",
       });
     }
   }

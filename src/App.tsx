@@ -20,6 +20,7 @@ function App() {
             <Routes>
               <Route path="/" element={<EditorSetup />}>
                 <Route path="history" element={<ScoreHistory />} />
+                <Route path="params" />
               </Route>
             </Routes>
           </TypingContext>
