@@ -3,11 +3,7 @@ import { Heading } from "@/components/shared/Heading";
 import { TypingContext } from "@/contexts/TypingContext";
 import React from "react";
 
-export const EmptyScore = ({
-  onClose,
-}: {
-  onClose: (close: false) => void;
-}) => {
+export const EmptyScore = ({ onClose }: { onClose: () => void }) => {
   const { dispatch } = React.useContext(TypingContext);
   return (
     <Article className="flex flex-col justify-center gap-8 items-center h-[50vh]">
@@ -20,7 +16,7 @@ export const EmptyScore = ({
       <button
         className="active-button px-4 py-2 rounded-lg outline-1 c-blue-400"
         onClick={() => {
-          onClose(false);
+          onClose();
           dispatch({ action: "startTyping" });
         }}
         type="button"

@@ -7,6 +7,7 @@ import "./styles/scss/global.scss";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TypingContext } from "./contexts/TypingContext";
+import { ScoreHistory } from "./components/app/header/score-history";
 
 function App() {
   const stateSetter = useTypingSpeed();
@@ -17,7 +18,9 @@ function App() {
           <TypingContext value={stateSetter}>
             <Header />
             <Routes>
-              <Route path="/" element={<EditorSetup />} />
+              <Route path="/" element={<EditorSetup />}>
+                <Route path="history" element={<ScoreHistory />} />
+              </Route>
             </Routes>
           </TypingContext>
         </HeadingCtx>

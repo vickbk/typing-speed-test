@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { SettingBar } from "./settings/settings-bar";
 import { EditSpace } from "./edit-space/edit-space";
 import { ResultsLanding } from "../results/results-landing";
+import { Outlet } from "react-router-dom";
 
 export const EditorSetup = () => {
   const {
@@ -20,6 +21,7 @@ export const EditorSetup = () => {
         )}
 
         {finish && <ResultsLanding />}
+        <Outlet />
       </Main>
     </>
   );
