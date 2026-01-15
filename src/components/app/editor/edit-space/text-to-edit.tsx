@@ -15,7 +15,7 @@ export const TextToEdit = () => {
   return (
     <Article className="grow overflow-y-auto max-h-full relative">
       <Heading className="sr-only">Here is the text you will be typing</Heading>
-      <p className="text-3xl c-neutral-500">
+      <p className="text-2xl sm:text-5xl c-neutral-500">
         {text.split("").map((char, index) => (
           <span
             className={[
