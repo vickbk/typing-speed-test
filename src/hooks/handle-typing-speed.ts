@@ -45,7 +45,12 @@ export function handleTypingSpeed(
       return { ...state, lastTyping, typing, difference, finish: !typing };
     },
     updateInput() {
-      const input = payload as string;
+      const text = payload as string;
+      const currentLength = state.input!.length;
+      const input =
+        text.length < currentLength
+          ? state.text.substring(0, currentLength)
+          : text;
       const errorCount = getErrorsNumber(state, input);
       const finish = input.length === state.text.length;
       return {
