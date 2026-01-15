@@ -21,6 +21,16 @@ export function calculateAccuracy({ input = "", errorCount }: AppState) {
 }
 
 export function calculateWPM({ input = "", difference }: AppState) {
-  const words = input.length === 0 ? [] : input.split(" ");
+  const words = input.length === 0 ? [] : splitText(input);
   return ((words.length * 60) / (difference || 1)).toFixed();
+}
+
+const SPLITTERS = ` ,.[]()"'|;:_+-&^%*`.split("");
+export function splitText(text: string) {
+  let splittedText = text.split(" ");
+  SPLITTERS.forEach((splitter) => {
+    if (splittedText.join("").indexOf(splitter) !== -1)
+      splittedText = splittedText.join(splitter).split(splitter);
+  });
+  return splittedText.filter((text) => text !== "");
 }
