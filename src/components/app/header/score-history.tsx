@@ -20,7 +20,7 @@ const PAGESIZE = 10;
 export const ScoreHistory = () => {
   const navigate = useNavigate();
   function closeDialog() {
-    navigate("/");
+    navigate("/home");
   }
   const {
     state: { difficulty, best },

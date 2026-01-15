@@ -8,6 +8,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TypingContext } from "./contexts/TypingContext";
 import { ScoreHistory } from "./components/app/header/score-history";
+import { ErrorElement } from "./components/common/error-element";
 
 function App() {
   const stateSetter = useTypingSpeed();
@@ -20,7 +21,13 @@ function App() {
             <Routes>
               <Route path="/" element={<EditorSetup />}>
                 <Route path="history" element={<ScoreHistory />} />
-                <Route path="params" />
+                <Route path="home" />
+                <Route
+                  path="*"
+                  element={
+                    <ErrorElement error={new Error("404 | Page not found")} />
+                  }
+                />
               </Route>
             </Routes>
           </TypingContext>
