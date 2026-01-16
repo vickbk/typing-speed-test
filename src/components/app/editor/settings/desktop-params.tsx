@@ -1,3 +1,4 @@
+import { joinClasses } from "@/libs/other-helpers";
 import { Link, useSearchParams } from "react-router-dom";
 
 function desktopScrolltoCurrent(node: HTMLElement | null) {
@@ -31,10 +32,10 @@ export const DesktopParams = <T extends string | number>({
             ref={current === label ? desktopScrolltoCurrent : undefined}
           >
             <Link
-              className={[
-                "border rounded-md p-1 inline-block cursor-pointer",
-                current === label ? "b-blue-400 c-blue-400" : "",
-              ].join(" ")}
+              className={joinClasses([
+                "border rounded-md p-1 inline-block cursor-pointer active-b-blue-400 active-c-blue-400",
+                current === label && "b-blue-400 c-blue-400",
+              ])}
               to={`?${query}`}
               onClick={() => updateCurrent(value)}
             >
