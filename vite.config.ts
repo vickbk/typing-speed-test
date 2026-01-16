@@ -23,10 +23,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      input: {
-        "": "index.html",
-        404: "404.html",
-      },
+      input: ["index.html", "404.html"],
     },
   },
 });
