@@ -4,10 +4,10 @@ import { WordPerMinute } from "./word-per-minute";
 
 export const Results = () => {
   return (
-    <div className="flex grow basis-120 text-center items-center">
+    <dl className="flex grow basis-120 text-center items-center">
       <WordPerMinute />
       <Accuracy />
       <Time />
-    </div>
+    </dl>
   );
 };
