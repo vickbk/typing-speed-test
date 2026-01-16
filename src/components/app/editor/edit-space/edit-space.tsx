@@ -1,7 +1,7 @@
 import { Article } from "@/components/shared/Article";
 import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
-import { Editor } from "./editor";
+import { EditorControllers } from "./editor-controllers";
 import { StartEdit } from "./start-edit";
 import { TextToEdit } from "./text-to-edit";
 import { EditTextField } from "./edit-text-field";
@@ -15,7 +15,7 @@ export const EditSpace = () => {
       {typing && <EditTextField />}
       <TextToEdit />
       {!typing && <StartEdit />}
-      {typing && <Editor />}
+      {typing && <EditorControllers />}
     </Article>
   );
 };

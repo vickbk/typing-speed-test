@@ -17,14 +17,16 @@ export const EditTextField = () => {
   }, [startTyping]);
   return (
     <fieldset className="sr-only">
-      <legend>Typing area</legend>
-      <textarea
-        ref={textarea}
-        onChange={(e) =>
-          dispatch({ action: "updateInput", payload: e.target.value })
-        }
-        value={input}
-      />
+      <label>
+        Typing area
+        <textarea
+          ref={textarea}
+          onChange={(e) =>
+            dispatch({ action: "updateInput", payload: e.target.value })
+          }
+          value={input}
+        />
+      </label>
     </fieldset>
   );
 };

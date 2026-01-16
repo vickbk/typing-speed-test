@@ -2,7 +2,7 @@ import { Icon } from "@/components/common/bi-icon";
 import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
 
-export const Editor = () => {
+export const EditorControllers = () => {
   const { dispatch } = useContext(TypingContext);
 
   return (
@@ -20,7 +20,7 @@ export const Editor = () => {
       <button
         type="button"
         onClick={() => dispatch({ action: "stopTyping" })}
-        className="p-2 px-4 c-red-500 active-button outline rounded-lg active-button grow sm:grow-0"
+        className="p-2 px-4 out-red-500 active-button outline rounded-lg active-button grow sm:grow-0"
       >
         Cancel <Icon name="x-octagon" />
       </button>
