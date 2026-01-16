@@ -29,10 +29,15 @@ export const ChallengeMode = () => {
   function loadMode(node: HTMLElement | null) {
     if (node) {
       const mode = queries.get("mode");
+      const allowed = [15, 30, 60, 120];
       dispatch({
         action: "mode",
         payload:
-          (mode === "" ? "" : mode !== null ? (+mode as ModeType) : null) ??
+          (mode === ""
+            ? ""
+            : mode !== null && allowed.includes(+mode)
+            ? (+mode as ModeType)
+            : null) ??
           getMemoItem<ModeType>("mode") ??
           "",
       });
