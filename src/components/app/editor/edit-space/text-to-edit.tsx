@@ -15,7 +15,10 @@ export const TextToEdit = () => {
 
   const current = input?.length || 0;
   return (
-    <Article className="grow overflow-y-auto max-h-full relative py-8">
+    <Article
+      className="grow overflow-y-auto max-h-full relative py-8"
+      tabIndex={0}
+    >
       <Heading className="sr-only">Here is the text you will be typing</Heading>
       <p className="text-2xl sm:text-5xl c-neutral-500">
         {text.split("").map((char, index) => {
