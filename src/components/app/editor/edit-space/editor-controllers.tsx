@@ -22,7 +22,7 @@ export const EditorControllers = () => {
         onClick={() => dispatch({ action: "stopTyping" })}
         className="p-2 px-4 out-red-500 active-button outline rounded-lg active-button grow sm:grow-0"
       >
-        Cancel <Icon name="x-octagon" />
+        Cancel <Icon name="x-octagon c-red-500" />
       </button>
     </div>
   );
