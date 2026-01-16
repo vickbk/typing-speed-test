@@ -21,4 +21,12 @@ export default defineConfig({
       "@components": resolve("./src/components"),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        "": "index.html",
+        404: "404.html",
+      },
+    },
+  },
 });
