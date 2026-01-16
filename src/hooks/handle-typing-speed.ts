@@ -36,6 +36,9 @@ export function handleTypingSpeed(
         finish: false,
       };
     },
+    stopTyping() {
+      return { ...state, typing: false };
+    },
     updateTimer() {
       if (!state.typing) return state;
       const { mode, startTyping, finish } = state;
