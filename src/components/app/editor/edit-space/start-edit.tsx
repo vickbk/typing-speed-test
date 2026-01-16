@@ -25,7 +25,7 @@ export const StartEdit = () => {
           <button
             onClick={() => dispatch({ action: "startTyping" })}
             type="button"
-            className="p-4 px-8 blue-600 rounded-xl text-2xl font-normal"
+            className="p-4 px-8 blue-600 border-3 hover:outline-3 focus:outline-3 active:outline-3 b-background active-out-blue-600  rounded-xl text-2xl font-normal"
           >
             <span className="absolute inset-0"></span>
             Start Typing Test

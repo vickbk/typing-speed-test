@@ -1,6 +1,5 @@
 import { default as completed } from "@/assets/images/icon-completed.svg";
 import { default as newPB } from "@/assets/images/icon-new-pb.svg";
-import { default as confetti } from "@/assets/images/pattern-confetti.svg";
 import { default as start1 } from "@/assets/images/pattern-star-1.svg";
 import { default as start2 } from "@/assets/images/pattern-star-2.svg";
 import { Heading } from "@components/shared/Heading";
@@ -12,6 +11,7 @@ import getMemoItem from "@/libs/memorization/get-item";
 import { calculateWPM } from "@/libs/calculation-helper";
 import setMemoItem from "@/libs/memorization/set-item";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
+import ReactConfetti from "react-confetti";
 
 function bringInConfetti(node: HTMLElement | null) {
   if (node) {
@@ -96,7 +96,7 @@ export const ResultsLanding = () => {
           className="absolute w-full left-0 -z-10 bottom-0 translate-y-full transition-transform duration-1000"
           ref={bringInConfetti}
         >
-          <img src={confetti} alt="" />
+          <ReactConfetti />
         </div>
       ) : (
         <div className="absolute inset-0 -z-10">

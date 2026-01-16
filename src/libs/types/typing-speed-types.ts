@@ -22,7 +22,8 @@ export type ActionKeys =
   | "mode"
   | "updateTimer"
   | "updateInput"
-  | "updateHighScore";
+  | "updateHighScore"
+  | "stopTyping";
 
 export type SearchQuery = {
   param: string;
@@ -36,7 +37,7 @@ export type CallbackOption<Name extends ActionKeys, Type = undefined> = {
 export type AllOptions =
   | CallbackOption<"difficulty", Difficulty>
   | CallbackOption<"mode", ModeType>
-  | CallbackOption<"startTyping" | "updateTimer">
+  | CallbackOption<"startTyping" | "updateTimer" | "stopTyping">
   | CallbackOption<"updateInput", string>
   | CallbackOption<"updateHighScore", number>;
 
