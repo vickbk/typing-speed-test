@@ -8,8 +8,8 @@ export function getErrorsNumber({ errorCount, text }: AppState, input: string) {
     (length === 0
       ? 0
       : input.charAt(length - 1) === text.charAt(length - 1)
-      ? 0
-      : 1)
+        ? 0
+        : 1)
   );
 }
 
@@ -17,7 +17,7 @@ export function saveTextes(state: AppState, input: string) {
   const { text, oldMistakes, input: prevIn = "" } = state;
   const sLen = prevIn.length;
   const isCorrecting = input.length < sLen;
-  const finish = text.length === input.length;
+  const finish = text.length <= input.length;
   return {
     input: isCorrecting ? text.substring(0, sLen) : input,
     oldMistakes: isCorrecting

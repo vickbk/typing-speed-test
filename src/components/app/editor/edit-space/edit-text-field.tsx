@@ -7,26 +7,26 @@ function focusTextarea(node: HTMLTextAreaElement | null) {
 export const EditTextField = () => {
   const {
     dispatch,
-    state: { input, startTyping },
+    state: { input, difference },
   } = useContext(TypingContext);
 
   const textarea = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    focusTextarea(textarea.current);
-  }, [startTyping]);
+    if (document.activeElement !== textarea.current)
+      focusTextarea(textarea.current);
+  }, [difference]);
+  
   return (
-    <fieldset className="sr-only">
-      <label>
-        Typing area
-        <textarea
-          ref={textarea}
-          onChange={(e) =>
-            dispatch({ action: "updateInput", payload: e.target.value })
-          }
-          value={input}
-        />
-      </label>
-    </fieldset>
+    <label className="sr-only">
+      Typing area
+      <textarea
+        ref={textarea}
+        onChange={(e) =>
+          dispatch({ action: "updateInput", payload: e.target.value })
+        }
+        value={input}
+      />
+    </label>
   );
 };
