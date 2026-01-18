@@ -38,7 +38,7 @@ export const PersonalBest = () => {
         {best}
         <WPMText />
       </dd>
-      <dt>
+      <dt aria-label="Score History">
         | <Icon name="clock" />
       </dt>
       <dd>
