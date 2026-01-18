@@ -1,4 +1,3 @@
-import { Main } from "@/components/shared/Main";
 import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
 import { SettingBar } from "./settings/settings-bar";
@@ -12,18 +11,16 @@ export const EditorSetup = () => {
   } = useContext(TypingContext);
 
   return (
-    <>
-      <Main className="flex flex-col pb-4 max-w-300 mx-auto">
-        {!finish && (
-          <>
-            <SettingBar />
-            <EditSpace />
-          </>
-        )}
+    <main className="flex flex-col pb-4 max-w-300 mx-auto">
+      {!finish && (
+        <>
+          <SettingBar />
+          <EditSpace />
+        </>
+      )}
 
-        {finish && <ResultsLanding />}
-        <Outlet />
-      </Main>
-    </>
+      {finish && <ResultsLanding />}
+      <Outlet />
+    </main>
   );
 };
