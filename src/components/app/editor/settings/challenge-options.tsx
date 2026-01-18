@@ -1,4 +1,3 @@
-import { Heading } from "@/components/shared/Heading";
 import { SROnly } from "@/components/shared/SROnly";
 import { TypingContext } from "@/contexts/TypingContext";
 import type { Difficulty } from "@/libs/types/typing-speed-types";
