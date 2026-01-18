@@ -2,12 +2,11 @@ import { useCallback, useContext } from "react";
 import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
 import { TypingContext } from "@/contexts/TypingContext";
 import getMemoItem from "@/libs/memorization/get-item";
-import { Article } from "@/components/shared/Article";
-import { Heading } from "@/components/shared/Heading";
 import { SROnly } from "@/components/shared/SROnly";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 import { Icon } from "@/components/common/bi-icon";
 import { Link } from "react-router-dom";
+import { WPMText } from "@/components/common/wpm-text";
 
 export const PersonalBest = () => {
   const {
@@ -20,27 +19,37 @@ export const PersonalBest = () => {
       if (node !== null) {
         const results = getMemoItem<TypeScore[]>(`score.${difficulty}`) || [];
         const [higher] = results.sort(
-          ({ wpm: aWPM }, { wpm: bWPM }) => bWPM - aWPM
+          ({ wpm: aWPM }, { wpm: bWPM }) => bWPM - aWPM,
         );
         dispatch({ action: "updateHighScore", payload: higher?.wpm ?? 0 });
       }
     },
-    [difficulty, best]
+    [difficulty, best],
   );
 
   return (
-    <Article className="best" ref={loadResults}>
-      <img src={bestIcon} alt="" />
-      <Heading className="capitalize ml-2 c-neutral-400">
-        <SROnly>Your</SROnly>
-        <span className="sr-only sm:not-sr-only">Personal </span>best
-        <SROnly> is</SROnly>:{" "}
-      </Heading>
-      <p className="">{best}WPM</p>
-      <Link to={"/history"} className="active-button best__history text-center">
-        <Icon name="alarm" />
-        <SROnly>Show history</SROnly>
-      </Link>
-    </Article>
+    <dl className="best" ref={loadResults}>
+      <dt className="capitalize c-neutral-400 flex gap-1">
+        <img src={bestIcon} alt="" />
+        <span className="sr-only sm:not-sr-only">Personal </span>
+        Best:
+      </dt>
+      <dd>
+        {best}
+        <WPMText />
+      </dd>
+      <dt>
+        | <Icon name="clock" />
+      </dt>
+      <dd>
+        <Link
+          to={"/history"}
+          className="active-button best__history text-center"
+        >
+          <Icon name="alarm" />
+          <SROnly>Show history</SROnly>
+        </Link>
+      </dd>
+    </dl>
   );
 };
