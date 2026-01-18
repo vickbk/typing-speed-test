@@ -26,9 +26,10 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page
 - Start a typing test by clicking the start button, clicking on the text or just typing on keyword (only letters or numbers)
 - Switch between different levels including: easy, medium, hard, quote and code (accessed with horizontal scroll on large screens for not visible options)
-- Use different timing modes including: 15s, 30s, 60s, 120s and Passage mode
+- Use different timing modes including: 15s, 30s, 60s, 120s and Passage mode (accessed with horizontal scroll on large screens for not visible options)
 - View the history by clicking on the history button on top of personnel best and clear it for a specific level
 - Get visual feedback for the word per minute, accuracy and time change while typing
+- Use backspace to correct mistakes and get them correct and keep old errors highlighted
 - See the final results when timer ends or when the typing text is completed
 
 Get up and running with few steps:
@@ -97,7 +98,7 @@ const { state, dispatch } = useContext(SomeContext);
 dispatch({ action: "someCustomAction", payload: 12 });
 ```
 
-Here we use the custom 404.html option provided by github pages to run a redirection to the actual link of the project and then transform it back to the original link.
+I also use the custom 404.html option provided by github pages to run a redirection to the actual link of the project and then transform it back to the original link.
 
 ### Continued development
 
@@ -114,6 +115,8 @@ Still learning and practicing.
 - [How To Type](https://www.how-to-type.com/typing-practice/programming/) - I got some python and javascript code snippets from this site that I am using on this project.
 
 - [Key Hero](https://www.keyhero.com/quotes/) - For quotes I used some of the ones provided on this site as well.
+
+- [React Confetti](https://www.npmjs.com/package/react-confetti) - I used the react confetti library for animating the confetti on personnel best.
 
 ## Author
 
