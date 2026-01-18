@@ -4,7 +4,7 @@ import { Link, useSearchParams } from "react-router-dom";
 function desktopScrolltoCurrent(node: HTMLElement | null) {
   node?.scrollIntoView({
     inline: "nearest",
-    behavior: "smooth",
+    behavior: "auto",
     block: "nearest",
   });
 }
