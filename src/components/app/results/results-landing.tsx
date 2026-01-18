@@ -12,12 +12,8 @@ import { calculateWPM } from "@/libs/calculation-helper";
 import setMemoItem from "@/libs/memorization/set-item";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 import ReactConfetti from "react-confetti";
+import { useScreenSize } from "@/hooks/handle-screen-size";
 
-function bringInConfetti(node: HTMLElement | null) {
-  if (node) {
-    setTimeout(() => node.classList.remove("translate-y-full"), 100);
-  }
-}
 export const ResultsLanding = () => {
   const { dispatch, state } = useContext(TypingContext);
   const results = useRef({
@@ -67,9 +63,10 @@ export const ResultsLanding = () => {
           dispatch({ action: "updateHighScore", payload: currentWPM });
       }
     },
-    [finish]
+    [finish],
   );
   const { title, text, button, icon, best: isBestScore } = results.current;
+  const { width, height } = useScreenSize();
   return (
     <div
       className="m-auto grid items-center gap-8 md:gap-12"
@@ -92,12 +89,15 @@ export const ResultsLanding = () => {
         {button} <Icon name="arrow-counterclockwise" />
       </button>
       {isBestScore ? (
-        <div
-          className="absolute w-full left-0 -z-10 bottom-0 translate-y-full transition-transform duration-1000"
-          ref={bringInConfetti}
-        >
-          <ReactConfetti />
-        </div>
+        <ReactConfetti
+          width={width}
+          height={height}
+          gravity={0.02}
+          initialVelocityY={30}
+          initialVelocityX={5}
+          recycle={false}
+          confettiSource={{ x: 0, y: height, w: width, h: 0 }}
+        />
       ) : (
         <div className="absolute inset-0 -z-10">
           <img className="bottom-5 right-5 absolute" src={start1} alt="" />
