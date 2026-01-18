@@ -11,18 +11,16 @@ export const EditorSetup = () => {
   } = useContext(TypingContext);
 
   return (
-    <>
-      <main className="flex flex-col pb-4 max-w-300 mx-auto">
-        {!finish && (
-          <>
-            <SettingBar />
-            <EditSpace />
-          </>
-        )}
+    <main className="flex flex-col pb-4 max-w-300 mx-auto">
+      {!finish && (
+        <>
+          <SettingBar />
+          <EditSpace />
+        </>
+      )}
 
-        {finish && <ResultsLanding />}
-        <Outlet />
-      </main>
-    </>
+      {finish && <ResultsLanding />}
+      <Outlet />
+    </main>
   );
 };

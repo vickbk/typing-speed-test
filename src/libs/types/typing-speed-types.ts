@@ -7,6 +7,7 @@ export type AppState = {
   typing: boolean;
   startTyping?: EpochTimeStamp | null;
   lastTyping?: EpochTimeStamp | null;
+  lastInputTime?: EpochTimeStamp | null;
   difference?: number;
   text: string;
   oldMistakes: string;
