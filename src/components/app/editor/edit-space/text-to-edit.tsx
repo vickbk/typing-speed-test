@@ -16,14 +16,14 @@ export const TextToEdit = () => {
   const current = input?.length || 0;
   return (
     <Article
-      className="grow overflow-y-auto max-h-full relative py-8"
+      className="grow overflow-y-clip max-h-full relative py-8 break-word"
       tabIndex={0}
     >
       <Heading className="sr-only">Here is the text you will be typing</Heading>
-      <p className="text-2xl sm:text-5xl c-neutral-500">
+      <p className="text-2xl sm:text-5xl c-neutral-500 break-word">
         {text.split("").map((char, index) => {
           const [inputC, oldC] = [input, oldMistakes].map((t) =>
-            t.charAt(index)
+            t.charAt(index),
           );
           const activeClasses = [
             current === index && "neutral-800 animate-pulse",
