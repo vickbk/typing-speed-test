@@ -45,16 +45,16 @@ export function handleTypingSpeed(
       const { mode, startTyping, finish } = state;
       const lastTyping = new Date().getTime();
       const difference = (lastTyping - startTyping!) / 1000;
-      const notTyping = lastTyping - state.lastInputTime! >= 5000;
+      const noLongerTyping = lastTyping - state.lastInputTime! >= 5000;
       const typing =
-        !notTyping &&
+        !noLongerTyping &&
         ((mode === "" && !finish) || (mode !== "" && difference < mode));
       return {
         ...state,
         lastTyping,
         typing,
         difference,
-        finish: !typing && !notTyping,
+        finish: !typing && !noLongerTyping,
       };
     },
     updateInput() {
