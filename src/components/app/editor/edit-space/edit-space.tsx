@@ -1,4 +1,3 @@
-import { Article } from "@/components/shared/Article";
 import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
 import { EditorControllers } from "./editor-controllers";
@@ -11,11 +10,11 @@ export const EditSpace = () => {
     state: { typing },
   } = useContext(TypingContext);
   return (
-    <Article className="border-t b-neutral-500 py-4 relative isolate grow flex flex-col overflow-y-auto max-h-[80vh]">
+    <section className="border-t b-neutral-500 py-4 relative isolate grow flex flex-col overflow-y-auto max-h-[80vh]">
       {typing && <EditTextField />}
       <TextToEdit />
       {!typing && <StartEdit />}
       {typing && <EditorControllers />}
-    </Article>
+    </section>
   );
 };

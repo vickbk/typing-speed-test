@@ -1,4 +1,3 @@
-import { Main } from "@/components/shared/Main";
 import { TypingContext } from "@/contexts/TypingContext";
 import { useContext } from "react";
 import { SettingBar } from "./settings/settings-bar";
@@ -13,7 +12,7 @@ export const EditorSetup = () => {
 
   return (
     <>
-      <Main className="flex flex-col pb-4 max-w-300 mx-auto">
+      <main className="flex flex-col pb-4 max-w-300 mx-auto">
         {!finish && (
           <>
             <SettingBar />
@@ -23,7 +22,7 @@ export const EditorSetup = () => {
 
         {finish && <ResultsLanding />}
         <Outlet />
-      </Main>
+      </main>
     </>
   );
 };
