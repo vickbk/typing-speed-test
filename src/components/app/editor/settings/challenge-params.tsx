@@ -18,12 +18,12 @@ export const ChallengeParams = <T extends string | number>({
   );
   const allOptions = { ...other, options: normalizedOptions };
   return (
-    <div className="capitalize md:flex gap-2 items-center not-last:md:border-r">
+    <dl className="capitalize md:flex gap-2 items-center not-last:md:border-r">
       <dt>{children}</dt>
       <dd className="overflow-x-clip md:overflow-x-auto">
         <MobileParams {...allOptions} />
         <DesktopParams {...allOptions} />
       </dd>
-    </div>
+    </dl>
   );
 };

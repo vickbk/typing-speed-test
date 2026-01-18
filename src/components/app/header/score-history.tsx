@@ -35,13 +35,13 @@ export const ScoreHistory = () => {
           getMemoItem<TypeScore[]>(`score.${difficulty}`) || []
         ).sort(({ time: aT }, { time: bT }) => bT - aT);
     },
-    [difficulty, best]
+    [difficulty, best],
   );
   const [page, setPage] = useState(0);
   const totalPages = Math.ceil(results.current.length / PAGESIZE);
   const historyDisplay = results.current.slice(
     page * PAGESIZE,
-    (page + 1) * PAGESIZE
+    (page + 1) * PAGESIZE,
   );
   return (
     <CustomDialog
@@ -78,12 +78,17 @@ export const ScoreHistory = () => {
             <Icon name="trash" />
           </button>
         </div>
-        <section className="grid gap-8 overflow-y-auto max-h-[70vh]">
+        <section
+          className="grid gap-8 overflow-y-auto max-h-[70vh]"
+          tabIndex={0}
+        >
           {historyDisplay.map(({ session, time }) => (
             <Article key={time}>
               <Heading className="mb-4">
                 <SROnly>Results for date</SROnly>
-                <time dateTime="">{formatDateTime({ time })}</time>
+                <time dateTime={new Date(time).toISOString()}>
+                  {formatDateTime({ time })}
+                </time>
               </Heading>
               <ResultsStats state={session} />
             </Article>
