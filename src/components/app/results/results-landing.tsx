@@ -81,13 +81,18 @@ export const ResultsLanding = () => {
       </header>
 
       <ResultsStats state={state} />
-      <button
-        className="foreground c-background justify-self-center px-4 py-2 rounded-2xl font-bold text-2xl md:rounded-lg md:text-lg"
-        type="button"
-        onClick={() => dispatch({ action: "startTyping" })}
-      >
-        {button} <Icon name="arrow-counterclockwise" />
-      </button>
+      <div className="flex justify-center gap-4">
+        <button
+          className="foreground c-background px-4 py-2 rounded-2xl font-bold text-2xl md:rounded-lg md:text-lg"
+          type="button"
+          onClick={() => dispatch({ action: "startTyping" })}
+        >
+          {button} <Icon name="arrow-counterclockwise" />
+        </button>
+        {/* <button type="button" onClick={shareResults}>
+          Share <Icon name="share" />
+        </button> */}
+      </div>
       {isBestScore ? (
         <ReactConfetti
           width={width}
