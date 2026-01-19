@@ -25,6 +25,7 @@ Users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 - Start a typing test by clicking the start button, clicking on the text or just typing on keyword (only letters or numbers)
+- Cancel session if user not typing for 5 seconds
 - Switch between different levels including: easy, medium, hard, quote and code (accessed with horizontal scroll on large screens for not visible options)
 - Use different timing modes including: 15s, 30s, 60s, 120s and Passage mode (accessed with horizontal scroll on large screens for not visible options)
 - View the history by clicking on the history button on top of personnel best and clear it for a specific level
