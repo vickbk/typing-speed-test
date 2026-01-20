@@ -3,7 +3,7 @@ import { Article } from "@/components/shared/Article";
 import { Heading } from "@/components/shared/Heading";
 import { TypingContext } from "@/contexts/TypingContext";
 import { joinClasses } from "@/libs/other-helpers";
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 
 function scrollIntoView(node: HTMLElement | null) {
   node?.scrollIntoView({ block: "center", behavior: "instant" });
@@ -35,11 +35,10 @@ export const TextToEdit = () => {
               "yellow-400 opacity-80",
           ];
           return (
-            <>
+            <Fragment key={index}>
               {char !== "\n" ? (
                 <span
                   className={joinClasses(activeClasses)}
-                  key={index}
                   ref={current === index ? scrollIntoView : undefined}
                 >
                   {input?.[index] ?? char}
@@ -48,13 +47,12 @@ export const TextToEdit = () => {
                 <>
                   {" "}
                   <Icon
-                    key={index}
                     name={joinClasses(["arrow-return-left", ...activeClasses])}
                   />
-                  <br key={index + 2000} />
+                  <br />
                 </>
               )}
-            </>
+            </Fragment>
           );
         })}
       </p>
