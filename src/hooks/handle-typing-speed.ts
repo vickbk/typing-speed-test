@@ -77,7 +77,17 @@ export function useTypingSpeed() {
     mode: "",
     difficulty: "easy",
     typing: false,
-    text: getRandomElement(textes["easy"]).text,
+    text: getRandomElement(
+      textes[
+        getRandomElement<Difficulty>([
+          "easy",
+          "code",
+          "hard",
+          "medium",
+          "quote",
+        ])
+      ],
+    ).text,
     errorCount: 0,
     finish: false,
     best: 0,
