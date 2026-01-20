@@ -6,13 +6,13 @@ import { ResultsShower } from "./result-shower";
 export const Time = () => {
   const { state, dispatch } = useContext(TypingContext);
 
-  const color = {
+  const colors = {
     excellent: "",
     good: "c-blue-400",
     ok: "c-green-500",
     bad: "c-yellow-400",
     worse: "c-red-500",
-  }[getTimeRange(state)];
+  };
 
   // getting a correct display following the timing mode
   const display = getTimeDisplay(state);
@@ -25,10 +25,16 @@ export const Time = () => {
     if (typing) {
       timer.current = setTimeout(
         () => dispatch({ action: "updateTimer" }),
-        1000
+        1000,
       );
     } else clearTimeout(timer.current);
   }, [typing, difference]);
 
-  return <ResultsShower index="Time" value={display} valueColor={color} />;
+  return (
+    <ResultsShower
+      index="Time"
+      value={display}
+      valueColor={colors[getTimeRange(state)]}
+    />
+  );
 };

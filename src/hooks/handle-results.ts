@@ -1,0 +1,61 @@
+import { useCallback, useContext, useRef } from "react";
+import { default as completed } from "@/assets/images/icon-completed.svg";
+import { default as newPB } from "@/assets/images/icon-new-pb.svg";
+import { TypingContext } from "@/contexts/TypingContext";
+import getMemoItem from "@/libs/memorization/get-item";
+import { calculateWPM } from "@/libs/calculation-helper";
+import setMemoItem from "@/libs/memorization/set-item";
+import type { TypeScore } from "@/libs/types/typing-speed-types";
+
+export function useResults() {
+  const { state, dispatch } = useContext(TypingContext);
+  const { best, finish, difficulty } = state;
+  const results = useRef({
+    title: "Test Completed",
+    text: "Solid run. Keep pushing to beat your high score.",
+    button: "Go Again",
+    first: true,
+    best: false,
+    icon: completed,
+  });
+  const loadOtherResults = useCallback(
+    (node: HTMLElement | null) => {
+      if (node) {
+        const scores = getMemoItem<TypeScore[]>(`score.${difficulty}`) || [];
+
+        const currentWPM = +calculateWPM(state);
+        if (best === 0) {
+          results.current = {
+            ...results.current,
+            title: "Baseline Established!",
+            text: "You've set the bar. Now the real challenge begins--time to beat it.",
+            button: "Beat This Score",
+          };
+        } else {
+          results.current = { ...results.current, first: false };
+
+          if (best < currentWPM) {
+            results.current = {
+              ...results.current,
+              best: true,
+              title: "Hight Score Smashed!",
+              text: "You're getting faster. That was incredible typing.",
+              button: "Beat This Score",
+              icon: newPB,
+            };
+          }
+        }
+        scores.push({
+          wpm: currentWPM,
+          time: new Date().getTime(),
+          session: state,
+        });
+        setMemoItem(`score.${difficulty}`, scores);
+        if (results.current.best || results.current.first)
+          dispatch({ action: "updateHighScore", payload: currentWPM });
+      }
+    },
+    [finish],
+  );
+  return { results: results.current, loadOtherResults };
+}

@@ -8,6 +8,7 @@ import getMemoItem from "@/libs/memorization/get-item";
 import { useSearchParams } from "react-router-dom";
 
 const options = ["easy", "medium", "hard", "quote", "code"];
+
 export const ChallengeOptions = () => {
   const {
     state: { difficulty },
@@ -16,19 +17,18 @@ export const ChallengeOptions = () => {
 
   const [queries] = useSearchParams();
 
-  function setDifficulty<T = Difficulty>(payload: T) {
+  function setDifficulty<T>(payload: T) {
     setMemoItem("difficulty", payload);
     dispatch({ action: "difficulty", payload: payload as Difficulty });
   }
 
   function loadDifficulty(node: HTMLElement | null) {
-    const difficulty = queries.get("difficulty");
     if (node) {
+      const difficulty = queries.get("difficulty") as Difficulty;
       dispatch({
         action: "difficulty",
         payload:
-          (options.includes(difficulty as Difficulty) &&
-            (difficulty as Difficulty)) ||
+          (options.includes(difficulty) && difficulty) ||
           getMemoItem("difficulty") ||
           "easy",
       });

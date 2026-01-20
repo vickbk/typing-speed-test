@@ -50,3 +50,5 @@ export function splitText(text: string) {
   });
   return splittedText.filter((text) => text !== "");
 }
+
+export function compareCurrentResults() {}

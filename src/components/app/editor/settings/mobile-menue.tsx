@@ -1,9 +1,10 @@
 import { Icon } from "@/components/common/bi-icon";
-import { CustomDetails } from "@/components/shared/CustomDetails";
 import { SROnly } from "@/components/shared/SROnly";
+import { joinClasses } from "@/libs/other-helpers";
+import { useCallback, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
-export const MobileParams = <T extends string | number>({
+export const MobileMenue = <T extends string | number>({
   options,
   current,
   name,
@@ -15,13 +16,35 @@ export const MobileParams = <T extends string | number>({
   updateCurrent: <T extends string | number>(payload: T) => void;
 }) => {
   const [query] = useSearchParams();
+  const [open, setOpen] = useState(false);
+  const closeOnfocusOut = useCallback((node: HTMLDivElement | null) => {
+    if (node) {
+      function focusOut({ target }: PointerEvent) {
+        if (!node?.contains(target as Node)) setOpen(false);
+      }
+      document.addEventListener("click", focusOut);
+      return () => document.removeEventListener("click", focusOut);
+    }
+  }, []);
   return (
-    <CustomDetails className="relative md:hidden">
-      <summary className="marker:content-[''] p-1 border rounded-md b-neutral-500 cursor-pointer text-center">
+    <div className="relative md:hidden" ref={closeOnfocusOut}>
+      <button
+        className="p-1 capitalize w-full border rounded-md b-neutral-500 text-center"
+        onClick={() => setOpen(!open)}
+        type="button"
+      >
         <SROnly>Currently selected:</SROnly>
         {current} <Icon name="chevron-down" />
-      </summary>
-      <ul className="absolute z-10 w-full neutral-800 mt-2 rounded-lg">
+        <SROnly>Choose another option</SROnly>
+      </button>
+      <ul
+        aria-expanded={open}
+        aria-live="polite"
+        className={joinClasses([
+          "absolute z-10 w-full neutral-800 mt-2 rounded-lg",
+          !open && "hidden",
+        ])}
+      >
         {options.map(([value, label]) => {
           query.set(name, value + "");
           return (
@@ -47,6 +70,6 @@ export const MobileParams = <T extends string | number>({
           );
         })}
       </ul>
-    </CustomDetails>
+    </div>
   );
 };

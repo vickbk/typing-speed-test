@@ -3,7 +3,7 @@ import { Article } from "@/components/shared/Article";
 import { Heading } from "@/components/shared/Heading";
 import { TypingContext } from "@/contexts/TypingContext";
 import { joinClasses } from "@/libs/other-helpers";
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 
 function scrollIntoView(node: HTMLElement | null) {
   node?.scrollIntoView({ block: "center", behavior: "instant" });
@@ -13,7 +13,7 @@ export const TextToEdit = () => {
     state: { text, input = "", oldMistakes },
   } = useContext(TypingContext);
 
-  const current = input?.length || 0;
+  const currentIndex = input?.length || 0;
   return (
     <Article
       className="grow overflow-y-clip max-h-full relative py-8 break-word"
@@ -22,25 +22,24 @@ export const TextToEdit = () => {
       <Heading className="sr-only">Here is the text you will be typing</Heading>
       <p className="text-2xl sm:text-5xl c-neutral-500 break-word">
         {text.split("").map((char, index) => {
-          const [inputC, oldC] = [input, oldMistakes].map((t) =>
+          const [inputChar, oldChar] = [input, oldMistakes].map((t) =>
             t.charAt(index),
           );
           const activeClasses = [
-            current === index && "neutral-800 animate-pulse",
-            (char === inputC && "c-green-500") ||
+            currentIndex === index && "neutral-800 animate-pulse",
+            (char === inputChar && "c-green-500") ||
               (index < input.length && "c-red-500 underline"),
-            char === inputC &&
-              oldC !== "" &&
-              char !== oldC &&
+            char === inputChar &&
+              oldChar !== "" &&
+              char !== oldChar &&
               "yellow-400 opacity-80",
           ];
           return (
-            <>
+            <Fragment key={index}>
               {char !== "\n" ? (
                 <span
                   className={joinClasses(activeClasses)}
-                  key={index}
-                  ref={current === index ? scrollIntoView : undefined}
+                  ref={currentIndex === index ? scrollIntoView : undefined}
                 >
                   {input?.[index] ?? char}
                 </span>
@@ -48,13 +47,12 @@ export const TextToEdit = () => {
                 <>
                   {" "}
                   <Icon
-                    key={index}
                     name={joinClasses(["arrow-return-left", ...activeClasses])}
                   />
-                  <br key={index + 2000} />
+                  <br />
                 </>
               )}
-            </>
+            </Fragment>
           );
         })}
       </p>

@@ -7,7 +7,7 @@ import "./styles/scss/global.scss";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { TypingContext } from "./contexts/TypingContext";
-import { ScoreHistory } from "./components/app/header/score-history";
+import { ScoreHistory } from "./components/app/history/score-history";
 import { ErrorElement } from "./components/common/error-element";
 
 function App() {

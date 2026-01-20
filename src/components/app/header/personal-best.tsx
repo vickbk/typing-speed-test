@@ -17,11 +17,13 @@ export const PersonalBest = () => {
   const loadResults = useCallback(
     (node: HTMLElement | null) => {
       if (node !== null) {
-        const results = getMemoItem<TypeScore[]>(`score.${difficulty}`) || [];
+        const results = getMemoItem<TypeScore[]>(`score.${difficulty}`) || [
+          { wpm: 0 },
+        ];
         const [higher] = results.sort(
           ({ wpm: aWPM }, { wpm: bWPM }) => bWPM - aWPM,
         );
-        dispatch({ action: "updateHighScore", payload: higher?.wpm ?? 0 });
+        dispatch({ action: "updateHighScore", payload: higher.wpm });
       }
     },
     [difficulty, best],

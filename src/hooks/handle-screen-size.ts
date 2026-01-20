@@ -5,7 +5,6 @@ export function useScreenSize() {
   useEffect(() => {
     function resizeScreen() {
       setScreen({ width: window.innerWidth, height: window.innerHeight });
-      console.log("resizing", window.innerWidth);
     }
     resizeScreen();
     window.addEventListener("resize", resizeScreen);

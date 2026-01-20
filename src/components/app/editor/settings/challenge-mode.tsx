@@ -21,7 +21,7 @@ export const ChallengeMode = () => {
 
   const [queries] = useSearchParams();
 
-  function setMode<T = ModeType>(mode: T) {
+  function setMode<T>(mode: T) {
     setMemoItem("mode", mode);
     dispatch({ action: "mode", payload: mode as ModeType });
   }

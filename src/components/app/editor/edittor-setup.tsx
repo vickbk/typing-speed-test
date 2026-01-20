@@ -12,14 +12,14 @@ export const EditorSetup = () => {
 
   return (
     <main className="flex flex-col pb-4 max-w-300 mx-auto">
-      {!finish && (
+      {!finish ? (
         <>
           <SettingBar />
           <EditSpace />
         </>
+      ) : (
+        <ResultsLanding />
       )}
-
-      {finish && <ResultsLanding />}
       <Outlet />
     </main>
   );
