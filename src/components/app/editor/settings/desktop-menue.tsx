@@ -9,7 +9,7 @@ function desktopScrolltoCurrent(node: HTMLElement | null) {
   });
 }
 
-export const DesktopParams = <T extends string | number>({
+export const DesktopMenue = <T extends string | number>({
   options,
   current,
   name,
@@ -21,6 +21,7 @@ export const DesktopParams = <T extends string | number>({
   updateCurrent: <T extends string | number>(payload: T) => void;
 }) => {
   const [query] = useSearchParams();
+
   return (
     <ul className="hidden md:flex overflow-x-scroll gap-2">
       {options.map(([value, label]) => {

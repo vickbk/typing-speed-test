@@ -4,7 +4,7 @@ import { joinClasses } from "@/libs/other-helpers";
 import { useCallback, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
-export const MobileParams = <T extends string | number>({
+export const MobileMenue = <T extends string | number>({
   options,
   current,
   name,

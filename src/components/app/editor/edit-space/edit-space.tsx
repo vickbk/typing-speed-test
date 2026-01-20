@@ -13,8 +13,7 @@ export const EditSpace = () => {
     <section className="border-t b-neutral-500 py-4 relative isolate grow flex flex-col overflow-y-auto max-h-[80vh]">
       {typing && <EditTextField />}
       <TextToEdit />
-      {!typing && <StartEdit />}
-      {typing && <EditorControllers />}
+      {!typing ? <StartEdit /> : <EditorControllers />}
     </section>
   );
 };
