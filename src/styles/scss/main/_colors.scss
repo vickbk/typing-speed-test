@@ -45,13 +45,13 @@ $exluded-variables: background foreground;
   }
   &[theme="dark"],
   *[theme="dark"] {
-    --background: var(--foreground);
-    --foreground: var(--background);
+    --background: #{$text-color};
+    --foreground: #{$primary-color};
   }
   &[theme="light"],
   *[theme="light"] {
-    --background: var(--background);
-    --foreground: var(--foreground);
+    --background: #{$primary-color};
+    --foreground: #{$text-color};
     --accent-color: #{$accent-color};
     --link-color: #{$link-color};
   }
