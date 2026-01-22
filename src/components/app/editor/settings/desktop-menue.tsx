@@ -35,7 +35,7 @@ export const DesktopMenue = <T extends string | number>({
             <Link
               className={joinClasses([
                 "border rounded-md p-1 inline-block cursor-pointer active-b-blue-400 active-c-blue-400",
-                current === label && "b-blue-400 c-blue-400",
+                current === label && "b-blue-600 c-blue-600",
               ])}
               to={`?${query}`}
               onClick={() => updateCurrent(value)}

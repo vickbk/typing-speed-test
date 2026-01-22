@@ -21,7 +21,7 @@ export const ChallengeParams = <T extends string | number>({
 
   return (
     <div className="capitalize grow md:flex gap-2 items-center not-last:md:border-r">
-      <dt>{children}</dt>
+      <dt className="c-secondary">{children}</dt>
       <dd className="overflow-x-clip md:overflow-x-auto">
         <MobileMenue {...allOptions} />
         <DesktopMenue {...allOptions} />

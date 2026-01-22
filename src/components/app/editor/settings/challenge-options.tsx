@@ -43,10 +43,7 @@ export const ChallengeOptions = () => {
       key={difficulty}
     >
       <SROnly>Select your </SROnly>
-      <span
-        ref={loadDifficulty}
-        className="sr-only md:not-sr-only c-neutral-400"
-      >
+      <span ref={loadDifficulty} className="sr-only md:not-sr-only">
         Difficulty
       </span>
       <SROnly> level</SROnly>

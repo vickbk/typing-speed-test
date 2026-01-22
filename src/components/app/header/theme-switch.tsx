@@ -13,7 +13,7 @@ export const ThemeSwitch = () => {
         }
       >
         <SROnly>Swith to {theme === "dark" ? "light" : "dark"} theme</SROnly>
-        <Icon name={theme === "dark" ? "moon" : "sun c-yellow-400"} />
+        <Icon name={theme === "light" ? "moon" : "sun c-yellow-400"} />
       </button>
     </div>
   );

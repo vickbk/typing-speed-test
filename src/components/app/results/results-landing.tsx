@@ -27,7 +27,7 @@ export const ResultsLanding = () => {
           <img className="w-12" src={icon} alt="" />
         </div>
         <Heading className="font-semibold text-3xl">{title}</Heading>
-        <p className="c-neutral-400">{text}</p>
+        <p className="c-secondary">{text}</p>
       </header>
 
       <ResultsStats state={state} />

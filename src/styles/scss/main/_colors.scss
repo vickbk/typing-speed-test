@@ -16,7 +16,8 @@ $colorsMap: (
   green-500: 140 63% 57%,
   yellow-400: 49 85% 70%,
   background: var(--background),
-  foreground: var(--foreground)
+  foreground: var(--foreground),
+  secondary: var(--secondary)
 );
 
 $primary-color: map.get($colorsMap, neutral-0);
@@ -24,7 +25,7 @@ $link-color: map.get($colorsMap, blue-600);
 $text-color: map.get($colorsMap, neutral-900);
 $accent-color: map.get($colorsMap, blue-600);
 
-$exluded-variables: background foreground;
+$exluded-variables: background foreground secondary;
 
 :root {
   & {
@@ -38,15 +39,18 @@ $exluded-variables: background foreground;
   --foreground: #{$text-color};
   --accent-color: #{$accent-color};
   --link-color: #{$link-color};
+  --secondary: var(--neutral-500);
 
   @media (prefers-color-scheme: dark) {
     --background: #{$text-color};
     --foreground: #{$primary-color};
+    --secondary: var(--neutral-500);
   }
   &[theme="dark"],
   *[theme="dark"] {
     --background: #{$text-color};
     --foreground: #{$primary-color};
+    --secondary: var(--neutral-400);
   }
   &[theme="light"],
   *[theme="light"] {
@@ -54,6 +58,7 @@ $exluded-variables: background foreground;
     --foreground: #{$text-color};
     --accent-color: #{$accent-color};
     --link-color: #{$link-color};
+    --secondary: var(--neutral-500);
   }
   --outstand: var(--element-bg);
 }
