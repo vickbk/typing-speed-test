@@ -33,7 +33,7 @@ export const ResultsLanding = () => {
       <ResultsStats state={state} />
       <div className="flex justify-center gap-4">
         <button
-          className="foreground c-background px-4 py-2 rounded-2xl font-bold text-2xl md:rounded-lg md:text-lg"
+          className="foreground c-background px-4 py-2 rounded-2xl font-bold text-2xl md:rounded-lg md:text-lg active-button"
           type="button"
           onClick={() => dispatch({ action: "startTyping" })}
         >
