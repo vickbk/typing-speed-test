@@ -27,13 +27,13 @@ export const ResultsLanding = () => {
           <img className="w-12" src={icon} alt="" />
         </div>
         <Heading className="font-semibold text-3xl">{title}</Heading>
-        <p className="c-neutral-400">{text}</p>
+        <p className="c-secondary">{text}</p>
       </header>
 
       <ResultsStats state={state} />
       <div className="flex justify-center gap-4">
         <button
-          className="foreground c-background px-4 py-2 rounded-2xl font-bold text-2xl md:rounded-lg md:text-lg"
+          className="foreground c-background px-4 py-2 rounded-2xl font-bold text-2xl md:rounded-lg md:text-lg active-button"
           type="button"
           onClick={() => dispatch({ action: "startTyping" })}
         >

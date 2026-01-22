@@ -31,7 +31,7 @@ export const PersonalBest = () => {
 
   return (
     <dl className="best" ref={loadResults}>
-      <dt className="capitalize c-neutral-400 flex gap-1">
+      <dt className="capitalize c-secondary flex gap-1">
         <img src={bestIcon} alt="" />
         <span className="sr-only sm:not-sr-only">Personal </span>
         Best:

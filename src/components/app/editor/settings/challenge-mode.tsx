@@ -52,7 +52,7 @@ export const ChallengeMode = () => {
       key={mode}
     >
       <SROnly>Select your challenge </SROnly>
-      <span className="sr-only md:not-sr-only c-neutral-400" ref={loadMode}>
+      <span className="sr-only md:not-sr-only" ref={loadMode}>
         Mode:
       </span>
     </ChallengeParams>
