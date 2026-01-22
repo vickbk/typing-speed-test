@@ -1,14 +1,30 @@
 import { Icon } from "@/components/common/bi-icon";
 import { SROnly } from "@/components/shared/SROnly";
-import { useCallback, useState } from "react";
+import getMemoItem from "@/libs/memorization/get-item";
+import setMemoItem from "@/libs/memorization/set-item";
+import { useCallback, useRef, useState } from "react";
 
 export const ThemeSwitch = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  const firstLoad = useRef(true);
+
   const loadTheme = useCallback(
     (node: HTMLDivElement | null) => {
       if (node) {
-        document.documentElement.setAttribute("theme", theme);
-        console.log(theme);
+        if (firstLoad.current) {
+          firstLoad.current = false;
+          let savedTheme = getMemoItem<"light" | "dark" | undefined>("theme");
+          if (!savedTheme)
+            savedTheme = window.matchMedia("(prefers-color-scheme: dark)")
+              .matches
+              ? "dark"
+              : "light";
+          setTheme(savedTheme!);
+        } else {
+          document.documentElement.setAttribute("theme", theme);
+          setMemoItem("theme", theme);
+        }
       }
     },
     [theme],
