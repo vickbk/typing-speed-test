@@ -1,0 +1,21 @@
+:root {
+  --background: 0 0% 100%;
+
+  @media (prefers-color-scheme: dark) {
+    --background: 0 0% 7%;
+  }
+
+  &[theme="dark"],
+  *[theme="dark"] {
+    --background: 0 0% 7%;
+  }
+
+  &[theme="light"],
+  *[theme="light"] {
+    --background: 0 0% 100%;
+  }
+}
+
+body {
+  background-color: hsl(var(--background));
+}
