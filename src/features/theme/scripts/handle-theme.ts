@@ -1,4 +1,4 @@
-import getMemoItem from "@/libs/memorization/get-item";
+import { getMemoItem } from "@/shared";
 import type { Themes } from "../types";
 
 export function getSavedTheme() {

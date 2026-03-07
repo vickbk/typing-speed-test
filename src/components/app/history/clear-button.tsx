@@ -1,7 +1,7 @@
 import { Icon } from "@/components/common/bi-icon";
 import { SROnly } from "@/components/shared/SROnly";
 import { TypingContext } from "@/contexts/TypingContext";
-import { clearMemoItem } from "@/libs/memorization/set-item";
+import { clearMemoItem } from "@/shared";
 import { useContext } from "react";
 
 export const ClearButton = () => {

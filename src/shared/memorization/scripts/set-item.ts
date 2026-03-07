@@ -1,7 +1,7 @@
-import getMemo, { memoName } from "./get-memo";
-import type { MemoObject } from "./memo-types";
+import type { MemoObject } from "../types";
+import { getMemo, memoName } from "./get-memo";
 
-export default function setMemoItem(params: string, value: unknown) {
+export function setMemoItem(params: string, value: unknown) {
   const path = params.split(".");
   const memo = getMemo();
   setNested(memo, path, value);
@@ -16,9 +16,10 @@ function setNested(memo: MemoObject, path: string[], value: unknown) {
     }
     current = current[path[i]] as MemoObject;
   }
-  current[path[path.length - 1]] = value;
+  if (value === undefined) delete current[path[path.length - 1]];
+  else current[path[path.length - 1]] = value;
 }
 
 export function clearMemoItem(path: string) {
-  setMemoItem(path, null);
+  setMemoItem(path, undefined);
 }
