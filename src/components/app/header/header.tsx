@@ -1,9 +1,9 @@
-import { PersonalBest } from "./personal-best";
-import { default as logoSmall } from "@assets/images/logo-small.svg";
 import { Heading } from "@/components/shared/Heading";
 import { SROnly } from "@/components/shared/SROnly";
+import { ThemeSwitch } from "@/features/theme/components/theme-switch";
+import { default as logoSmall } from "@assets/images/logo-small.svg";
 import { LogoLarge } from "./logo-large";
-import { ThemeSwitch } from "./theme-switch";
+import { PersonalBest } from "./personal-best";
 
 export const Header = () => {
   return (
