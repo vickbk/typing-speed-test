@@ -16,27 +16,30 @@
 // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
 // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
 // Otherwise, leave pathSegmentsToKeep as 0.
-const pathSegmentsToKeep = 1;
 
-const { location } = window;
-location.replace(
-  location.protocol +
-    "//" +
-    location.hostname +
-    (location.port ? ":" + location.port : "") +
-    location.pathname
-      .split("/")
-      .slice(0, 1 + pathSegmentsToKeep)
-      .join("/") +
-    "/?/" +
-    location.pathname
-      .slice(1)
-      .split("/")
-      .slice(pathSegmentsToKeep)
-      .join("/")
-      .replace(/&/g, "~and~") +
-    (location.search
-      ? "&" + location.search.slice(1).replace(/&/g, "~and~")
-      : "") +
-    location.hash
-);
+export function buildRedirectPath(pathSegmentsToKeep = 0) {
+  const { location } = window;
+  location.replace(
+    location.protocol +
+      "//" +
+      location.hostname +
+      (location.port ? ":" + location.port : "") +
+      location.pathname
+        .split("/")
+        .slice(0, 1 + pathSegmentsToKeep)
+        .join("/") +
+      "/?/" +
+      location.pathname
+        .slice(1)
+        .split("/")
+        .slice(pathSegmentsToKeep)
+        .join("/")
+        .replace(/&/g, "~and~") +
+      (location.search
+        ? "&" + location.search.slice(1).replace(/&/g, "~and~")
+        : "") +
+      location.hash,
+  );
+}
+
+buildRedirectPath(1);
