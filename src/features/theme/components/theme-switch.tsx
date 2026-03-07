@@ -3,12 +3,13 @@ import { SROnly } from "@/components/shared/SROnly";
 import { useTheme } from "../hooks";
 
 export const ThemeSwitch = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme, isDark } = useTheme();
+
   return (
     <div className="ml-auto">
       <button type="button" onClick={toggleTheme}>
-        <SROnly>Swith to {theme === "dark" ? "light" : "dark"} theme</SROnly>
-        <Icon name={theme === "light" ? "moon" : "sun c-yellow-400"} />
+        <SROnly>Swith to {isDark ? "light" : "dark"} theme</SROnly>
+        <Icon name={isDark ? "sun-fill c-yellow-400" : "moon-fill"} />
       </button>
     </div>
   );

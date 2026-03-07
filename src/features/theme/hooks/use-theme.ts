@@ -1,5 +1,3 @@
-"use client";
-
 import setMemoItem from "@/libs/memorization/set-item";
 import { useCallback, useEffect, useState } from "react";
 import { applyTheme, getSavedTheme } from "../scripts";
@@ -18,11 +16,11 @@ export function useTheme() {
   }, []);
 
   return {
-    theme,
     toggleTheme: useCallback(() => {
       const nextTheme: Themes = theme === "dark" ? "light" : "dark";
       setMemoItem("theme", nextTheme);
       changeTheme(nextTheme);
     }, [theme]),
+    isDark: theme === "dark",
   };
 }
