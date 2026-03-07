@@ -1,27 +1,28 @@
 "use client";
 
 import setMemoItem from "@/libs/memorization/set-item";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { applyTheme, getSavedTheme } from "../scripts";
 import type { Themes } from "../types";
 
 export function useTheme() {
   const [theme, setTheme] = useState<Themes>("light");
 
-  const firstLoad = useRef(true);
+  const changeTheme = useCallback((theme: Themes) => {
+    setTheme(theme);
+    applyTheme(theme);
+  }, []);
 
-  const loadTheme = useCallback(
-    (node: HTMLDivElement | null) => {
-      if (node) {
-        if (firstLoad.current) {
-          firstLoad.current = false;
-          setTheme(getSavedTheme());
-        } else setMemoItem("theme", theme);
-        applyTheme(theme);
-      }
-    },
-    [theme],
-  );
+  useEffect(() => {
+    changeTheme(getSavedTheme());
+  }, []);
 
-  return { theme, setTheme, loadTheme };
+  return {
+    theme,
+    toggleTheme: useCallback(() => {
+      const nextTheme: Themes = theme === "dark" ? "light" : "dark";
+      setMemoItem("theme", nextTheme);
+      changeTheme(nextTheme);
+    }, [theme]),
+  };
 }
