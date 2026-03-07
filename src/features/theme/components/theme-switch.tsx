@@ -1,6 +1,6 @@
 import { Icon } from "@/components/common/bi-icon";
 import { SROnly } from "@/components/shared/SROnly";
-import { useTheme } from "@/hooks/handle-theme";
+import { useTheme } from "../hooks";
 
 export const ThemeSwitch = () => {
   const { theme, setTheme, loadTheme } = useTheme();
