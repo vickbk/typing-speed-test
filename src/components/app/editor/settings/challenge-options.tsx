@@ -1,11 +1,10 @@
 import { SROnly } from "@/components/shared/SROnly";
 import { TypingContext } from "@/contexts/TypingContext";
 import type { Difficulty } from "@/libs/types/typing-speed-types";
+import { getMemoItem, setMemoItem } from "@/shared";
 import { useContext } from "react";
-import { ChallengeParams } from "./challenge-params";
-import setMemoItem from "@/libs/memorization/set-item";
-import getMemoItem from "@/libs/memorization/get-item";
 import { useSearchParams } from "react-router-dom";
+import { ChallengeParams } from "./challenge-params";
 
 const options = ["easy", "medium", "hard", "quote", "code"];
 

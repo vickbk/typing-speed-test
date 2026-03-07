@@ -8,7 +8,8 @@
 // When the single page app is loaded further down in this file,
 // the correct url will be waiting in the browser's history for
 // the single page app to route accordingly.
-(function (location) {
+
+export function rebuildPath(location: Location) {
   if (location.search[1] === "/") {
     const decoded = location.search
       .slice(1)
@@ -20,7 +21,9 @@
     window.history.replaceState(
       null,
       "",
-      location.pathname.slice(0, -1) + decoded + location.hash
+      location.pathname.slice(0, -1) + decoded + location.hash,
     );
   }
-})(window.location);
+}
+
+rebuildPath(window.location);

@@ -1,4 +1,4 @@
-import setMemoItem from "@/libs/memorization/set-item";
+import { setMemoItem } from "@/shared";
 import { useCallback, useEffect, useState } from "react";
 import { applyTheme, getSavedTheme } from "../scripts";
 import type { Themes } from "../types";

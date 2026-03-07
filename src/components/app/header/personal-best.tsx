@@ -1,12 +1,12 @@
-import { useCallback, useContext } from "react";
-import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
-import { TypingContext } from "@/contexts/TypingContext";
-import getMemoItem from "@/libs/memorization/get-item";
-import { SROnly } from "@/components/shared/SROnly";
-import type { TypeScore } from "@/libs/types/typing-speed-types";
 import { Icon } from "@/components/common/bi-icon";
-import { Link } from "react-router-dom";
 import { WPMText } from "@/components/common/wpm-text";
+import { SROnly } from "@/components/shared/SROnly";
+import { TypingContext } from "@/contexts/TypingContext";
+import type { TypeScore } from "@/libs/types/typing-speed-types";
+import { getMemoItem } from "@/shared";
+import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
+import { useCallback, useContext } from "react";
+import { Link } from "react-router-dom";
 
 export const PersonalBest = () => {
   const {

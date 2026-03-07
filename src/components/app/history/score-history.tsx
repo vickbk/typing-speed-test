@@ -1,19 +1,19 @@
 import { Icon } from "@/components/common/bi-icon";
+import { Paging } from "@/components/common/paging/paging-element";
 import { Article } from "@/components/shared/Article";
 import CustomDialog from "@/components/shared/CustomDialog";
 import { Heading } from "@/components/shared/Heading";
 import { SROnly } from "@/components/shared/SROnly";
 import { TypingContext } from "@/contexts/TypingContext";
-import { useCallback, useContext, useRef } from "react";
-import { ChallengeOptions } from "../editor/settings/challenge-options";
-import type { TypeScore } from "@/libs/types/typing-speed-types";
-import getMemoItem from "@/libs/memorization/get-item";
-import { Paging } from "@/components/common/paging/paging-element";
-import { EmptyScore } from "./empty-score";
-import { useNavigate } from "react-router-dom";
 import { usePagination } from "@/hooks/handle-pagination";
-import { HistoryElement } from "./history-element";
+import type { TypeScore } from "@/libs/types/typing-speed-types";
+import { getMemoItem } from "@/shared";
+import { useCallback, useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { ChallengeOptions } from "../editor/settings/challenge-options";
 import { ClearButton } from "./clear-button";
+import { EmptyScore } from "./empty-score";
+import { HistoryElement } from "./history-element";
 
 const PAGESIZE = 10;
 

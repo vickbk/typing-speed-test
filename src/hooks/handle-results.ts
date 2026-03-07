@@ -1,11 +1,10 @@
-import { useCallback, useContext, useRef } from "react";
 import { default as completed } from "@/assets/images/icon-completed.svg";
 import { default as newPB } from "@/assets/images/icon-new-pb.svg";
 import { TypingContext } from "@/contexts/TypingContext";
-import getMemoItem from "@/libs/memorization/get-item";
 import { calculateWPM } from "@/libs/calculation-helper";
-import setMemoItem from "@/libs/memorization/set-item";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
+import { getMemoItem, setMemoItem } from "@/shared";
+import { useCallback, useContext, useRef } from "react";
 
 export function useResults() {
   const { state, dispatch } = useContext(TypingContext);
