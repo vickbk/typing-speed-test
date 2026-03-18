@@ -7,15 +7,16 @@ export function useTheme() {
   const [theme, setTheme] = useState<Themes>("light");
 
   const isDark = theme === "dark";
+  const isLight = theme === "light";
 
   const changeTheme = useCallback((theme: Themes) => {
     setTheme(theme);
     applyTheme(theme);
+    setMemoItem("theme", theme);
   }, []);
 
   const toggleTheme = useCallback(() => {
     const nextTheme: Themes = isDark ? "light" : "dark";
-    setMemoItem("theme", nextTheme);
     changeTheme(nextTheme);
   }, [isDark]);
 
@@ -23,5 +24,5 @@ export function useTheme() {
     changeTheme(getSavedTheme());
   }, []);
 
-  return { isDark, toggleTheme };
+  return { isDark, isLight, theme, changeTheme, toggleTheme };
 }
