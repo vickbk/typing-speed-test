@@ -1,5 +1,5 @@
 import { default as textes } from "@/assets/data.json";
-import { saveTextes } from "@/libs/calculation-helper";
+import { saveTextes } from "@/features";
 import { getRandomElement } from "@/libs/random-gen";
 import type {
   ActionKeys,

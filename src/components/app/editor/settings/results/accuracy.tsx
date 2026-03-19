@@ -1,5 +1,4 @@
-import { useTypingCtx } from "@/features";
-import { calculateAccuracy } from "@/libs/calculation-helper";
+import { calculateAccuracy, useTypingCtx } from "@/features";
 import { ResultsShower } from "./result-shower";
 
 export const Accuracy = () => {
