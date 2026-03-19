@@ -1,6 +1,6 @@
-import { HeadingCtx } from "@/shared/heading-manager/hooks/HeadingCtx";
 import { useContext } from "react";
-import type { HeadingLevel } from "../types/heading-level";
+import type { HeadingLevel } from "../types";
+import { HeadingCtx } from "./HeadingCtx";
 
 function calculateNextHeadingLevel(
   currentLevel: HeadingLevel,

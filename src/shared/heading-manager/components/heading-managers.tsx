@@ -1,5 +1,5 @@
-import { HeadingCtx } from "@/shared/heading-manager/hooks/HeadingCtx";
 import { forwardRef, useContext, type HTMLAttributes } from "react";
+import { HeadingCtx } from "../hooks";
 import { useHeading } from "../hooks/use-heading";
 
 export const Heading = forwardRef<

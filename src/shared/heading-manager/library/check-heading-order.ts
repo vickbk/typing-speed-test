@@ -1,4 +1,4 @@
-import type { RegionMaping } from "../types/region-maping";
+import type { RegionMaping } from "../types";
 
 /**
  * Recursively validates that the heading levels in a region tree follow semantic HTML rules.
