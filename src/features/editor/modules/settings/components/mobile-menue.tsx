@@ -1,31 +1,18 @@
 import { joinClasses } from "@/libs/other-helpers";
 import { Icon } from "@/shared/helpers/components/bi-icon";
 import { SROnly } from "@/shared/helpers/components/SROnly";
-import { useCallback, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useMobileMenue } from "../hooks";
+import type { NormalizedMenueProps } from "../types";
 
 export const MobileMenue = <T extends string | number>({
   options,
   current,
   name,
   updateCurrent,
-}: {
-  current: T;
-  name: string;
-  options: [T, string][];
-  updateCurrent: <T extends string | number>(payload: T) => void;
-}) => {
-  const [query] = useSearchParams();
-  const [open, setOpen] = useState(false);
-  const closeOnfocusOut = useCallback((node: HTMLDivElement | null) => {
-    if (node) {
-      function focusOut({ target }: PointerEvent) {
-        if (!node?.contains(target as Node)) setOpen(false);
-      }
-      document.addEventListener("click", focusOut);
-      return () => document.removeEventListener("click", focusOut);
-    }
-  }, []);
+}: NormalizedMenueProps<T>) => {
+  const { closeOnfocusOut, query, open, setOpen } = useMobileMenue();
+
   return (
     <div className="relative md:hidden" ref={closeOnfocusOut}>
       <button

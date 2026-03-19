@@ -1,4 +1,4 @@
-import { ChallengeOptions } from "@/components/app/editor/settings/challenge-options";
+import { ChallengeOptions } from "@/features/editor/modules/settings/components/challenge-options";
 import {
   Article,
   Heading,

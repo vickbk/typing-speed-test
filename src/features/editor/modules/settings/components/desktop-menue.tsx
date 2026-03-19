@@ -1,25 +1,14 @@
 import { joinClasses } from "@/libs/other-helpers";
 import { Link, useSearchParams } from "react-router-dom";
-
-function desktopScrolltoCurrent(node: HTMLElement | null) {
-  node?.scrollIntoView({
-    inline: "nearest",
-    behavior: "auto",
-    block: "nearest",
-  });
-}
+import { desktopScrolltoCurrent } from "../scripts";
+import type { NormalizedMenueProps } from "../types";
 
 export const DesktopMenue = <T extends string | number>({
   options,
   current,
   name,
   updateCurrent,
-}: {
-  current: T;
-  name: string;
-  options: [T, string][];
-  updateCurrent: <T extends string | number>(payload: T) => void;
-}) => {
+}: NormalizedMenueProps<T>) => {
   const [query] = useSearchParams();
 
   return (
