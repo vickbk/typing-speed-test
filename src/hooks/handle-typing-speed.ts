@@ -1,4 +1,6 @@
-import { useReducer } from "react";
+import { default as textes } from "@/assets/data.json";
+import { saveTextes } from "@/libs/calculation-helper";
+import { getRandomElement } from "@/libs/random-gen";
 import type {
   ActionKeys,
   AllOptions,
@@ -6,9 +8,7 @@ import type {
   Difficulty,
   ModeType,
 } from "@/libs/types/typing-speed-types";
-import { getRandomElement } from "@/libs/random-gen";
-import { saveTextes } from "@/libs/calculation-helper";
-import { default as textes } from "@/assets/data.json";
+import { useReducer } from "react";
 
 export function handleTypingSpeed(
   state: AppState,
