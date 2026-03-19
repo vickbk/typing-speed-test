@@ -1,7 +1,6 @@
 import { useTypingCtx } from "@/features";
-import { usePagination } from "@/hooks/handle-pagination";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
-import { getMemoItem } from "@/shared";
+import { getMemoItem, usePagination } from "@/shared";
 import {
   Article,
   Heading,
