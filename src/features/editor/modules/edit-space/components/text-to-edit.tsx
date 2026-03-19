@@ -24,6 +24,7 @@ export const TextToEdit = () => {
           const [inputChar, oldChar] = [input, oldMistakes].map((t) =>
             t.charAt(index),
           );
+
           const activeClasses = [
             currentIndex === index && "neutral-800 animate-pulse",
             (char === inputChar && "c-green-500") ||

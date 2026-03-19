@@ -22,7 +22,7 @@ export function saveTextes(state: AppState, input: string) {
   return {
     input: isCorrecting ? text.substring(0, sLen) : input,
     oldMistakes: isCorrecting
-      ? oldMistakes + input.substring(oldMistakes.length)
+      ? oldMistakes + prevIn.substring(oldMistakes.length)
       : oldMistakes,
     errorCount: getErrorsNumber(state, input),
     finish,
