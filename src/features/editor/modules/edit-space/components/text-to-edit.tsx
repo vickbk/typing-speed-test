@@ -1,4 +1,3 @@
-import { useTypingCtx } from "@/features/typing-speed";
 import { joinClasses } from "@/libs/other-helpers";
 import {
   Article,
@@ -6,16 +5,14 @@ import {
 } from "@/shared/heading-manager/components/heading-managers";
 import { Icon } from "@/shared/helpers/components/bi-icon";
 import { Fragment } from "react";
+import { useTextToEdit } from "../hooks";
 
 function scrollIntoView(node: HTMLElement | null) {
   node?.scrollIntoView({ block: "center", behavior: "instant" });
 }
 export const TextToEdit = () => {
-  const {
-    state: { text, input = "", oldMistakes },
-  } = useTypingCtx();
+  const { text, input = "", oldMistakes, currentIndex } = useTextToEdit();
 
-  const currentIndex = input?.length || 0;
   return (
     <Article
       className="grow overflow-y-clip max-h-full relative py-8 break-word"

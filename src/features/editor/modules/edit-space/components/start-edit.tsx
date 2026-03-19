@@ -1,31 +1,15 @@
-import { useTypingCtx } from "@/features/typing-speed";
 import {
   Article,
   Heading,
 } from "@/shared/heading-manager/components/heading-managers";
 import { SROnly } from "@/shared/helpers/components/SROnly";
-import { useCallback } from "react";
+import { useStartEdit } from "../hooks";
 
 export const StartEdit = () => {
-  const { dispatch } = useTypingCtx();
+  const { dispatch } = useStartEdit();
 
-  const enableStartOnKeyboardType = useCallback(() => {
-    function startOnKeyboardType({ key }: KeyboardEvent) {
-      const letters = "abcdefghijklmnopqrstuvwxyz";
-      const allLetters = `${letters}${letters.toUpperCase()}1234567890`
-        .split("")
-        .map((string) => `^${string}$`)
-        .join("|");
-      if (new RegExp(allLetters).test(key)) dispatch({ action: "startTyping" });
-    }
-    window.addEventListener("keyup", startOnKeyboardType);
-    return () => window.removeEventListener("keyup", startOnKeyboardType);
-  }, []);
   return (
-    <Article
-      className="absolute inset-0 flex flex-col gap-4 justify-center items-center text-center backdrop-blur-sm isolate"
-      ref={enableStartOnKeyboardType}
-    >
+    <Article className="absolute inset-0 flex flex-col gap-4 justify-center items-center text-center backdrop-blur-sm isolate">
       <Heading>
         <button
           onClick={() => dispatch({ action: "startTyping" })}

@@ -1,21 +1,7 @@
-import { useTypingCtx } from "@/features";
-import { useEffect, useRef } from "react";
+import { useEditorField } from "../hooks";
 
-function focusTextarea(node: HTMLTextAreaElement | null) {
-  node?.focus();
-}
 export const EditTextField = () => {
-  const {
-    dispatch,
-    state: { input, difference },
-  } = useTypingCtx();
-
-  const textarea = useRef<HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    if (document.activeElement !== textarea.current)
-      focusTextarea(textarea.current);
-  }, [difference]);
+  const { textarea, dispatch, input } = useEditorField();
 
   return (
     <label className="sr-only">
