@@ -1,6 +1,6 @@
 import { EditorSetup } from "@/components/app/editor/edittor-setup";
 import { ScoreHistory } from "@/components/app/history/score-history";
-import { ErrorElement } from "@/components/common/error-element";
+import { ErrorElement } from "@/features/error/components/error-element";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 export const AppRoutes = () => {

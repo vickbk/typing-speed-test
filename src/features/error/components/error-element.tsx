@@ -5,19 +5,12 @@ import {
   Section,
 } from "@/shared/heading-manager/components/heading-managers";
 import CustomDialog from "@/shared/helpers/components/CustomDialog";
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useError } from "../hooks";
+import type { ErrorProps } from "../types";
 
-export function ErrorElement({
-  error,
-}: {
-  error?: Error & { digest?: string };
-}) {
-  const navigate = useNavigate();
-  useEffect(() => {
-    // Optionally log the error to an error reporting service
-    console.error(error);
-  }, [error]);
+export function ErrorElement({ error }: ErrorProps) {
+  const { navigate } = useError({ error });
 
   return (
     <CustomDialog
