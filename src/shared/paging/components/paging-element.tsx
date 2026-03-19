@@ -1,6 +1,6 @@
+import { Icon } from "@/shared/helpers/components/bi-icon";
 import { SROnly } from "@/shared/helpers/components/SROnly";
 import { useEffect } from "react";
-import { Icon } from "../../../shared/helpers/components/bi-icon";
 import { PagingGapHolding } from "./page-holding";
 import { PagingButton } from "./paging-button";
 
@@ -17,6 +17,7 @@ export const Paging = ({
   useEffect(() => {
     if (totalPages !== 0 && page > totalPages) updateFunction(0);
   });
+
   return (
     <ol className="p-4 gap-4 col-span-full flex flex-wrap justify-center items-center relative">
       {page !== 0 && (

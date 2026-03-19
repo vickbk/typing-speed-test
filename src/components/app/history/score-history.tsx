@@ -1,4 +1,3 @@
-import { Paging } from "@/components/common/paging/paging-element";
 import { useTypingCtx } from "@/features";
 import { usePagination } from "@/hooks/handle-pagination";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
@@ -10,6 +9,7 @@ import {
 import { Icon } from "@/shared/helpers/components/bi-icon";
 import CustomDialog from "@/shared/helpers/components/CustomDialog";
 import { SROnly } from "@/shared/helpers/components/SROnly";
+import { Paging } from "@/shared/paging/components/paging-element";
 import { useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChallengeOptions } from "../editor/settings/challenge-options";
