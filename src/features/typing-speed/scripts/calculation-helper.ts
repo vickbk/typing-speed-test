@@ -1,3 +1,4 @@
+import { formatTime } from "@/shared";
 import type { AppState } from "../types";
 
 export function getErrorsNumber({ errorCount, text }: AppState, input: string) {
@@ -52,3 +53,30 @@ export function splitText(text: string) {
 }
 
 export function compareCurrentResults() {}
+
+export function getTimeDisplay({ typing, mode, difference }: AppState) {
+  return typing
+    ? mode === ""
+      ? formatTime(difference!)
+      : formatTime(mode - difference!)
+    : mode === ""
+      ? formatTime(0)
+      : formatTime(mode);
+}
+
+export function getTimeRange({ typing, mode, difference }: AppState) {
+  const ranges = [
+    ["excellent", 0.8, 1],
+    ["good", 0.6, 0.8],
+    ["ok", 0.4, 0.6],
+    ["bad", 0.2, 0.4],
+    ["worse", -100, 0.2],
+  ] as const;
+  const [range] = ranges.find(([, min, max]) => {
+    const modeDiff =
+      mode !== "" ? (mode - difference!) / mode : (60 - difference!) / 60;
+
+    return typing ? min < modeDiff && max >= modeDiff : max === 1;
+  }) ?? ["excellent"];
+  return range;
+}

@@ -1,6 +1,6 @@
 import { ResultsStats } from "@/features/results/components/results-stats";
 import type { TypeScore } from "@/features/typing-speed";
-import { formatDateTime } from "@/libs/time-helper";
+import { formatDateTime } from "@/shared";
 import {
   Article,
   Heading,

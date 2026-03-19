@@ -1,5 +1,4 @@
-import { useTypingCtx } from "@/features";
-import { getTimeDisplay, getTimeRange } from "@/libs/time-helper";
+import { getTimeDisplay, getTimeRange, useTypingCtx } from "@/features";
 import { useEffect, useRef } from "react";
 import { ResultsShower } from "./result-shower";
 
