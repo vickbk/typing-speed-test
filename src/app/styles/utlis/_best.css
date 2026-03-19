@@ -1,0 +1,16 @@
+.best {
+  @apply flex gap-1 items-center relative;
+  &:hover,
+  &:focus-within {
+    .best__history {
+      @apply scale-100;
+    }
+  }
+}
+
+.best__history {
+  @apply rounded-sm absolute inset-0 opacity-70 transition-transform scale-0;
+
+  background-color: var(--foreground);
+  color: var(--background);
+}
