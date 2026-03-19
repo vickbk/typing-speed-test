@@ -1,4 +1,4 @@
-import { joinClasses } from "@/libs/other-helpers";
+import { joinClasses } from "@/shared";
 import { Icon } from "@/shared/helpers/components/bi-icon";
 import { SROnly } from "@/shared/helpers/components/SROnly";
 import { Link } from "react-router-dom";

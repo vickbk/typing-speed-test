@@ -1,4 +1,4 @@
-import { joinClasses } from "@/libs/other-helpers";
+import { joinClasses } from "@/shared";
 import { Link, useSearchParams } from "react-router-dom";
 import { desktopScrolltoCurrent } from "../scripts";
 import type { NormalizedMenueProps } from "../types";

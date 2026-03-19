@@ -1,4 +1,4 @@
-import { joinClasses } from "@/libs/other-helpers";
+import { joinClasses } from "@/shared";
 import {
   Article,
   Heading,
