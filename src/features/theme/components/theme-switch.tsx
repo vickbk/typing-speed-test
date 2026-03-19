@@ -1,4 +1,4 @@
-import { Icon } from "@/components/common/bi-icon";
+import { Icon } from "@/shared/helpers/components/bi-icon";
 import { SROnly } from "@/shared/helpers/components/SROnly";
 import { useTheme } from "../hooks";
 

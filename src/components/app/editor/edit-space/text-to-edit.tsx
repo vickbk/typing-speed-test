@@ -1,10 +1,10 @@
-import { Icon } from "@/components/common/bi-icon";
 import { useTypingCtx } from "@/features";
 import { joinClasses } from "@/libs/other-helpers";
 import {
   Article,
   Heading,
 } from "@/shared/heading-manager/components/heading-managers";
+import { Icon } from "@/shared/helpers/components/bi-icon";
 import { Fragment } from "react";
 
 function scrollIntoView(node: HTMLElement | null) {

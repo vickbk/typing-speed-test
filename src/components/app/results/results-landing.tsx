@@ -4,7 +4,7 @@ import { useTypingCtx } from "@/features";
 import { useResults } from "@/hooks/handle-results";
 import { useScreenSize } from "@/hooks/handle-screen-size";
 import { Heading } from "@/shared/heading-manager/components/heading-managers";
-import { Icon } from "@components/common/bi-icon";
+import { Icon } from "@/shared/helpers/components/bi-icon";
 import ReactConfetti from "react-confetti";
 import ResultsStats from "./results-stats";
 

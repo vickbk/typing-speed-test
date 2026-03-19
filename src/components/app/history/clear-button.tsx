@@ -1,6 +1,6 @@
-import { Icon } from "@/components/common/bi-icon";
 import { useTypingCtx } from "@/features";
 import { clearMemoItem } from "@/shared";
+import { Icon } from "@/shared/helpers/components/bi-icon";
 import { SROnly } from "@/shared/helpers/components/SROnly";
 
 export const ClearButton = () => {

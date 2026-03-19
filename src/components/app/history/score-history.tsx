@@ -1,4 +1,3 @@
-import { Icon } from "@/components/common/bi-icon";
 import { Paging } from "@/components/common/paging/paging-element";
 import { useTypingCtx } from "@/features";
 import { usePagination } from "@/hooks/handle-pagination";
@@ -8,6 +7,7 @@ import {
   Article,
   Heading,
 } from "@/shared/heading-manager/components/heading-managers";
+import { Icon } from "@/shared/helpers/components/bi-icon";
 import CustomDialog from "@/shared/helpers/components/CustomDialog";
 import { SROnly } from "@/shared/helpers/components/SROnly";
 import { useCallback, useRef } from "react";

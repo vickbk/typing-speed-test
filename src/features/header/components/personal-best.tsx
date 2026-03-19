@@ -1,8 +1,8 @@
-import { Icon } from "@/components/common/bi-icon";
 import { WPMText } from "@/components/common/wpm-text";
 import { useTypingCtx } from "@/features/typing-speed";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 import { getMemoItem } from "@/shared";
+import { Icon } from "@/shared/helpers/components/bi-icon";
 import { SROnly } from "@/shared/helpers/components/SROnly";
 import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
 import { useCallback } from "react";

@@ -1,5 +1,5 @@
-import { Icon } from "@/components/common/bi-icon";
 import { useTypingCtx } from "@/features";
+import { Icon } from "@/shared/helpers/components/bi-icon";
 
 export const EditorControllers = () => {
   const { dispatch } = useTypingCtx();
