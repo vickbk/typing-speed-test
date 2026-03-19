@@ -1,5 +1,5 @@
-import { WPMText } from "@/components/common/wpm-text";
 import { calculateWPM, useTypingCtx } from "@/features";
+import { WPMText } from "@/features/typing-speed/components/wpm-text";
 import { ResultsShower } from "./result-shower";
 
 export const WordPerMinute = () => {

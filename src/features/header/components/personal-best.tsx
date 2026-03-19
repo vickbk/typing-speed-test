@@ -1,5 +1,5 @@
-import { WPMText } from "@/components/common/wpm-text";
 import { useTypingCtx } from "@/features/typing-speed";
+import { WPMText } from "@/features/typing-speed/components/wpm-text";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 import { getMemoItem } from "@/shared";
 import { Icon } from "@/shared/helpers/components/bi-icon";
