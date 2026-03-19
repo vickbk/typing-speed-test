@@ -1,20 +1,22 @@
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { EditorSetup } from "./components/app/editor/edittor-setup";
 import { Header } from "./components/app/header/header";
+import { ScoreHistory } from "./components/app/history/score-history";
+import { ErrorElement } from "./components/common/error-element";
 import { HeadingCtx } from "./contexts/HeadingCtx";
+import { TypingContext } from "./contexts/TypingContext";
 import { useTypingSpeed } from "./hooks/handle-typing-speed";
 import "./styles/global.css";
 import "./styles/scss/global.scss";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { TypingContext } from "./contexts/TypingContext";
-import { ScoreHistory } from "./components/app/history/score-history";
-import { ErrorElement } from "./components/common/error-element";
 
 function App() {
   const stateSetter = useTypingSpeed();
   return (
     <>
-      <BrowserRouter basename="/typing-speed-test">
+      <BrowserRouter
+        basename={!import.meta.env.DEV ? "/typing-speed-test" : ""}
+      >
         <HeadingCtx value={0}>
           <TypingContext value={stateSetter}>
             <Header />
