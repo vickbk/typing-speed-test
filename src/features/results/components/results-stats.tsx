@@ -1,13 +1,10 @@
 import { WPMText } from "@/components/common/wpm-text";
-import { calculateWPM, calculateAccuracy } from "@/libs/calculation-helper";
-import { ResultsShow } from "./results-show";
 import type { AppState } from "@/libs/types/typing-speed-types";
+import { useResultsStats } from "../hooks";
+import { ResultsShow } from "./results-show";
 
-export default function ResultsStats({ state }: { state: AppState }) {
-  const [WPM, accuracy] = [calculateWPM, calculateAccuracy].map((func) =>
-    func(state),
-  );
-  const { errorCount, input = "" } = state;
+export function ResultsStats(props: { state: AppState }) {
+  const { WPM, accuracy, input = "", errorCount } = useResultsStats(props);
 
   const stats = [
     [
