@@ -1,5 +1,4 @@
-import { useTypingCtx } from "@/features";
-import type { Difficulty } from "@/libs/types/typing-speed-types";
+import { useTypingCtx, type Difficulty } from "@/features";
 import { getMemoItem, setMemoItem } from "@/shared";
 import { SROnly } from "@/shared/helpers/components/SROnly";
 import { useSearchParams } from "react-router-dom";

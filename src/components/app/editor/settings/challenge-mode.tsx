@@ -1,5 +1,4 @@
-import { useTypingCtx } from "@/features";
-import type { ModeType } from "@/libs/types/typing-speed-types";
+import { useTypingCtx, type ModeType } from "@/features/typing-speed";
 import { getMemoItem, setMemoItem } from "@/shared";
 import { SROnly } from "@/shared/helpers/components/SROnly";
 import { useSearchParams } from "react-router-dom";

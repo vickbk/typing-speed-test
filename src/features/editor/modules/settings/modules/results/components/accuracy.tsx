@@ -1,10 +1,8 @@
-import { calculateAccuracy, useTypingCtx } from "@/features";
+import { useAccuracy } from "../hooks";
 import { ResultsShower } from "./result-shower";
 
 export const Accuracy = () => {
-  const { state } = useTypingCtx();
-
-  const accuracy = calculateAccuracy(state);
+  const { accuracy } = useAccuracy();
 
   return (
     <ResultsShower
