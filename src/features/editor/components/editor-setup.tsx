@@ -1,8 +1,8 @@
 import { useTypingCtx } from "@/features";
-import { EditSpace } from "@/features/editor/modules/edit-space/components/edit-space";
-import { SettingBar } from "@/features/editor/modules/settings/components/settings-bar";
 import { ResultsLanding } from "@/features/results/components/results-landing";
 import { Outlet } from "react-router-dom";
+import { EditSpace } from "../modules/edit-space/components/edit-space";
+import { SettingBar } from "../modules/settings/components/settings-bar";
 
 export const EditorSetup = () => {
   const {

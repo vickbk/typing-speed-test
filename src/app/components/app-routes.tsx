@@ -1,4 +1,4 @@
-import { EditorSetup } from "@/components/app/editor/edittor-setup";
+import { EditorSetup } from "@/features/editor/components/editor-setup";
 import { ErrorElement } from "@/features/error/components/error-element";
 import { ScoreHistory } from "@/features/history/components/score-history";
 import { Navigate, Route, Routes } from "react-router-dom";
