@@ -1,4 +1,4 @@
-import { useTypingCtx } from "@/features";
+import { useTypingCtx } from "@/features/typing-speed";
 import { EditTextField } from "./edit-text-field";
 import { EditorControllers } from "./editor-controllers";
 import { StartEdit } from "./start-edit";
