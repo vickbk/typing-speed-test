@@ -1,9 +1,11 @@
 import { Icon } from "@/components/common/bi-icon";
-import { Article } from "@/components/shared/Article";
-import { Heading } from "@/components/shared/Heading";
-import { TypingContext } from "@/contexts/TypingContext";
+import { useTypingCtx } from "@/features";
 import { joinClasses } from "@/libs/other-helpers";
-import { Fragment, useContext } from "react";
+import {
+  Article,
+  Heading,
+} from "@/shared/heading-manager/components/heading-managers";
+import { Fragment } from "react";
 
 function scrollIntoView(node: HTMLElement | null) {
   node?.scrollIntoView({ block: "center", behavior: "instant" });
@@ -11,7 +13,7 @@ function scrollIntoView(node: HTMLElement | null) {
 export const TextToEdit = () => {
   const {
     state: { text, input = "", oldMistakes },
-  } = useContext(TypingContext);
+  } = useTypingCtx();
 
   const currentIndex = input?.length || 0;
   return (

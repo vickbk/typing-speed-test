@@ -1,16 +1,15 @@
 import { default as start1 } from "@/assets/images/pattern-star-1.svg";
 import { default as start2 } from "@/assets/images/pattern-star-2.svg";
-import { Heading } from "@components/shared/Heading";
-import ResultsStats from "./results-stats";
-import { useContext } from "react";
-import { Icon } from "@components/common/bi-icon";
-import { TypingContext } from "@/contexts/TypingContext";
-import ReactConfetti from "react-confetti";
-import { useScreenSize } from "@/hooks/handle-screen-size";
+import { useTypingCtx } from "@/features";
 import { useResults } from "@/hooks/handle-results";
+import { useScreenSize } from "@/hooks/handle-screen-size";
+import { Heading } from "@/shared/heading-manager/components/heading-managers";
+import { Icon } from "@components/common/bi-icon";
+import ReactConfetti from "react-confetti";
+import ResultsStats from "./results-stats";
 
 export const ResultsLanding = () => {
-  const { dispatch, state } = useContext(TypingContext);
+  const { dispatch, state } = useTypingCtx();
 
   const {
     loadOtherResults,

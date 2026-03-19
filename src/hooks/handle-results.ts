@@ -1,13 +1,13 @@
 import { default as completed } from "@/assets/images/icon-completed.svg";
 import { default as newPB } from "@/assets/images/icon-new-pb.svg";
-import { TypingContext } from "@/contexts/TypingContext";
+import { useTypingCtx } from "@/features";
 import { calculateWPM } from "@/libs/calculation-helper";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 import { getMemoItem, setMemoItem } from "@/shared";
-import { useCallback, useContext, useRef } from "react";
+import { useCallback, useRef } from "react";
 
 export function useResults() {
-  const { state, dispatch } = useContext(TypingContext);
+  const { state, dispatch } = useTypingCtx();
   const { best, finish, difficulty } = state;
   const results = useRef({
     title: "Test Completed",

@@ -1,10 +1,11 @@
-import { Article } from "@/components/shared/Article";
-import { Heading } from "@/components/shared/Heading";
-import { TypingContext } from "@/contexts/TypingContext";
-import React from "react";
+import { useTypingCtx } from "@/features";
+import {
+  Article,
+  Heading,
+} from "@/shared/heading-manager/components/heading-managers";
 
 export const EmptyScore = ({ onClose }: { onClose: () => void }) => {
-  const { dispatch } = React.useContext(TypingContext);
+  const { dispatch } = useTypingCtx();
   return (
     <Article className="flex flex-col justify-center gap-8 items-center h-[50vh]">
       <Heading className="text-lg font-semibold">No previous records</Heading>

@@ -1,10 +1,10 @@
-import { TypingContext } from "@/contexts/TypingContext";
-import { getTimeRange, getTimeDisplay } from "@/libs/time-helper";
-import { useContext, useEffect, useRef } from "react";
+import { useTypingCtx } from "@/features";
+import { getTimeDisplay, getTimeRange } from "@/libs/time-helper";
+import { useEffect, useRef } from "react";
 import { ResultsShower } from "./result-shower";
 
 export const Time = () => {
-  const { state, dispatch } = useContext(TypingContext);
+  const { state, dispatch } = useTypingCtx();
 
   const colors = {
     excellent: "",

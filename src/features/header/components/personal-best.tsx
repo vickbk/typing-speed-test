@@ -1,18 +1,18 @@
 import { Icon } from "@/components/common/bi-icon";
 import { WPMText } from "@/components/common/wpm-text";
-import { SROnly } from "@/components/shared/SROnly";
-import { TypingContext } from "@/contexts/TypingContext";
+import { useTypingCtx } from "@/features/typing-speed";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 import { getMemoItem } from "@/shared";
+import { SROnly } from "@/shared/helpers/components/SROnly";
 import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
 import { Link } from "react-router-dom";
 
 export const PersonalBest = () => {
   const {
     state: { difficulty, best },
     dispatch,
-  } = useContext(TypingContext);
+  } = useTypingCtx();
 
   const loadResults = useCallback(
     (node: HTMLElement | null) => {

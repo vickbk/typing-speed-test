@@ -1,6 +1,6 @@
 import { Icon } from "@/components/common/bi-icon";
-import { SROnly } from "@/components/shared/SROnly";
 import { joinClasses } from "@/libs/other-helpers";
+import { SROnly } from "@/shared/helpers/components/SROnly";
 import { useCallback, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 

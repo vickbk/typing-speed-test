@@ -1,10 +1,12 @@
 "use client";
 
+import {
+  Heading,
+  Section,
+} from "@/shared/heading-manager/components/heading-managers";
+import CustomDialog from "@/shared/helpers/components/CustomDialog";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Section } from "../shared/Section";
-import { Heading } from "../shared/Heading";
-import CustomDialog from "../shared/CustomDialog";
 
 export function ErrorElement({
   error,

@@ -1,8 +1,10 @@
-import { Article } from "@/components/shared/Article";
-import { Heading } from "@/components/shared/Heading";
-import { SROnly } from "@/components/shared/SROnly";
 import { formatDateTime } from "@/libs/time-helper";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
+import {
+  Article,
+  Heading,
+} from "@/shared/heading-manager/components/heading-managers";
+import { SROnly } from "@/shared/helpers/components/SROnly";
 import ResultsStats from "../results/results-stats";
 
 export const HistoryElement = ({ time, session }: TypeScore) => {

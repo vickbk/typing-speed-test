@@ -1,14 +1,16 @@
 import { Icon } from "@/components/common/bi-icon";
 import { Paging } from "@/components/common/paging/paging-element";
-import { Article } from "@/components/shared/Article";
-import CustomDialog from "@/components/shared/CustomDialog";
-import { Heading } from "@/components/shared/Heading";
-import { SROnly } from "@/components/shared/SROnly";
-import { TypingContext } from "@/contexts/TypingContext";
+import { useTypingCtx } from "@/features";
 import { usePagination } from "@/hooks/handle-pagination";
 import type { TypeScore } from "@/libs/types/typing-speed-types";
 import { getMemoItem } from "@/shared";
-import { useCallback, useContext, useRef } from "react";
+import {
+  Article,
+  Heading,
+} from "@/shared/heading-manager/components/heading-managers";
+import CustomDialog from "@/shared/helpers/components/CustomDialog";
+import { SROnly } from "@/shared/helpers/components/SROnly";
+import { useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChallengeOptions } from "../editor/settings/challenge-options";
 import { ClearButton } from "./clear-button";
@@ -20,7 +22,7 @@ const PAGESIZE = 10;
 export const ScoreHistory = () => {
   const {
     state: { difficulty, best },
-  } = useContext(TypingContext);
+  } = useTypingCtx();
 
   const results = useRef<TypeScore[]>([]);
   const loadResults = useCallback(

@@ -1,11 +1,13 @@
-import { Article } from "@/components/shared/Article";
-import { Heading } from "@/components/shared/Heading";
-import { SROnly } from "@/components/shared/SROnly";
-import { TypingContext } from "@/contexts/TypingContext";
-import { useCallback, useContext } from "react";
+import { useTypingCtx } from "@/features";
+import {
+  Article,
+  Heading,
+} from "@/shared/heading-manager/components/heading-managers";
+import { SROnly } from "@/shared/helpers/components/SROnly";
+import { useCallback } from "react";
 
 export const StartEdit = () => {
-  const { dispatch } = useContext(TypingContext);
+  const { dispatch } = useTypingCtx();
 
   const enableStartOnKeyboardType = useCallback(() => {
     function startOnKeyboardType({ key }: KeyboardEvent) {

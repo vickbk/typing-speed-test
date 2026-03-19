@@ -1,8 +1,7 @@
-import { SROnly } from "@/components/shared/SROnly";
-import { TypingContext } from "@/contexts/TypingContext";
+import { useTypingCtx } from "@/features";
 import type { ModeType } from "@/libs/types/typing-speed-types";
 import { getMemoItem, setMemoItem } from "@/shared";
-import { useContext } from "react";
+import { SROnly } from "@/shared/helpers/components/SROnly";
 import { useSearchParams } from "react-router-dom";
 import { ChallengeParams } from "./challenge-params";
 
@@ -16,7 +15,7 @@ export const ChallengeMode = () => {
   const {
     state: { mode },
     dispatch,
-  } = useContext(TypingContext);
+  } = useTypingCtx();
 
   const [queries] = useSearchParams();
 

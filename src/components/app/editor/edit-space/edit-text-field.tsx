@@ -1,5 +1,5 @@
-import { TypingContext } from "@/contexts/TypingContext";
-import { useContext, useEffect, useRef } from "react";
+import { useTypingCtx } from "@/features";
+import { useEffect, useRef } from "react";
 
 function focusTextarea(node: HTMLTextAreaElement | null) {
   node?.focus();
@@ -8,7 +8,7 @@ export const EditTextField = () => {
   const {
     dispatch,
     state: { input, difference },
-  } = useContext(TypingContext);
+  } = useTypingCtx();
 
   const textarea = useRef<HTMLTextAreaElement>(null);
 
@@ -16,7 +16,7 @@ export const EditTextField = () => {
     if (document.activeElement !== textarea.current)
       focusTextarea(textarea.current);
   }, [difference]);
-  
+
   return (
     <label className="sr-only">
       Typing area

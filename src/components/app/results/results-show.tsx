@@ -1,5 +1,7 @@
-import { Article } from "@/components/shared/Article";
-import { Heading } from "@/components/shared/Heading";
+import {
+  Article,
+  Heading,
+} from "@/shared/heading-manager/components/heading-managers";
 import type React from "react";
 
 export function ResultsShow({

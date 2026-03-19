@@ -1,9 +1,8 @@
 import { Icon } from "@/components/common/bi-icon";
-import { TypingContext } from "@/contexts/TypingContext";
-import { useContext } from "react";
+import { useTypingCtx } from "@/features";
 
 export const EditorControllers = () => {
-  const { dispatch } = useContext(TypingContext);
+  const { dispatch } = useTypingCtx();
 
   return (
     <div className="border-t b-neutral-500 pt-4 flex flex-wrap justify-center gap-4">

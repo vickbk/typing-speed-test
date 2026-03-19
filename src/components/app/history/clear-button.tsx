@@ -1,14 +1,13 @@
 import { Icon } from "@/components/common/bi-icon";
-import { SROnly } from "@/components/shared/SROnly";
-import { TypingContext } from "@/contexts/TypingContext";
+import { useTypingCtx } from "@/features";
 import { clearMemoItem } from "@/shared";
-import { useContext } from "react";
+import { SROnly } from "@/shared/helpers/components/SROnly";
 
 export const ClearButton = () => {
   const {
     dispatch,
     state: { difficulty },
-  } = useContext(TypingContext);
+  } = useTypingCtx();
   return (
     <button
       type="button"
