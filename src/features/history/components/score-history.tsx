@@ -1,6 +1,4 @@
-import { useTypingCtx } from "@/features";
-import type { TypeScore } from "@/libs/types/typing-speed-types";
-import { getMemoItem, usePagination } from "@/shared";
+import { ChallengeOptions } from "@/components/app/editor/settings/challenge-options";
 import {
   Article,
   Heading,
@@ -9,40 +7,15 @@ import { Icon } from "@/shared/helpers/components/bi-icon";
 import CustomDialog from "@/shared/helpers/components/CustomDialog";
 import { SROnly } from "@/shared/helpers/components/SROnly";
 import { Paging } from "@/shared/paging/components/paging-element";
-import { useCallback, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { ChallengeOptions } from "../editor/settings/challenge-options";
+import { useScoreHistory } from "../hooks";
 import { ClearButton } from "./clear-button";
 import { EmptyScore } from "./empty-score";
 import { HistoryElement } from "./history-element";
 
-const PAGESIZE = 10;
-
 export const ScoreHistory = () => {
-  const {
-    state: { difficulty, best },
-  } = useTypingCtx();
+  const { closeDialog, loadResults, display, totalPages, page, setPage } =
+    useScoreHistory();
 
-  const results = useRef<TypeScore[]>([]);
-  const loadResults = useCallback(
-    (node: HTMLElement | null) => {
-      if (node)
-        results.current = (
-          getMemoItem<TypeScore[]>(`score.${difficulty}`) || []
-        ).sort(({ time: aT }, { time: bT }) => bT - aT);
-    },
-    [difficulty, best],
-  );
-
-  const { page, setPage, totalPages, display } = usePagination(
-    results.current,
-    PAGESIZE,
-  );
-
-  const navigate = useNavigate();
-  function closeDialog() {
-    navigate("/home");
-  }
   return (
     <CustomDialog
       className="m-auto p-4 rounded-lg background c-foreground relative overflow-hidden"

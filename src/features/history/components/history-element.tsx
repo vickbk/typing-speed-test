@@ -5,7 +5,7 @@ import {
   Heading,
 } from "@/shared/heading-manager/components/heading-managers";
 import { SROnly } from "@/shared/helpers/components/SROnly";
-import ResultsStats from "../results/results-stats";
+import ResultsStats from "../../../components/app/results/results-stats";
 
 export const HistoryElement = ({ time, session }: TypeScore) => {
   return (
