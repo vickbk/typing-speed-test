@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import { checkHeadingOrder } from "../library/check-heading-order";
-import { drawRegion } from "../library/region-drawer";
+import { checkHeadingOrder, drawRegion } from "../scripts";
 import { Article, Heading, Main, Section } from "./heading-managers";
+
 describe("Heading Level Manager", () => {
   test("should render h1 if heading rendered out of heading context", async () => {
     render(
