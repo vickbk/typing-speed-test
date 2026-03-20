@@ -1,5 +1,5 @@
-import { useTypingCtx } from "@/features";
 import { ResultsLanding } from "@/features/results/components/results-landing";
+import { useTypingCtx } from "@/features/typing-speed";
 import { Outlet } from "react-router-dom";
 import { EditSpace } from "../modules/edit-space/components/edit-space";
 import { SettingBar } from "../modules/settings/components/settings-bar";
