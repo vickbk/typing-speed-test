@@ -113,4 +113,15 @@ describe("Heading Level Manager", () => {
     const region = drawRegion(main);
     expect(checkHeadingOrder(region)).toBe(false);
   });
+
+  test("should start with h2 in main if  pageHasH1 is true", async () => {
+    render(
+      <Main pageHasH1>
+        <Heading>Heading 2</Heading>
+      </Main>,
+    );
+
+    const heading = await screen.findByRole("heading");
+    expect(heading.tagName).toBe("H2");
+  });
 });
