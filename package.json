@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "test": "vitest --exclude \"**/*.spec.{js,ts,jsx,tsx}\"",
     "preview": "vite preview",
-    "circular": "madge . --circular"
+    "circular": "madge . --circular",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
@@ -33,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^8.51.0",
     "@typescript-eslint/parser": "^8.51.0",
     "@vitejs/plugin-react": "^5.1.1",
+    "@vitest/coverage-v8": "4.1.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react": "^7.37.5",
