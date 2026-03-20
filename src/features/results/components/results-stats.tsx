@@ -1,5 +1,5 @@
+import type { AppState } from "@/features/typing-speed";
 import { WPMText } from "@/features/typing-speed/components/wpm-text";
-import type { AppState } from "@/libs/types/typing-speed-types";
 import { useResultsStats } from "../hooks";
 import { ResultsShow } from "./results-show";
 

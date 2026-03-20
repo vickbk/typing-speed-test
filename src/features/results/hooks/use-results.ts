@@ -1,7 +1,10 @@
 import { default as completed } from "@/assets/images/icon-completed.svg";
 import { default as newPB } from "@/assets/images/icon-new-pb.svg";
-import { calculateWPM, useTypingCtx } from "@/features";
-import type { TypeScore } from "@/libs/types/typing-speed-types";
+import {
+  calculateWPM,
+  useTypingCtx,
+  type TypeScore,
+} from "@/features/typing-speed";
 import { getMemoItem, setMemoItem } from "@/shared";
 import { useCallback, useRef } from "react";
 
