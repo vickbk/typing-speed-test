@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   test: {
-    environment: "jsdom",
+    environment: "happy-dom",
     setupFiles: "./tests/vitest-setup.ts",
     globals: true,
     coverage: {
