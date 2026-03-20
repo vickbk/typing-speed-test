@@ -1,5 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import { Heading, Main, Section } from "../components/heading-managers";
+import {
+  Article,
+  Header,
+  Heading,
+  Legend,
+  Main,
+  Section,
+} from "../components/heading-managers";
 import { drawRegion } from "./region-drawer";
 
 describe("Region Drawer", () => {
@@ -9,12 +16,15 @@ describe("Region Drawer", () => {
         <Heading>Heading 1</Heading>
         <Section>
           <Heading>Heading 2</Heading>
-          <Section>
+          <Article>
             <Heading>Heading 3</Heading>
-            <Section>
+            <Header>
               <Heading>Heading 4</Heading>
-            </Section>
-          </Section>
+            </Header>
+            <Legend>
+              <Heading>Heading 4</Heading>
+            </Legend>
+          </Article>
         </Section>
       </Main>,
     );
@@ -29,11 +39,16 @@ describe("Region Drawer", () => {
           headings: ["H2"],
           children: [
             {
-              tagName: "SECTION",
+              tagName: "ARTICLE",
               headings: ["H3"],
               children: [
                 {
-                  tagName: "SECTION",
+                  tagName: "HEADER",
+                  headings: ["H4"],
+                  children: [],
+                },
+                {
+                  tagName: "LEGEND",
                   headings: ["H4"],
                   children: [],
                 },

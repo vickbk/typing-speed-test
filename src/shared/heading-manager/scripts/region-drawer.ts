@@ -1,6 +1,7 @@
 import type { RegionMaping } from "../types";
 
-export const LANDMARK_SELECTOR = "main, header, section, article";
+export const LANDMARK_SELECTOR =
+  "main, header, section, article, header, legend";
 export const HEADING_SELECTOR = "h1, h2, h3, h4, h5, h6";
 
 export function drawRegion<T extends Element>(element: T): RegionMaping {
