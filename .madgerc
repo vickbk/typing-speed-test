@@ -1,0 +1,12 @@
+{
+  "fontSize": "10px",
+  "graphVizOptions": {
+    "G": {
+      "rankdir": "LR"
+    }
+  },
+  "fileExtensions": [
+    "ts",
+    "tsx"
+  ]
+}

@@ -1,10 +1,11 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+/// <reference types="vitest/config" />
 import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
 import { resolve } from "path";
+import { defineConfig } from "vite";
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react({
       babel: {
@@ -13,7 +14,7 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
-  base: "/typing-speed-test/",
+  base: mode === "production" ? "/typing-speed-test/" : "",
   resolve: {
     alias: {
       "@": resolve(__dirname, "./src"),
@@ -26,4 +27,13 @@ export default defineConfig({
       input: ["index.html", "404.html"],
     },
   },
-});
+  test: {
+    environment: "happy-dom",
+    setupFiles: "./tests/vitest-setup.ts",
+    globals: true,
+    coverage: {
+      reporter: ["text", "json", "html"],
+      exclude: ["src/tests/*", "src/mocks/*"],
+    },
+  },
+}));

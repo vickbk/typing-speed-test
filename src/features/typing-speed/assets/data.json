@@ -1,0 +1,212 @@
+{
+  "easy": [
+    {
+      "id": "easy-1",
+      "text": "The sun rose over the quiet town. Birds sang in the trees as people woke up and started their day. It was going to be a warm and sunny morning."
+    },
+    {
+      "id": "easy-2",
+      "text": "She walked to the store to buy some bread and milk. The shop was busy but she found what she needed quickly. On her way home, she saw a friend and waved."
+    },
+    {
+      "id": "easy-3",
+      "text": "The dog ran across the park chasing a ball. He was fast and loved to play. After a while, he got tired and lay down in the cool shade of a big oak tree."
+    },
+    {
+      "id": "easy-4",
+      "text": "I like to read books before I go to sleep. It helps me relax after a long day. My favorite stories are about adventure and travel to far away places."
+    },
+    {
+      "id": "easy-5",
+      "text": "The kitchen smelled of fresh coffee and toast. Mom was making breakfast while dad read the news. It was a normal morning in their small but cozy home."
+    },
+    {
+      "id": "easy-6",
+      "text": "We went to the beach last summer. The water was blue and the sand was warm. We built a big sand castle and looked for shells along the shore."
+    },
+    {
+      "id": "easy-7",
+      "text": "The cat sat on the window sill watching the rain. Drops fell down the glass one by one. She seemed happy to be inside where it was dry and warm."
+    },
+    {
+      "id": "easy-8",
+      "text": "My best friend lives next door to me. We play games together after school. Sometimes we ride our bikes around the block or sit and talk for hours."
+    },
+    {
+      "id": "easy-9",
+      "text": "Spring is my favorite time of year. Flowers start to bloom and the days get longer. I love to see the trees turn green again after the cold winter months."
+    },
+    {
+      "id": "easy-10",
+      "text": "The music played softly in the room. She closed her eyes and let the sounds wash over her. It was a simple song but it made her feel at peace."
+    }
+  ],
+  "medium": [
+    {
+      "id": "medium-1",
+      "text": "Learning a new skill takes patience and consistent practice. Whether you're studying a language, picking up an instrument, or mastering a sport, the key is to show up every day. Small improvements compound over time, and before you know it, you'll have made remarkable progress."
+    },
+    {
+      "id": "medium-2",
+      "text": "The old lighthouse had stood on the cliff for over a century, guiding sailors safely through treacherous waters. Its beam cut through the fog each night, a reassuring presence for those navigating the rocky coastline. Many storms had tested its structure, but it remained steadfast."
+    },
+    {
+      "id": "medium-3",
+      "text": "Coffee culture has evolved dramatically in recent decades. What was once a simple morning ritual has become an art form, with baristas crafting intricate latte designs and roasters sourcing beans from remote mountain villages. The humble cup of coffee now tells a global story."
+    },
+    {
+      "id": "medium-4",
+      "text": "Urban gardens are transforming city landscapes around the world. Residents are converting rooftops, balconies, and abandoned lots into thriving green spaces. These initiatives not only provide fresh produce but also create communities, reduce stress, and help combat the urban heat island effect."
+    },
+    {
+      "id": "medium-5",
+      "text": "The documentary explored how technology shapes our daily habits. From the moment we wake to an alarm on our phones to the podcasts we fall asleep to, digital tools have woven themselves into the fabric of modern life. The question is: are we in control?"
+    },
+    {
+      "id": "medium-6",
+      "text": "Traveling by train offers a unique perspective on the countryside. Unlike flying, which reduces landscapes to abstract patterns, rail journeys let you witness the gradual transitions between regions. You see farms give way to forests, and small towns emerge from rolling hills."
+    },
+    {
+      "id": "medium-7",
+      "text": "The chef believed that great cooking starts with quality ingredients. She visited local farmers each week, selecting vegetables at their peak ripeness. Her menu changed with the seasons, reflecting what the land offered. Diners appreciated the freshness they could taste in every bite."
+    },
+    {
+      "id": "medium-8",
+      "text": "Libraries have reinvented themselves for the digital age. Beyond lending books, they now offer coworking spaces, 3D printers, recording studios, and coding workshops. These community hubs have become places where people of all ages come to learn, create, and connect with others."
+    },
+    {
+      "id": "medium-9",
+      "text": "The architect designed buildings that worked with nature rather than against it. Large windows captured natural light, reducing the need for electricity. Green roofs absorbed rainwater and provided insulation. Her philosophy was simple: sustainable design should be beautiful, functional, and accessible to everyone."
+    },
+    {
+      "id": "medium-10",
+      "text": "Night markets come alive after sunset in cities across Asia. Vendors set up stalls selling everything from grilled skewers to handmade crafts. The air fills with enticing aromas and the buzz of conversation. Locals and tourists alike wander through, sampling street food and hunting for bargains."
+    }
+  ],
+  "hard": [
+    {
+      "id": "hard-1",
+      "text": "The philosopher's argument hinged on a seemingly paradoxical assertion: that absolute freedom, pursued without constraint, inevitably undermines itself. \"Consider,\" she wrote, \"how the libertarian ideal—when taken to its logical extreme—produces conditions in which the powerful dominate the weak, thereby eliminating freedom for the majority.\" Her critics dismissed this as sophistry; her supporters hailed it as profound."
+    },
+    {
+      "id": "hard-2",
+      "text": "Quantum entanglement—Einstein's \"spooky action at a distance\"—continues to perplex physicists and philosophers alike. When two particles become entangled, measuring one instantaneously affects the other, regardless of the distance separating them. This phenomenon doesn't violate relativity (no information travels faster than light), yet it challenges our intuitions about locality, causality, and the nature of reality itself."
+    },
+    {
+      "id": "hard-3",
+      "text": "The Renaissance polymath's correspondence reveals a mind of extraordinary breadth: in a single week's letters, he discussed astronomical observations, critiqued a colleague's architectural drawings, proposed improvements to the city's sewage system, and composed a sonnet for a patron's daughter. \"Specialization,\" he remarked wryly, \"is for insects.\" His contemporaries found him exhausting; posterity finds him inspirational."
+    },
+    {
+      "id": "hard-4",
+      "text": "Algorithmic trading has fundamentally restructured financial markets. High-frequency systems execute thousands of transactions per second, exploiting minute price discrepancies across exchanges. Critics argue this creates systemic fragility—the 2010 \"Flash Crash\" saw the Dow Jones plummet 1,000 points in minutes before recovering. Proponents counter that algorithms provide liquidity and reduce spreads, ultimately benefiting retail investors."
+    },
+    {
+      "id": "hard-5",
+      "text": "The biographer faced an ethical dilemma: her subject's private journals—recently discovered in an attic—contained revelations that would overturn his carefully cultivated public image. Should she publish them? \"Biography,\" she mused, \"exists in tension between truth-telling and respect for the dead.\" After months of deliberation, she chose disclosure, reasoning that sanitized history serves no one."
+    },
+    {
+      "id": "hard-6",
+      "text": "Microplastics have infiltrated virtually every ecosystem on Earth, from the Mariana Trench to Arctic ice cores. These polymer fragments—smaller than 5mm in diameter—originate from degrading consumer products, synthetic textiles, and industrial processes. Researchers have detected them in human blood, placental tissue, and breast milk; their long-term health implications remain disturbingly unclear. The ubiquity of plastic pollution represents an unprecedented experiment on planetary biology."
+    },
+    {
+      "id": "hard-7",
+      "text": "The conductor's interpretation of Mahler's Ninth Symphony emphasized its prophetic qualities—the premonition of catastrophe, the aching nostalgia for a world about to vanish. \"Mahler composed this knowing he was dying,\" she explained in the program notes, \"but he also intuited, somehow, that European civilization itself stood at the precipice.\" The orchestra's performance—hushed, trembling, transcendent—left the audience in stunned silence."
+    },
+    {
+      "id": "hard-8",
+      "text": "Constitutional scholars continue debating the \"counter-majoritarian difficulty\": how can judicial review—whereby unelected judges overturn legislation passed by democratic representatives—be reconciled with popular sovereignty? Some argue courts protect minority rights against tyrannical majorities; others contend this reasoning masks ideological preferences in neutral-sounding jurisprudence. The tension, perhaps, is irresolvable; democratic systems must balance competing values rather than optimize for any single principle."
+    },
+    {
+      "id": "hard-9",
+      "text": "The novelist's prose style—elliptical, fragmented, punctuated by abrupt temporal shifts—reflected her thematic preoccupations: memory's unreliability, identity's fluidity, the impossibility of objective narration. \"Every story,\" she declared in an interview, \"is simultaneously true and false; it reveals by concealing, illuminates by casting shadows.\" Critics accused her of obscurantism; she responded that clarity itself can be a form of deception."
+    },
+    {
+      "id": "hard-10",
+      "text": "The archaeological expedition unearthed artifacts that complicated prevailing theories about Bronze Age trade networks. Obsidian from Anatolia, lapis lazuli from Afghanistan, and amber from the Baltic—all discovered in a single Mycenaean tomb—suggested commercial connections far more extensive than previously hypothesized. \"We've underestimated ancient peoples' navigational capabilities and their appetite for luxury goods,\" the lead researcher observed. \"Globalization isn't as modern as we assume.\""
+    }
+  ],
+  "quote": [
+    {
+      "id": "quote-1",
+      "text": "A breakout and close above the 'neckline' resistance level of a \"Double Bottom Chart Pattern\" typically confirms the potential reversal and provides a trading signal."
+    },
+    {
+      "id": "quote-2",
+      "text": "You aren't a woman because you have no womb, no eggs, no long hair, and no bra. You are a real man, and you can't change your gender because it's not good."
+    },
+    {
+      "id": "quote-3",
+      "text": "Cause I lost my job two weeks before Christmas, and I talked to Jesus at the sewer, and the Pope said it was none of his God-damned business, while the rain drank champagne. My Estonian Archangel came and got me wasted cause the sweetest kiss I ever got is the one I've never tasted. Oh but they'll take their bonus pay to Molly McDonald. Neon ladies, beauty is that which obeys, is bought or borrowed."
+    },
+    {
+      "id": "quote-4",
+      "text": "Sometimes it's easy to forget that quiet moments mean just as much as the loud ones, because it's not always about moving. Sometimes it's about sitting perfectly and quietly still."
+    },
+    {
+      "id": "quote-5",
+      "text": "It is also highly important for us to realize that we do not as a matter of fact lead our lives, make our decisions, and reach our goals in everyday life either statistically or scientifically. We live by inference. I am, let us say, your guest. You do not know, you cannot determine scientifically, that I will not steal your money or your spoons. But inferentially I will not, and inferentially you have me as a guest."
+    },
+    {
+      "id": "quote-6",
+      "text": "Imagine one day, if someone sent you to the jungle alone, what will you do? There will be no food, no shelter, and nothing safe. You try to survive in the jungle even though it is a danger place."
+    },
+    {
+      "id": "quote-7",
+      "text": "The quick brown fox jumps over the lazy dog. Is a sentence that has every single letter on the keyboard. How did you do? Were you accurate? Were you fast?"
+    },
+    {
+      "id": "quote-8",
+      "text": "Do not tell me that all this can only be accomplished under Anarchy; this is entirely wrong. If we want to accomplish Anarchy, we must first have free women at least, those women who are economically just as independent as their brothers are, and unless we have free women, we cannot have free mothers, and if mothers are not free, we cannot expect the young generation to assist us in the accomplishment of our aim, that is the establishment of an Anarchist society."
+    },
+    {
+      "id": "quote-9",
+      "text": "Once upon a time, there was a girl who wanted to eat the apples hanging from the trees. But she couldn't reach the tree and started to cry. Until came one day, the giraffe helped her reach the tree to get some apples, and she ate them all and now, she is full. And they all lived happily ever after."
+    },
+    {
+      "id": "quote-10",
+      "text": "The idea that humans only use 10% of their brains is a well-established scientific misconception. Modern neuroscience, supported by functional imaging techniques such as fMRI and PET scans, demonstrates that people use virtually all parts of their brain, and most areas are active almost all the time."
+    }
+  ],
+  "code": [
+    {
+      "id": "code-1",
+      "text": "// define the item component\nVue.component('item', {\ntemplate: '#item-template',\nprops: {\nmodel: Object\n},\ndata: function () {\nreturn {\nopen: false\n}\n},\ncomputed: {\nisFolder: function () {\nreturn this.model.children &&\nthis.model.children.length\n}\n},\nmethods: {\ntoggle: function () {\nif (this.isFolder) {\nthis.open = !this.open\n}\n},\nchangeType: function () {\nif (!this.isFolder) {\nVue.set(this.model, 'children', [])\nthis.addChild()\nthis.open = true\n}\n},\naddChild: function () {\nthis.model.children.push({\nname: 'new stuff'\n})\n}\n}\n})\n\n// boot up the demo\nvar demo = new Vue({\nel: '#demo',\ndata: {\ntreeData: data\n}\n})\n"
+    },
+    {
+      "id": "code-2",
+      "text": "// A reusable polygon graph component\nVue.component('polygraph', {\nprops: ['stats'],\ntemplate: '#polygraph-template',\ncomputed: {\n// a computed property for the polygon's points\npoints: function () {\nvar total = this.stats.length\nreturn this.stats.map(function (stat, i) {\nvar point = valueToPoint(stat.value, i, total)\nreturn point.x + ',' + point.y\n}).join(' ')\n}\n},\ncomponents: {\n// a sub component for the labels\n'axis-label': {\nprops: {\nstat: Object,\nindex: Number,\ntotal: Number\n},\ntemplate: '#axis-label-template',\ncomputed: {\npoint: function () {\nreturn valueToPoint(\n+this.stat.value + 10,\nthis.index,\nthis.total\n)\n}\n}\n}\n}\n})"
+    },
+    {
+      "id": "code-3",
+      "text": "console.log('Hello, World!');"
+    },
+    {
+      "id": "code-4",
+      "text": "function dijkstra(graph, s) {\nconst distance = {};\nconst previous = {};\nconst q = new PriorityQueue();\n// Initialize\ndistance[s] = 0;\ngraph.vertices.forEach(v => {\nif (v !== s) {\ndistance[v] = Infinity;\n}\nq.insert(v, distance[v]);\n});\n\nlet currNode;\nconst relax = v => {\nconst newDistance = distance[currNode] + graph.edge(currNode, v);\nif (newDistance < distance[v]) {\ndistance[v] = newDistance;\nprevious[v] = currNode;\nq.changePriority(v, distance[v]);\n}\n};\nwhile (!q.isEmpty()) {\ncurrNode = q.extract();\ngraph.neighbors(currNode).forEach(relax);\n}\nreturn {\ndistance,\nprevious\n};\n}"
+    },
+    {
+      "id": "code-5",
+      "text": "class BezierCurve {\nconstructor(points) {\nthis.n = points.length;\nthis.p = [];\n\n// The binomial coefficient\nconst c = [1];\nlet i;\nlet j;\nfor (i = 1; i < this.n; ++i) {\nc.push(0);\nfor (j = i; j >= 1; --j) {\nc[j] += c[j - 1];\n}\n}\n\n// the i-th control point times the coefficient\nfor (i = 0; i < this.n; ++i) {\nthis.p.push({x: c[i] * points[i].x, y: c[i] * points[i].y});\n}\n}\n\n/**\n* @param Number float variable from 0 to 1\n*/\nget(t) {\nconst res = {x: 0, y: 0};\nlet i;\nlet a = 1;\nlet b = 1;\n\n// The coefficient\nconst c = [];\nfor (i = 0; i < this.n; ++i) {\nc.push(a);\na *= t;\n}\n\nfor (i = this.n - 1; i >= 0; --i) {\nres.x += this.p[i].x * c[i] * b;\nres.y += this.p[i].y * c[i] * b;\nb *= 1 - t;\n}\nreturn res;\n}\n}\n\nmodule.exports = BezierCurve;"
+    },
+    {
+      "id": "code-6",
+      "text": "def tryRead(self, length):\ntry:\nread_start = time.time()\nbytes_remaining = length\nresult = bytearray()\nwhile bytes_remaining != 0 and time.time() - read_start < self.timeout:\nwith self.read_lock:\nreceived = self.port.read(bytes_remaining)\nif len(received) != 0:\nself.last_read = rospy.Time.now()\nresult.extend(received)\nbytes_remaining -= len(received)\n\nif bytes_remaining != 0:\nraise IOError(\"Returned short (expected %d bytes, received %d instead).\" % (length, length - bytes_remaining))\n\nreturn bytes(result)\nexcept Exception as e:\nraise IOError(\"Serial Port read failure: %s\" % e)"
+    },
+    {
+      "id": "code-7",
+      "text": "img = preprocess_image(base_image_path)\nif K.image_data_format() == 'channels_first':\noriginal_shape = img.shape[2:]\nelse:\noriginal_shape = img.shape[1:3]\nsuccessive_shapes = [original_shape]\nfor i in range(1, num_octave):\nshape = tuple([int(dim / (octave_scale ** i)) for dim in original_shape])\nsuccessive_shapes.append(shape)\nsuccessive_shapes = successive_shapes[::-1]\noriginal_img = np.copy(img)\nshrunk_original_img = resize_img(img, successive_shapes[0])\n\nfor shape in successive_shapes:\nprint('Processing image shape', shape)\nimg = resize_img(img, shape)\nimg = gradient_ascent(img,\niterations=iterations,\nstep=step,\nmax_loss=max_loss)\nupscaled_shrunk_original_img = resize_img(shrunk_original_img, shape)\nsame_size_original = resize_img(original_img, shape)\nlost_detail = same_size_original - upscaled_shrunk_original_img\n\nimg += lost_detail\nshrunk_original_img = resize_img(original_img, shape)\n\nsave_img(result_prefix + '.png', deprocess_image(np.copy(img)))\n"
+    },
+    {
+      "id": "code-8",
+      "text": "def main(unused_argv):\ntf.logging.set_verbosity(tf.logging.INFO)\n\nnum_training_data = maybe_download_iris_data(\nIRIS_TRAINING, IRIS_TRAINING_URL)\nnum_test_data = maybe_download_iris_data(IRIS_TEST, IRIS_TEST_URL)\n\n# Build 3 layer DNN with 10, 20, 10 units respectively.\nfeature_columns = [\ntf.feature_column.numeric_column(key, shape=1) for key in FEATURE_KEYS]\nclassifier = tf.estimator.DNNClassifier(\nfeature_columns=feature_columns, hidden_units=[10, 20, 10], n_classes=3)\n\n# Train.\ntrain_input_fn = input_fn(IRIS_TRAINING, num_training_data, batch_size=32,\nis_training=True)\nclassifier.train(input_fn=train_input_fn, steps=400)\n\n# Eval.\ntest_input_fn = input_fn(IRIS_TEST, num_test_data, batch_size=32,\nis_training=False)\nscores = classifier.evaluate(input_fn=test_input_fn)\nprint('Accuracy (tensorflow): {0:f}'.format(scores['accuracy']))"
+    },
+    {
+      "id": "code-9",
+      "text": "def train(args):\ndevice = torch.device(\"cuda\" if args.cuda else \"cpu\")\n\nnp.random.seed(args.seed)\ntorch.manual_seed(args.seed)\n\ntransform = transforms.Compose([\ntransforms.Resize(args.image_size),\ntransforms.CenterCrop(args.image_size),\ntransforms.ToTensor(),\ntransforms.Lambda(lambda x: x.mul(255))\n])\ntrain_dataset = datasets.ImageFolder(args.dataset, transform)\ntrain_loader = DataLoader(train_dataset, batch_size=args.batch_size)\n\ntransformer = TransformerNet().to(device)\noptimizer = Adam(transformer.parameters(), args.lr)\nmse_loss = torch.nn.MSELoss()\n\nvgg = Vgg16(requires_grad=False).to(device)\nstyle_transform = transforms.Compose([\ntransforms.ToTensor(),\ntransforms.Lambda(lambda x: x.mul(255))\n])\nstyle = utils.load_image(args.style_image, size=args.style_size)\nstyle = style_transform(style)\nstyle = style.repeat(args.batch_size, 1, 1, 1).to(device)\n\nfeatures_style = vgg(utils.normalize_batch(style))\ngram_style = [utils.gram_matrix(y) for y in features_style]\n\nfor e in range(args.epochs):\ntransformer.train()\nagg_content_loss = 0.\nagg_style_loss = 0.\ncount = 0\nfor batch_id, (x, _) in enumerate(train_loader):\nn_batch = len(x)\ncount += n_batch\noptimizer.zero_grad()\n\ny = transformer(x.to(device))\n\ny = utils.normalize_batch(y)\nx = utils.normalize_batch(x)\n\nfeatures_y = vgg(y)\nfeatures_x = vgg(x)\n\ncontent_loss = args.content_weight * mse_loss(features_y.relu2_2, features_x.relu2_2)\n\nstyle_loss = 0.\nfor ft_y, gm_s in zip(features_y, gram_style):\ngm_y = utils.gram_matrix(ft_y)\nstyle_loss += mse_loss(gm_y, gm_s[:n_batch, :, :])\nstyle_loss *= args.style_weight\n\ntotal_loss = content_loss + style_loss\ntotal_loss.backward()\noptimizer.step()\n\nagg_content_loss += content_loss.item()\nagg_style_loss += style_loss.item()\n\nif (batch_id + 1) % args.log_interval == 0:\nmesg = \"{}Epoch {}:[{}/{}]content: {:.6f}style: {:.6f}total: {:.6f}\".format(\ntime.ctime(), e + 1, count, len(train_dataset),\nagg_content_loss / (batch_id + 1),\nagg_style_loss / (batch_id + 1),\n(agg_content_loss + agg_style_loss) / (batch_id + 1)\n)\nprint(mesg)\n\nif args.checkpoint_model_dir is not None and (batch_id + 1) % args.checkpoint_interval == 0:\ntransformer.eval().cpu()\nckpt_model_filename = \"ckpt_epoch_\" + str(e) + \"_batch_id_\" + str(batch_id + 1) + \".pth\"\nckpt_model_path = os.path.join(args.checkpoint_model_dir, ckpt_model_filename)\ntorch.save(transformer.state_dict(), ckpt_model_path)\ntransformer.to(device).train()\n\n# save model\ntransformer.eval().cpu()\nsave_model_filename = \"epoch_\" + str(args.epochs) + \"_\" + str(time.ctime()).replace(' ', '_') + \"_\" + str(\nargs.content_weight) + \"_\" + str(args.style_weight) + \".model\"\nsave_model_path = os.path.join(args.save_model_dir, save_model_filename)\ntorch.save(transformer.state_dict(), save_model_path)\n\nprint(\"\nDone, trained model saved at\", save_model_path)"
+    },
+    {
+      "id": "code-10",
+      "text": "max_words = 1000\nbatch_size = 32\nepochs = 5\n\nprint('Loading data...')\n(x_train, y_train), (x_test, y_test) = reuters.load_data(num_words=max_words,\ntest_split=0.2)\nprint(len(x_train), 'train sequences')\nprint(len(x_test), 'test sequences')\n\nnum_classes = np.max(y_train) + 1\nprint(num_classes, 'classes')\n\nprint('Vectorizing sequence data...')\ntokenizer = Tokenizer(num_words=max_words)\nx_train = tokenizer.sequences_to_matrix(x_train, mode='binary')\nx_test = tokenizer.sequences_to_matrix(x_test, mode='binary')\nprint('x_train shape:', x_train.shape)\nprint('x_test shape:', x_test.shape)\n\nprint('Convert class vector to binary class matrix '\n'(for use with categorical_crossentropy)')\ny_train = keras.utils.to_categorical(y_train, num_classes)\ny_test = keras.utils.to_categorical(y_test, num_classes)\nprint('y_train shape:', y_train.shape)\nprint('y_test shape:', y_test.shape)\n\nprint('Building model...')\nmodel = Sequential()\nmodel.add(Dense(512, input_shape=(max_words,)))\nmodel.add(Activation('relu'))\nmodel.add(Dropout(0.5))\nmodel.add(Dense(num_classes))\nmodel.add(Activation('softmax'))\n\nmodel.compile(loss='categorical_crossentropy',\noptimizer='adam',\nmetrics=['accuracy'])\n\nhistory = model.fit(x_train, y_train,\nbatch_size=batch_size,\nepochs=epochs,\nverbose=1,\nvalidation_split=0.1)\nscore = model.evaluate(x_test, y_test,\nbatch_size=batch_size, verbose=1)\nprint('Test score:', score[0])\nprint('Test accuracy:', score[1])"
+    }
+  ]
+}
