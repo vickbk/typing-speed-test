@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
@@ -24,6 +25,15 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       input: ["index.html", "404.html"],
+    },
+  },
+  test: {
+    environment: "jsdom",
+    setupFiles: "./tests/vitest-setup.ts",
+    globals: true,
+    coverage: {
+      reporter: ["text", "json", "html"],
+      exclude: ["src/tests/*", "src/mocks/*"],
     },
   },
 }));
