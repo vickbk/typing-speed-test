@@ -1,4 +1,4 @@
-import { useTypingCtx } from "@/features";
+import { useTypingCtx } from "@/features/typing-speed";
 import {
   Article,
   Heading,

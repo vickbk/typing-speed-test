@@ -1,4 +1,4 @@
-import { useTypingCtx } from "@/features";
+import { useTypingCtx } from "@/features/typing-speed";
 import { clearMemoItem } from "@/shared";
 import { Icon } from "@/shared/helpers/components/bi-icon";
 import { SROnly } from "@/shared/helpers/components/SROnly";
