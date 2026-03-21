@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
 import { usePagination } from "./use-pagination";
 
-describe("usePagination", () => {
+describe("use Pagination", () => {
   it("should initialize with page 0", () => {
     const data = [1, 2, 3, 4, 5];
     const { result } = renderHook(() => usePagination(data, 2));
