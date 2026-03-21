@@ -1,30 +1,24 @@
 import { TypingContext, type AppState } from "@/features/typing-speed";
 import { renderHook } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import { useScoreHistory } from "./use-score-history";
+import { useResults } from "./use-results";
 
-// Mock memorization
+// Mock memorization and calculations
 vi.mock("@/shared", () => ({
-  getMemoItem: vi.fn((key: string) => {
-    if (key === "score.easy") {
-      return [
-        { wpm: 45, time: 1000 },
-        { wpm: 50, time: 2000 },
-        { wpm: 42, time: 3000 },
-      ];
-    }
-    return [];
-  }),
-  usePagination: vi.fn((data, pageSize) => ({
-    page: 0,
-    setPage: vi.fn(),
-    totalPages: Math.ceil(data.length / pageSize),
-    display: data.slice(0, pageSize),
-  })),
+  getMemoItem: vi.fn(() => []),
+  setMemoItem: vi.fn(),
 }));
 
-describe("useScoreHistory", () => {
-  it("should return pagination properties", () => {
+vi.mock("@/features/typing-speed", async () => {
+  const actual = await vi.importActual("@/features/typing-speed");
+  return {
+    ...actual,
+    calculateWPM: vi.fn(() => "50"),
+  };
+});
+
+describe("useResults", () => {
+  it("should return results object with default values", () => {
     const mockState: AppState = {
       mode: "",
       difficulty: "easy",
@@ -34,6 +28,8 @@ describe("useScoreHistory", () => {
       finish: false,
       best: 0,
       oldMistakes: "",
+      input: "",
+      difference: 0,
     };
 
     const mockDispatch = vi.fn();
@@ -49,16 +45,17 @@ describe("useScoreHistory", () => {
       </TypingContext.Provider>
     );
 
-    const { result } = renderHook(() => useScoreHistory(), {
+    const { result } = renderHook(() => useResults(), {
       wrapper: TestWrapper,
     });
 
-    expect(result.current.page).toBeDefined();
-    expect(result.current.setPage).toBeDefined();
-    expect(result.current.totalPages).toBeDefined();
+    expect(result.current.results).toBeDefined();
+    expect(result.current.results.title).toBeDefined();
+    expect(result.current.results.text).toBeDefined();
+    expect(result.current.results.button).toBeDefined();
   });
 
-  it("should return navigate function", () => {
+  it("should have loadOtherResults function", () => {
     const mockState: AppState = {
       mode: "",
       difficulty: "easy",
@@ -68,6 +65,8 @@ describe("useScoreHistory", () => {
       finish: false,
       best: 0,
       oldMistakes: "",
+      input: "",
+      difference: 0,
     };
 
     const mockDispatch = vi.fn();
@@ -83,14 +82,14 @@ describe("useScoreHistory", () => {
       </TypingContext.Provider>
     );
 
-    const { result } = renderHook(() => useScoreHistory(), {
+    const { result } = renderHook(() => useResults(), {
       wrapper: TestWrapper,
     });
 
-    expect(typeof result.current.navigate).toBe("function");
+    expect(typeof result.current.loadOtherResults).toBe("function");
   });
 
-  it("should have closeDialog function", () => {
+  it("should call results function on initial render", () => {
     const mockState: AppState = {
       mode: "",
       difficulty: "easy",
@@ -100,6 +99,8 @@ describe("useScoreHistory", () => {
       finish: false,
       best: 0,
       oldMistakes: "",
+      input: "",
+      difference: 0,
     };
 
     const mockDispatch = vi.fn();
@@ -115,14 +116,14 @@ describe("useScoreHistory", () => {
       </TypingContext.Provider>
     );
 
-    const { result } = renderHook(() => useScoreHistory(), {
+    const { result } = renderHook(() => useResults(), {
       wrapper: TestWrapper,
     });
 
-    expect(typeof result.current.closeDialog).toBe("function");
+    expect(result.current.results.title).toBe("Test Completed");
   });
 
-  it("should have loadResults function", () => {
+  it("should have correct initial result properties", () => {
     const mockState: AppState = {
       mode: "",
       difficulty: "easy",
@@ -132,6 +133,8 @@ describe("useScoreHistory", () => {
       finish: false,
       best: 0,
       oldMistakes: "",
+      input: "",
+      difference: 0,
     };
 
     const mockDispatch = vi.fn();
@@ -147,44 +150,13 @@ describe("useScoreHistory", () => {
       </TypingContext.Provider>
     );
 
-    const { result } = renderHook(() => useScoreHistory(), {
+    const { result } = renderHook(() => useResults(), {
       wrapper: TestWrapper,
     });
 
-    expect(typeof result.current.loadResults).toBe("function");
-  });
-
-  it("should sort results by time in descending order", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const mockDispatch = vi.fn();
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: mockDispatch,
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
-    const { result } = renderHook(() => useScoreHistory(), {
-      wrapper: TestWrapper,
-    });
-
-    result.current.loadResults(document.createElement("div"));
-
-    expect(result.current.loadResults).toBeDefined();
+    expect(result.current.results.first).toBe(true);
+    expect(result.current.results.best).toBe(false);
+    expect(result.current.results.button).toBe("Go Again");
+    expect(result.current.results.icon).toBeDefined();
   });
 });
