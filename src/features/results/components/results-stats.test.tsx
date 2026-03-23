@@ -11,10 +11,6 @@ vi.mock("../hooks", () => ({
   })),
 }));
 
-vi.mock("@/features/typing-speed/components/wpm-text", () => ({
-  WPMText: () => <span>WPM</span>,
-}));
-
 describe("ResultsStats Integration", () => {
   const mockState: AppState = {
     mode: 60,
