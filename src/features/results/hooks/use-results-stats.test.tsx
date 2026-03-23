@@ -1,4 +1,5 @@
 import { TypingContext, type AppState } from "@/features/typing-speed";
+import { getMockState } from "@/features/typing-speed/scripts/test-helpers";
 import { renderHook } from "@testing-library/react";
 import { useResultsStats } from "./use-results-stats";
 
@@ -59,20 +60,4 @@ function renderUseResultsStats(state: Partial<AppState> = {}) {
   return renderHook(() => useResultsStats({ state: mockState }), {
     wrapper: TestWrapper,
   });
-}
-
-function getMockState(state: Partial<AppState> = {}): AppState {
-  return {
-    mode: "",
-    difficulty: "easy",
-    typing: false,
-    text: "test",
-    errorCount: 0,
-    finish: false,
-    best: 0,
-    oldMistakes: "",
-    input: "",
-    difference: 0,
-    ...state,
-  };
 }
