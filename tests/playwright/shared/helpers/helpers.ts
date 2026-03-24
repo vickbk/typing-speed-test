@@ -2,25 +2,25 @@ import type { Locator, Page } from "@playwright/test";
 import { expect } from "@playwright/test";
 import type { LABEL_LOCATOR, TEXT_MATCHER, TEXT_PATTERN } from "@tests/shared";
 
+export function getTextLocator(page: Page, text: TEXT_MATCHER) {
+  return Array.isArray(text)
+    ? page.getByText(text[0]).nth(text[1])
+    : page.getByText(text);
+}
+
 export async function shouldSee(page: Page, ...textes: TEXT_MATCHER[]) {
+  const elements: Locator[] = [];
   for (const text of textes) {
-    if (Array.isArray(text)) {
-      const [matcher, nth] = text;
-      await expect(page.getByText(matcher).nth(nth)).toBeVisible();
-    } else {
-      await expect(page.getByText(text)).toBeVisible();
-    }
+    const locator = getTextLocator(page, text);
+    await expect(locator).toBeVisible();
+    elements.push(locator);
   }
+  return elements;
 }
 
 export async function shouldNotSee(page: Page, ...textes: TEXT_MATCHER[]) {
   for (const text of textes) {
-    if (Array.isArray(text)) {
-      const [matcher, nth] = text;
-      await expect(page.getByText(matcher).nth(nth)).not.toBeVisible();
-    } else {
-      await expect(page.getByText(text)).not.toBeVisible();
-    }
+    await expect(getTextLocator(page, text)).not.toBeVisible();
   }
 }
 
