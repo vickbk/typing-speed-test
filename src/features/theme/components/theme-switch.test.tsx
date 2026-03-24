@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { SWITCH_TO_DARK, SWITCH_TO_LIGHT } from "@tests/shared";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useTheme } from "../hooks";
 import { ThemeSwitch } from "./theme-switch";
@@ -32,7 +33,7 @@ describe("ThemeSwitch Integration", () => {
 
   it("should display sr-only text for accessibility", () => {
     render(<ThemeSwitch />);
-    const srText = screen.getByText("Swith to dark theme");
+    const srText = screen.getByText(SWITCH_TO_DARK);
     expect(srText).toHaveClass("sr-only");
   });
 
@@ -57,7 +58,7 @@ describe("ThemeSwitch Integration", () => {
   it("should update aria label when theme changes", async () => {
     const { rerender } = render(<ThemeSwitch />);
 
-    expect(screen.getByText("Swith to dark theme")).toBeInTheDocument();
+    expect(screen.getByText(SWITCH_TO_DARK)).toBeInTheDocument();
 
     vi.mocked(useTheme).mockReturnValue({
       toggleTheme: vi.fn(),
@@ -68,7 +69,7 @@ describe("ThemeSwitch Integration", () => {
     } as any);
 
     rerender(<ThemeSwitch />);
-    await expect(screen.getByText("Swith to light theme")).toBeInTheDocument();
+    await expect(screen.getByText(SWITCH_TO_LIGHT)).toBeInTheDocument();
   });
 });
 

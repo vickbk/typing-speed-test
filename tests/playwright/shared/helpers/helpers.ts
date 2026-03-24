@@ -63,7 +63,8 @@ export function getLabel(page: Page, hasText: TEXT_PATTERN) {
 }
 
 export async function clickButton(page: Page, hasText: TEXT_PATTERN) {
-  await getButton(page, hasText).click();
+  const button = await getButton(page, hasText);
+  await button.click();
 }
 
 export async function clickLabelInput(page: Page, labelText: TEXT_PATTERN) {
