@@ -1,7 +1,13 @@
 import { TypingContext, type AppState } from "@/features/typing-speed";
 import { getMockState } from "@/features/typing-speed/scripts/test-helpers";
 import { render } from "@testing-library/react";
-import { BASELINE_ESTABLISHED, HIGH_SCORE, SOLID_RUN } from "@tests/shared";
+import {
+  BASELINE_ESTABLISHED,
+  BEAT_THIS_SCORE,
+  GO_AGAIN,
+  HIGH_SCORE,
+  SOLID_RUN,
+} from "@tests/shared";
 import { shouldNotSee, shouldSee } from "@tests/vitest";
 import { ResultsLanding } from "./results-landing";
 
@@ -16,13 +22,13 @@ describe("Results landing", () => {
         <ResultsLanding />
       </TypingContext.Provider>,
     );
-    await shouldSee(BASELINE_ESTABLISHED);
+    await shouldSee(BASELINE_ESTABLISHED, BEAT_THIS_SCORE);
   });
 
   it("should show solid run message for a new result", async () => {
     renderResultsLanding({ best: 20 });
     await shouldNotSee(BASELINE_ESTABLISHED);
-    await shouldSee(SOLID_RUN);
+    await shouldSee(SOLID_RUN, GO_AGAIN);
   });
 
   it("should show personal best message for a new high result", async () => {
@@ -31,9 +37,8 @@ describe("Results landing", () => {
       text: "hello world",
       input: "hello world",
     });
-    await shouldNotSee(BASELINE_ESTABLISHED);
-    await shouldNotSee(SOLID_RUN);
-    await shouldSee(HIGH_SCORE);
+    await shouldNotSee(BASELINE_ESTABLISHED, SOLID_RUN);
+    await shouldSee(HIGH_SCORE, BEAT_THIS_SCORE);
   });
 });
 
