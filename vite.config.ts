@@ -18,8 +18,7 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": resolve(__dirname, "./src"),
-      "@assets": resolve("./src/assets"),
-      "@components": resolve("./src/components"),
+      "@tests": resolve(__dirname, "./tests"),
     },
   },
   build: {
@@ -29,7 +28,7 @@ export default defineConfig(({ mode }) => ({
   },
   test: {
     environment: "happy-dom",
-    setupFiles: "./tests/vitest-setup.ts",
+    setupFiles: "./tests/vitest/vitest-setup.ts",
     globals: true,
     coverage: {
       reporter: ["text", "json", "html"],

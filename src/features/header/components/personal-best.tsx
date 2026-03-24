@@ -1,7 +1,7 @@
+import { default as bestIcon } from "@/assets/images/icon-personal-best.svg";
 import { WPMText } from "@/features/typing-speed/components/wpm-text";
 import { Icon } from "@/shared/helpers/components/bi-icon";
 import { SROnly } from "@/shared/helpers/components/SROnly";
-import { default as bestIcon } from "@assets/images/icon-personal-best.svg";
 import { Link } from "react-router-dom";
 import { usePersonalBest } from "../hooks";
 
