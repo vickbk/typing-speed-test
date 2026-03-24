@@ -8,7 +8,7 @@ export const ThemeSwitch = () => {
   return (
     <div className="ml-auto">
       <button type="button" onClick={toggleTheme}>
-        <SROnly>Swith to {isDark ? "light" : "dark"} theme</SROnly>
+        <SROnly>Switch to {isDark ? "light" : "dark"} theme</SROnly>
         <Icon name={isDark ? "sun-fill c-yellow-400" : "moon-fill"} />
       </button>
     </div>
