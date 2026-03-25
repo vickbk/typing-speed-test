@@ -58,6 +58,10 @@ export function getButton(page: Page, hasText: TEXT_PATTERN) {
   return getLocatorByText(page, ["button", hasText]);
 }
 
+export function getLink(page: Page, hasText: TEXT_PATTERN) {
+  return page.getByRole("link", { name: hasText });
+}
+
 export function getLabel(page: Page, hasText: TEXT_PATTERN) {
   return getLocatorByText(page, ["label", hasText]);
 }
