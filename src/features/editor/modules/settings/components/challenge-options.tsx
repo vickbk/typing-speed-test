@@ -3,8 +3,7 @@ import { useChallengeOptions } from "../hooks";
 import { ChallengeParams } from "./challenge-params";
 
 export const ChallengeOptions = () => {
-  const { difficulty, setDifficulty, loadDifficulty, options } =
-    useChallengeOptions();
+  const { difficulty, setDifficulty, options } = useChallengeOptions();
   return (
     <ChallengeParams
       name="level"
@@ -14,9 +13,7 @@ export const ChallengeOptions = () => {
       key={difficulty}
     >
       <SROnly>Select your </SROnly>
-      <span ref={loadDifficulty} className="sr-only md:not-sr-only">
-        Difficulty
-      </span>
+      <span className="sr-only md:not-sr-only">Difficulty</span>
       <SROnly> level</SROnly>
       <span className="sr-only md:not-sr-only">:</span>
     </ChallengeParams>

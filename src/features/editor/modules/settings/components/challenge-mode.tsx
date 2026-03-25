@@ -3,8 +3,7 @@ import { useChallengeMode } from "../hooks";
 import { ChallengeParams } from "./challenge-params";
 
 export const ChallengeMode = () => {
-  const { modeDisplay, setMode, loadMode, mode, timingMode } =
-    useChallengeMode();
+  const { modeDisplay, setMode, mode, timingMode } = useChallengeMode();
 
   return (
     <ChallengeParams
@@ -15,9 +14,7 @@ export const ChallengeMode = () => {
       key={mode}
     >
       <SROnly>Select your challenge </SROnly>
-      <span className="sr-only md:not-sr-only" ref={loadMode}>
-        Mode:
-      </span>
+      <span className="sr-only md:not-sr-only">Mode:</span>
     </ChallengeParams>
   );
 };
