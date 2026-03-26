@@ -47,4 +47,15 @@ test.describe("Difficulty settings", () => {
       await currentModeShouldBe(page, EASY_LINK);
     });
   });
+
+  difficulties.forEach(([link, query]) => {
+    test(`should persist specific difficulty (${link.source}) after page refresh`, async ({
+      page,
+    }) => {
+      await page.goto(query);
+      await currentModeShouldBe(page, link);
+      await page.goto("/");
+      await currentModeShouldBe(page, link);
+    });
+  });
 });

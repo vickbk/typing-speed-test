@@ -7,7 +7,7 @@ export const ChallengeOptions = () => {
     useChallengeOptions();
   return (
     <ChallengeParams
-      name="level"
+      name="difficulty"
       current={difficulty}
       updateCurrent={setDifficulty}
       options={options}

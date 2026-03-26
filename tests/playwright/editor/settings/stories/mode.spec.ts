@@ -39,6 +39,17 @@ test.describe("Mode settings", () => {
     });
   });
 
+  modeLinks.forEach(([link, query]) => {
+    test(`should persist specific mode (${link.source}) after page refresh`, async ({
+      page,
+    }) => {
+      await page.goto(query);
+      await currentModeShouldBe(page, link);
+      await page.goto("/");
+      await currentModeShouldBe(page, link);
+    });
+  });
+
   UNKNOWN_MODES.forEach((mode) => {
     test(`should start in passage mode for unkown queries (${mode})`, async ({
       page,

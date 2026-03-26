@@ -5,7 +5,7 @@ import {
 } from "@/features/typing-speed";
 import { getMockState } from "@/features/typing-speed/scripts/test-helpers";
 import { renderHook } from "@testing-library/react";
-import { UNKNOWN_DIFFICULTIES } from "@tests/shared";
+import { DIFFICULTIES, UNKNOWN_DIFFICULTIES } from "@tests/shared";
 import { HOOK_CALLER } from "@tests/vitest";
 import { act } from "react";
 import { MemoryRouter } from "react-router-dom";
@@ -49,11 +49,13 @@ describe("useChallengeOptions", () => {
     );
   });
 
-  it.each(["easy", "medium", "hard", "quote", "code"] as const)(
+  it.each(DIFFICULTIES)(
     "should initiate the state to the difficulty set in query (%s)",
     (difficulty) => {
       const { result } = renderHook(() => useChallengeOptions(), {
-        wrapper: renderChallengeOptionsWrapper({ difficulty: difficulty }),
+        wrapper: renderChallengeOptionsWrapper({
+          difficulty: difficulty as AppState["difficulty"],
+        }),
       });
       act(() => {
         result.current.loadDifficulty(HOOK_CALLER);
@@ -61,6 +63,7 @@ describe("useChallengeOptions", () => {
       expect(result.current.difficulty).toBe(difficulty);
     },
   );
+
   it.each(UNKNOWN_DIFFICULTIES)(
     "should start in easy level for unkown difficulty in search string (%s)",
     (difficulty) => {
@@ -73,6 +76,27 @@ describe("useChallengeOptions", () => {
         result.current.loadDifficulty(HOOK_CALLER);
       });
       expect(result.current.difficulty).toBe("easy");
+    },
+  );
+
+  test.each(DIFFICULTIES)(
+    "should persist difficulty on page reload (%s)",
+    (difficulty) => {
+      const { result } = renderHook(() => useChallengeOptions(), {
+        wrapper: renderChallengeOptionsWrapper({
+          difficulty: difficulty as AppState["difficulty"],
+        }),
+      });
+
+      act(() => result.current.loadDifficulty(HOOK_CALLER));
+
+      expect(result.current.difficulty).toBe(difficulty);
+
+      const { result: rs } = renderHook(() => useChallengeOptions(), {
+        wrapper: renderChallengeOptionsWrapper(),
+      });
+      act(() => rs.current.loadDifficulty(HOOK_CALLER));
+      expect(rs.current.difficulty).toBe(difficulty);
     },
   );
 });

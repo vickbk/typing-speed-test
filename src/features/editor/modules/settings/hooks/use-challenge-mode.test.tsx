@@ -5,7 +5,7 @@ import {
 } from "@/features/typing-speed";
 import { getMockState } from "@/features/typing-speed/scripts/test-helpers";
 import { renderHook } from "@testing-library/react";
-import { UNKNOWN_MODES } from "@tests/shared";
+import { MODES, UNKNOWN_MODES } from "@tests/shared";
 import { HOOK_CALLER } from "@tests/vitest";
 import { act } from "react";
 import { MemoryRouter } from "react-router-dom";
@@ -27,7 +27,7 @@ describe("useChallengeMode", () => {
     });
 
     const modes = result.current.timingMode.map(([value]) => value);
-    [15, 30, 60, 120, ""].forEach((mode) => expect(modes).toContain(mode));
+    MODES.forEach((mode) => expect(modes).toContain(mode));
   });
 
   it("should return current mode", () => {
@@ -57,12 +57,12 @@ describe("useChallengeMode", () => {
     );
   });
 
-  it.each([15, 30, 60, 120, ""] as const)(
+  it.each(MODES)(
     "should initiate the state to the mode set in query (%s)",
     (mode) => {
       const { result } = renderHook(() => useChallengeMode(), {
         wrapper: renderChallengeModeWrapper({
-          mode: mode,
+          mode: mode as AppState["mode"],
         }),
       });
 
@@ -84,6 +84,24 @@ describe("useChallengeMode", () => {
       expect(current.mode).toBe("");
     },
   );
+
+  test.each(MODES)("should persist mode on page reload (%s)", (mode) => {
+    const { result } = renderHook(() => useChallengeMode(), {
+      wrapper: renderChallengeModeWrapper({
+        mode: mode as AppState["mode"],
+      }),
+    });
+
+    act(() => result.current.loadMode(HOOK_CALLER));
+
+    expect(result.current.mode).toBe(mode);
+
+    const { result: rs } = renderHook(() => useChallengeMode(), {
+      wrapper: renderChallengeModeWrapper(),
+    });
+    act(() => rs.current.loadMode(HOOK_CALLER));
+    expect(rs.current.mode).toBe(mode);
+  });
 });
 
 function renderChallengeModeWrapper({
