@@ -1,43 +1,18 @@
-import { TypingContext, type AppState } from "@/features/typing-speed";
+import {
+  TypingContext,
+  useTypingSpeed,
+  type AppState,
+} from "@/features/typing-speed";
+import { getMockState } from "@/features/typing-speed/scripts/test-helpers";
 import { renderHook } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { act } from "react";
+import { MemoryRouter } from "react-router-dom";
 import { useChallengeMode } from "./use-challenge-mode";
-
-// Mock memorization
-vi.mock("@/shared", () => ({
-  getMemoItem: vi.fn((key: string) => {
-    if (key === "mode") return 60;
-    return undefined;
-  }),
-  setMemoItem: vi.fn(),
-}));
 
 describe("useChallengeMode", () => {
   it("should have timing modes available", () => {
-    const mockState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState as AppState,
-          dispatch: vi.fn(),
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
     const { result } = renderHook(() => useChallengeMode(), {
-      wrapper: TestWrapper,
+      wrapper: renderChallengeModeWrapper(),
     });
 
     expect(result.current.timingMode).toBeDefined();
@@ -45,158 +20,69 @@ describe("useChallengeMode", () => {
   });
 
   it("should include timed and passage modes", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: vi.fn(),
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
     const { result } = renderHook(() => useChallengeMode(), {
-      wrapper: TestWrapper,
+      wrapper: renderChallengeModeWrapper(),
     });
 
     const modes = result.current.timingMode.map(([value]) => value);
-    expect(modes).toContain(15);
-    expect(modes).toContain(30);
-    expect(modes).toContain(60);
-    expect(modes).toContain(120);
-    expect(modes).toContain("");
+    [15, 30, 60, 120, ""].forEach((mode) => expect(modes).toContain(mode));
   });
 
   it("should return current mode", () => {
-    const mockState: AppState = {
-      mode: 60,
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: vi.fn(),
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
     const { result } = renderHook(() => useChallengeMode(), {
-      wrapper: TestWrapper,
+      wrapper: renderChallengeModeWrapper({ state: { mode: 60 } }),
     });
 
     expect(result.current.mode).toBe(60);
   });
 
   it("should provide mode display text", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: vi.fn(),
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
     const { result } = renderHook(() => useChallengeMode(), {
-      wrapper: TestWrapper,
+      wrapper: renderChallengeModeWrapper(),
     });
 
     expect(result.current.modeDisplay).toBeDefined();
     expect(typeof result.current.modeDisplay).toBe("string");
   });
 
-  it("should have setMode function", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: vi.fn(),
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
+  it("should have setMode and loadMode functions", () => {
     const { result } = renderHook(() => useChallengeMode(), {
-      wrapper: TestWrapper,
+      wrapper: renderChallengeModeWrapper(),
     });
 
-    expect(typeof result.current.setMode).toBe("function");
-  });
-
-  it("should have loadMode function", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: vi.fn(),
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
+    (["setMode", "loadMode"] as const).forEach((func) =>
+      expect(typeof result.current[func]).toBe("function"),
     );
-
-    const { result } = renderHook(() => useChallengeMode(), {
-      wrapper: TestWrapper,
-    });
-
-    expect(typeof result.current.loadMode).toBe("function");
   });
+
+  it.each([15, 30, 60, 120, ""] as const)(
+    "should initiate the state to the mode set in query (%s)",
+    (mode) => {
+      const { result } = renderHook(() => useChallengeMode(), {
+        wrapper: renderChallengeModeWrapper({
+          mode: mode,
+        }),
+      });
+
+      act(() => result.current.loadMode(document.createElement("div")));
+
+      expect(result.current.mode).toBe(mode);
+    },
+  );
 });
+
+function renderChallengeModeWrapper({
+  state = {},
+  mode: mode = null,
+}: {
+  state?: Partial<AppState>;
+  mode?: AppState["mode"] | null;
+} = {}) {
+  return ({ children }: { children: React.ReactNode }) => (
+    <MemoryRouter initialEntries={[mode !== null ? `/?mode=${mode}` : ""]}>
+      <TypingContext.Provider value={useTypingSpeed(getMockState(state))}>
+        {children}
+      </TypingContext.Provider>
+    </MemoryRouter>
+  );
+}
