@@ -15,13 +15,53 @@ export const GO_AGAIN = /go again/i;
 export const BEAT_THIS_SCORE = /beat this score/i;
 
 /**
- * Mode constants
+ * Difficulty constants
  */
-const difficulties = "easy, medium, hard, quote, code"
-  .split(",")
-  .map((d) => d.trim());
+export const DIFFICULTIES = toArray("easy, medium, hard, quote, code");
 export const [EASY_LINK, MEDIUM_LINK, HARD_LINK, QUOTE_LINK, CODE_LINK] =
-  difficulties.map((mode) => new RegExp(mode, "i"));
+  DIFFICULTIES.map((mode) => new RegExp(mode, "i"));
 
 export const [EASY_QUERY, MEDIUM_QUERY, HARD_QUERY, QUOTE_QUERY, CODE_QUERY] =
-  difficulties.map((difficulty) => `/?difficulty=${difficulty}`);
+  DIFFICULTIES.map((difficulty) => makeQuery`difficulty${difficulty}`);
+
+export const UNKNOWN_DIFFICULTIES = toArray(
+  "unknown, any,some,quotes,easier,too-hard,whatever",
+);
+
+/**
+ * Mode constants
+ */
+export const MODES = [15, 30, 60, 120, ""];
+
+export const [S15_LINK, S30_LINK, S60_LINK, S120_LINK, PASSAGE_LINK] = toRegExp(
+  toArray("15s,30s,60s,120s,passage"),
+);
+
+export const [QUERY_15, QUERY_30, QUERY_60, QUERY_120, QUERY_PASSAGE] =
+  MODES.map((mode) => makeQuery`mode${mode}`);
+export const UNKNOWN_MODES = toArray(
+  "passage,minutes,hours,unknown,whatever,20,12,35,59,61",
+);
+
+function toArray(vars: string) {
+  return vars.split(",").map((s) => s.trim());
+}
+
+function toRegExp(vars: (string | number)[]) {
+  return vars.map((v) => new RegExp(v.toString(), "i"));
+}
+
+export function makeQuery(
+  names: TemplateStringsArray,
+  ...values: (string | number)[]
+) {
+  return (
+    "/?" +
+    names
+      .map((name, index) => {
+        return name !== "" ? `${name.trim()}=${values[index]}` : null;
+      })
+      .filter(Boolean)
+      .join("&")
+  );
+}

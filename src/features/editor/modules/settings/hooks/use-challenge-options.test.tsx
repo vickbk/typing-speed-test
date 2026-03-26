@@ -5,6 +5,8 @@ import {
 } from "@/features/typing-speed";
 import { getMockState } from "@/features/typing-speed/scripts/test-helpers";
 import { renderHook } from "@testing-library/react";
+import { UNKNOWN_DIFFICULTIES } from "@tests/shared";
+import { HOOK_CALLER } from "@tests/vitest";
 import { act } from "react";
 import { MemoryRouter } from "react-router-dom";
 import { useChallengeOptions } from "./use-challenge-options";
@@ -54,9 +56,23 @@ describe("useChallengeOptions", () => {
         wrapper: renderChallengeOptionsWrapper({ difficulty: difficulty }),
       });
       act(() => {
-        result.current.loadDifficulty(document.createElement("div"));
+        result.current.loadDifficulty(HOOK_CALLER);
       });
       expect(result.current.difficulty).toBe(difficulty);
+    },
+  );
+  it.each(UNKNOWN_DIFFICULTIES)(
+    "should start in easy level for unkown difficulty in search string (%s)",
+    (difficulty) => {
+      const { result } = renderHook(() => useChallengeOptions(), {
+        wrapper: renderChallengeOptionsWrapper({
+          difficulty: difficulty as AppState["difficulty"],
+        }),
+      });
+      act(() => {
+        result.current.loadDifficulty(HOOK_CALLER);
+      });
+      expect(result.current.difficulty).toBe("easy");
     },
   );
 });

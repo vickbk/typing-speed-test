@@ -5,6 +5,8 @@ import {
 } from "@/features/typing-speed";
 import { getMockState } from "@/features/typing-speed/scripts/test-helpers";
 import { renderHook } from "@testing-library/react";
+import { UNKNOWN_MODES } from "@tests/shared";
+import { HOOK_CALLER } from "@tests/vitest";
 import { act } from "react";
 import { MemoryRouter } from "react-router-dom";
 import { useChallengeMode } from "./use-challenge-mode";
@@ -64,9 +66,22 @@ describe("useChallengeMode", () => {
         }),
       });
 
-      act(() => result.current.loadMode(document.createElement("div")));
+      act(() => result.current.loadMode(HOOK_CALLER));
 
       expect(result.current.mode).toBe(mode);
+    },
+  );
+
+  it.each(UNKNOWN_MODES)(
+    "should initiate in passage mode for unknown mode in query mode (%s)",
+    (mode) => {
+      const {
+        result: { current },
+      } = renderHook(() => useChallengeMode(), {
+        wrapper: renderChallengeModeWrapper({ mode: mode as AppState["mode"] }),
+      });
+      act(() => current.loadMode(HOOK_CALLER));
+      expect(current.mode).toBe("");
     },
   );
 });
