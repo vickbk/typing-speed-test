@@ -1,6 +1,13 @@
 import { buildInitialState, TypingContext } from "@/features/typing-speed";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import {
+  NEVER_PLAYED_BEFORE,
+  NO_PREVIOUS_RECORDS,
+  START_NEW_TEST,
+  START_TYPING,
+} from "@tests/shared";
+import { shouldSee } from "@tests/vitest";
 import { EmptyScore } from "./empty-score";
 
 describe("EmptyScore", () => {
@@ -22,7 +29,7 @@ describe("EmptyScore", () => {
     vi.clearAllMocks();
   });
 
-  it("should render the empty score component", () => {
+  it("should render the empty score component", async () => {
     render(
       <TestWrapper>
         <EmptyScore onClose={mockOnClose} />
@@ -30,18 +37,13 @@ describe("EmptyScore", () => {
     );
 
     expect(screen.getByRole("article")).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", { name: /no previous records/i }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/it looks like you never played this level before/i),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/go and start a new test now/i),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: /start typing/i }),
-    ).toBeInTheDocument();
+
+    await shouldSee(
+      NO_PREVIOUS_RECORDS,
+      NEVER_PLAYED_BEFORE,
+      START_NEW_TEST,
+      START_TYPING,
+    );
   });
 
   it("should call onClose and dispatch startTyping when button is clicked", async () => {
@@ -53,7 +55,7 @@ describe("EmptyScore", () => {
       </TestWrapper>,
     );
 
-    const button = screen.getByRole("button", { name: /start typing/i });
+    const button = screen.getByRole("button", { name: START_TYPING });
     await user.click(button);
 
     expect(mockOnClose).toHaveBeenCalledTimes(1);

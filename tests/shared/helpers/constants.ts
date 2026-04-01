@@ -1,4 +1,11 @@
 /**
+ *
+ * Common constants
+ */
+
+export const START_TYPING = /start typing/i;
+
+/**
  * Theme constants
  */
 
@@ -42,6 +49,16 @@ export const [QUERY_15, QUERY_30, QUERY_60, QUERY_120, QUERY_PASSAGE] =
 export const UNKNOWN_MODES = toArray(
   "passage,minutes,hours,unknown,whatever,20,12,35,59,61",
 );
+
+/**
+ *
+ * Empty score variables
+ */
+
+export const NO_PREVIOUS_RECORDS = /no previous records/i;
+export const NEVER_PLAYED_BEFORE =
+  /it looks like you never played this level before/i;
+export const START_NEW_TEST = /go and start a new test now/i;
 
 function toArray(vars: string) {
   return vars.split(",").map((s) => s.trim());
