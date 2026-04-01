@@ -1,5 +1,9 @@
 import { test } from "@playwright/test";
-import { asHistoryUser, shouldSee } from "@tests/playwright/shared";
+import {
+  asHistoryUser,
+  shouldNotSee,
+  shouldSee,
+} from "@tests/playwright/shared";
 import {
   CODE_LINK,
   CODE_QUERY,
@@ -45,6 +49,6 @@ test.describe("Empty score history", () => {
       exact: true,
     });
     await button.click();
-    await shouldSee(page, START_TYPING);
+    await shouldNotSee(page, START_TYPING);
   });
 });
