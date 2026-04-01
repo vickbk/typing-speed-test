@@ -1,4 +1,10 @@
 /**
+ * Personal Best selectors
+ */
+export const PERSONAL_BEST_LABEL = /Best:/i;
+export const WPM = /WPM/i;
+export const SHOW_HISTORY = /show history/i;
+/**
  *
  * Common constants
  */
