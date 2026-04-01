@@ -1,5 +1,6 @@
-import { TypingContext, type AppState } from "@/features/typing-speed";
-import { renderHook } from "@testing-library/react";
+import { TypingContext, buildInitialState } from "@/features/typing-speed";
+import { act, renderHook, waitFor } from "@testing-library/react";
+import { HOOK_CALLER } from "@tests/vitest";
 import { BrowserRouter } from "react-router-dom";
 import { useScoreHistory } from "./use-score-history";
 
@@ -23,32 +24,19 @@ vi.mock("@/shared", () => ({
   })),
 }));
 
+const TestWrapper = ({ children }: { children: React.ReactNode }) => (
+  <TypingContext.Provider
+    value={{
+      state: buildInitialState({ difficulty: "easy" }),
+      dispatch: vi.fn(),
+    }}
+  >
+    <BrowserRouter>{children}</BrowserRouter>
+  </TypingContext.Provider>
+);
+
 describe("useScoreHistory", () => {
   it("should return pagination properties", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const mockDispatch = vi.fn();
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: mockDispatch,
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
     const { result } = renderHook(() => useScoreHistory(), {
       wrapper: TestWrapper,
     });
@@ -59,30 +47,6 @@ describe("useScoreHistory", () => {
   });
 
   it("should return navigate function", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const mockDispatch = vi.fn();
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: mockDispatch,
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
     const { result } = renderHook(() => useScoreHistory(), {
       wrapper: TestWrapper,
     });
@@ -91,30 +55,6 @@ describe("useScoreHistory", () => {
   });
 
   it("should have closeDialog function", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const mockDispatch = vi.fn();
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: mockDispatch,
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
     const { result } = renderHook(() => useScoreHistory(), {
       wrapper: TestWrapper,
     });
@@ -123,30 +63,6 @@ describe("useScoreHistory", () => {
   });
 
   it("should have loadResults function", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const mockDispatch = vi.fn();
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: mockDispatch,
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
     const { result } = renderHook(() => useScoreHistory(), {
       wrapper: TestWrapper,
     });
@@ -154,37 +70,20 @@ describe("useScoreHistory", () => {
     expect(typeof result.current.loadResults).toBe("function");
   });
 
-  it("should sort results by time in descending order", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
-
-    const mockDispatch = vi.fn();
-
-    const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-      <TypingContext.Provider
-        value={{
-          state: mockState,
-          dispatch: mockDispatch,
-        }}
-      >
-        <BrowserRouter>{children}</BrowserRouter>
-      </TypingContext.Provider>
-    );
-
+  it("should sort results by time in descending order", async () => {
     const { result } = renderHook(() => useScoreHistory(), {
       wrapper: TestWrapper,
     });
 
-    result.current.loadResults(document.createElement("div"));
+    act(() => {
+      result.current.loadResults(HOOK_CALLER);
+    });
 
-    expect(result.current.loadResults).toBeDefined();
+    await waitFor(() => {
+      expect(result.current.display).not.toEqual([]);
+      expect(result.current.display[0].time).toBeGreaterThan(
+        result.current.display[1].time,
+      );
+    });
   });
 });
