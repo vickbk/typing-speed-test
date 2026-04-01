@@ -34,6 +34,7 @@ export const [EASY_QUERY, MEDIUM_QUERY, HARD_QUERY, QUOTE_QUERY, CODE_QUERY] =
 export const UNKNOWN_DIFFICULTIES = toArray(
   "unknown, any,some,quotes,easier,too-hard,whatever",
 );
+export const CHALLENGE_OPTIONS = /Challenge Options/i;
 
 /**
  * Mode constants
@@ -52,13 +53,17 @@ export const UNKNOWN_MODES = toArray(
 
 /**
  *
- * Empty score variables
+ * History variables
  */
 
 export const NO_PREVIOUS_RECORDS = /no previous records/i;
 export const NEVER_PLAYED_BEFORE =
   /it looks like you never played this level before/i;
 export const START_NEW_TEST = /go and start a new test now/i;
+
+export const SCORE_HISTORY = /score history/i;
+export const CLOSE_HISTORY = /close history/i;
+export const CLEAR_BUTTON = /Clear History/i;
 
 function toArray(vars: string) {
   return vars.split(",").map((s) => s.trim());
