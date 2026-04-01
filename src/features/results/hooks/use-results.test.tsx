@@ -1,4 +1,4 @@
-import { TypingContext, type AppState } from "@/features/typing-speed";
+import { TypingContext, buildInitialState } from "@/features/typing-speed";
 import { renderHook } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { useResults } from "./use-results";
@@ -19,18 +19,7 @@ vi.mock("@/features/typing-speed", async () => {
 
 describe("useResults", () => {
   it("should return results object with default values", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-      input: "",
-      difference: 0,
-    };
+    const mockState = buildInitialState();
 
     const mockDispatch = vi.fn();
 
@@ -56,18 +45,7 @@ describe("useResults", () => {
   });
 
   it("should have loadOtherResults function", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-      input: "",
-      difference: 0,
-    };
+    const mockState = buildInitialState();
 
     const mockDispatch = vi.fn();
 
@@ -90,18 +68,7 @@ describe("useResults", () => {
   });
 
   it("should call results function on initial render", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-      input: "",
-      difference: 0,
-    };
+    const mockState = buildInitialState();
 
     const mockDispatch = vi.fn();
 
@@ -124,18 +91,7 @@ describe("useResults", () => {
   });
 
   it("should have correct initial result properties", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-      input: "",
-      difference: 0,
-    };
+    const mockState = buildInitialState();
 
     const mockDispatch = vi.fn();
 
