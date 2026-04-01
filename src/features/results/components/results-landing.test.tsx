@@ -1,5 +1,8 @@
-import { TypingContext, type AppState } from "@/features/typing-speed";
-import { getMockState } from "@/features/typing-speed/scripts/test-helpers";
+import {
+  buildInitialState,
+  TypingContext,
+  type AppState,
+} from "@/features/typing-speed";
 import { render } from "@testing-library/react";
 import {
   BASELINE_ESTABLISHED,
@@ -17,7 +20,7 @@ describe("Results landing", () => {
   it("should render for the first time with baseline message", async () => {
     render(
       <TypingContext.Provider
-        value={{ state: getMockState(), dispatch: vi.fn() }}
+        value={{ state: buildInitialState(), dispatch: vi.fn() }}
       >
         <ResultsLanding />
       </TypingContext.Provider>,
@@ -45,7 +48,7 @@ describe("Results landing", () => {
 function renderResultsLanding(state: Partial<AppState> = {}) {
   return render(
     <TypingContext.Provider
-      value={{ state: getMockState(state), dispatch: vi.fn() }}
+      value={{ state: buildInitialState(state), dispatch: vi.fn() }}
     >
       <ResultsLanding />
     </TypingContext.Provider>,

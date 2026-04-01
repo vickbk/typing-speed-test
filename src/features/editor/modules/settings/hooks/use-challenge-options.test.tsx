@@ -1,9 +1,9 @@
 import {
+  buildInitialState,
   TypingContext,
   useTypingSpeed,
   type AppState,
 } from "@/features/typing-speed";
-import { getMockState } from "@/features/typing-speed/scripts/test-helpers";
 import { renderHook } from "@testing-library/react";
 import { DIFFICULTIES, UNKNOWN_DIFFICULTIES } from "@tests/shared";
 import { HOOK_CALLER } from "@tests/vitest";
@@ -112,7 +112,7 @@ function renderChallengeOptionsWrapper({
     <MemoryRouter
       initialEntries={[difficulty !== null ? `?difficulty=${difficulty}` : ""]}
     >
-      <TypingContext.Provider value={useTypingSpeed(getMockState(state))}>
+      <TypingContext.Provider value={useTypingSpeed(buildInitialState(state))}>
         {children}
       </TypingContext.Provider>
     </MemoryRouter>

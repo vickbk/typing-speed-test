@@ -1,6 +1,6 @@
 import type { AppState } from "../types";
 
-export function getMockState(state: Partial<AppState> = {}): AppState {
+export function buildInitialState(state: Partial<AppState> = {}): AppState {
   return {
     mode: "",
     difficulty: "easy",
