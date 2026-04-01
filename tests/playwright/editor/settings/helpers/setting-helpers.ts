@@ -6,3 +6,10 @@ export async function currentModeShouldBe(page: Page, text: TEXT_PATTERN) {
   const link = getLink(page, text);
   await expect(link).toHaveClass(/b-blue-600/);
 }
+
+export async function currentDifficultyShouldBe(
+  page: Page,
+  text: TEXT_PATTERN,
+) {
+  await currentModeShouldBe(page, text);
+}

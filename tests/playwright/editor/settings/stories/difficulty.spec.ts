@@ -14,7 +14,7 @@ import {
   QUOTE_QUERY,
   UNKNOWN_DIFFICULTIES,
 } from "@tests/shared";
-import { currentModeShouldBe } from "../helpers/setting-helpers";
+import { currentDifficultyShouldBe } from "../helpers/setting-helpers";
 
 test.describe("Difficulty settings", () => {
   const difficulties = [
@@ -27,7 +27,7 @@ test.describe("Difficulty settings", () => {
 
   test("should start in easy mode", async ({ page }) => {
     await asUser(page);
-    await currentModeShouldBe(page, EASY_LINK);
+    await currentDifficultyShouldBe(page, EASY_LINK);
   });
 
   difficulties.forEach(([link, query]) => {
@@ -35,7 +35,7 @@ test.describe("Difficulty settings", () => {
       page,
     }) => {
       await page.goto(query);
-      await currentModeShouldBe(page, link);
+      await currentDifficultyShouldBe(page, link);
     });
   });
 
@@ -44,7 +44,7 @@ test.describe("Difficulty settings", () => {
       page,
     }) => {
       await page.goto(makeQuery`difficulty ${difficulty}`);
-      await currentModeShouldBe(page, EASY_LINK);
+      await currentDifficultyShouldBe(page, EASY_LINK);
     });
   });
 
@@ -53,9 +53,9 @@ test.describe("Difficulty settings", () => {
       page,
     }) => {
       await page.goto(query);
-      await currentModeShouldBe(page, link);
+      await currentDifficultyShouldBe(page, link);
       await page.goto("/");
-      await currentModeShouldBe(page, link);
+      await currentDifficultyShouldBe(page, link);
     });
   });
 });
