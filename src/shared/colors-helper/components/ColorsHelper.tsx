@@ -1,77 +1,16 @@
 "use client";
-import { useMemo, useState } from "react";
-
-type ParsedColor = {
-  name: string;
-  value: string;
-};
-
-function removeNameDetails(name: string): string {
-  const endIndex = name.indexOf("(");
-  return name.substring(0, endIndex === -1 ? name.length : endIndex);
-}
-
-function parseColors(input: string): ParsedColor[] {
-  if (!input.trim()) return [];
-
-  return input
-    .split("\n")
-    .filter((line) => line.trim())
-    .map((line) => {
-      // Remove *, -, and clean hsl() format
-      const cleaned = line
-        .replaceAll(/[-*]/g, "")
-        .replaceAll(/hsl\(|\)/g, "")
-        .replaceAll(/,/g, "");
-      const parts = cleaned.split(":");
-      if (parts.length < 2) return null;
-
-      const name = removeNameDetails(parts[0])
-        .trim()
-        .replaceAll(" ", "-")
-        .toLowerCase();
-      const value = parts.slice(1).join(":").trim();
-
-      return name && value ? { name, value } : null;
-    })
-    .filter((color): color is ParsedColor => color !== null);
-}
-
-function generateSassOutput(colors: ParsedColor[]): string {
-  return colors.map(({ name, value }) => `  ${name}: ${value}`).join("\n");
-}
-
-function generateTailwindOutput(colors: ParsedColor[]): string {
-  const colorEntries = colors
-    .map(({ name, value }) => `  --color-${name}: ${value};`)
-    .join("\n");
-
-  return `@theme {\n${colorEntries}\n}`;
-}
+import { useColorsHelper } from "../hooks";
 
 export const ColorsHelper = () => {
-  const [colors, setColors] = useState("");
-  const [copiedFormat, setCopiedFormat] = useState<string | null>(null);
-
-  const parsedColors = useMemo(() => parseColors(colors), [colors]);
-  const sassOutput = useMemo(
-    () => generateSassOutput(parsedColors),
-    [parsedColors],
-  );
-  const tailwindOutput = useMemo(
-    () => generateTailwindOutput(parsedColors),
-    [parsedColors],
-  );
-
-  const handleCopy = async (text: string, format: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopiedFormat(format);
-      setTimeout(() => setCopiedFormat(null), 2000);
-    } catch (err) {
-      console.error("Failed to copy:", err);
-    }
-  };
+  const {
+    colors,
+    setColors,
+    parsedColors,
+    sassOutput,
+    tailwindOutput,
+    copiedFormat,
+    handleCopy,
+  } = useColorsHelper();
 
   return (
     <section className="flex flex-col gap-4 p-4">
