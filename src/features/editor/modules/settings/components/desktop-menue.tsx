@@ -12,7 +12,7 @@ export const DesktopMenue = <T extends string | number>({
   const [query] = useSearchParams();
 
   return (
-    <ul className="hidden md:flex overflow-x-scroll gap-2">
+    <ul className="hidden md:flex overflow-x-scroll scrollbar-none gap-2">
       {options.map(([value, label]) => {
         query.set(name, value + "");
         return (
