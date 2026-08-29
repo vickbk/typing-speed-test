@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "test": "vitest --exclude \"**/*.spec.{js,ts,jsx,tsx}\"",
+    "test:run": "pnpm test run",
     "preview": "vite preview",
     "circular": "madge . --circular",
     "coverage": "vitest run --coverage",
