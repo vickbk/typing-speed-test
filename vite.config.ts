@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => ({
     setupFiles: "./tests/vitest/vitest-setup.ts",
     globals: true,
     coverage: {
-      reporter: ["text", "json", "html"],
+      reporter: ["text", "json", "html", "json-summary"],
       exclude: ["src/tests/*", "src/mocks/*"],
     },
   },
