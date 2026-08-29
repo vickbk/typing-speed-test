@@ -19,7 +19,7 @@ export function useScoreHistory() {
     navigate,
     closeDialog: useCallback(() => {
       navigate("/home");
-    }, []),
+    }, [navigate]),
     loadResults: useCallback(
       (node: HTMLElement | null) => {
         if (node)
@@ -29,6 +29,7 @@ export function useScoreHistory() {
             ),
           );
       },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [difficulty, best],
     ),
   };

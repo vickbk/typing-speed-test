@@ -46,7 +46,7 @@ export function useChallengeMode() {
           }
         },
       }),
-      [queries],
+      [dispatch, queries],
     ),
   };
 }

@@ -39,9 +39,9 @@ describe("useResults", () => {
     });
 
     expect(result.current.results).toBeDefined();
-    expect(result.current.results.title).toBeDefined();
-    expect(result.current.results.text).toBeDefined();
-    expect(result.current.results.button).toBeDefined();
+    expect(result.current.results.current.title).toBeDefined();
+    expect(result.current.results.current.text).toBeDefined();
+    expect(result.current.results.current.button).toBeDefined();
   });
 
   it("should have loadOtherResults function", () => {
@@ -87,7 +87,7 @@ describe("useResults", () => {
       wrapper: TestWrapper,
     });
 
-    expect(result.current.results.title).toBe("Test Completed");
+    expect(result.current.results.current.title).toBe("Test Completed");
   });
 
   it("should have correct initial result properties", () => {
@@ -106,13 +106,17 @@ describe("useResults", () => {
       </TypingContext.Provider>
     );
 
-    const { result } = renderHook(() => useResults(), {
+    const {
+      result: {
+        current: { results },
+      },
+    } = renderHook(() => useResults(), {
       wrapper: TestWrapper,
     });
 
-    expect(result.current.results.first).toBe(true);
-    expect(result.current.results.best).toBe(false);
-    expect(result.current.results.button).toBe("Go Again");
-    expect(result.current.results.icon).toBeDefined();
+    expect(results.current.first).toBe(true);
+    expect(results.current.best).toBe(false);
+    expect(results.current.button).toBe("Go Again");
+    expect(results.current.icon).toBeDefined();
   });
 });

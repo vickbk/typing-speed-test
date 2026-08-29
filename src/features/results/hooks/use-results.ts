@@ -10,7 +10,7 @@ import { useCallback, useRef } from "react";
 
 export function useResults() {
   const { state, dispatch } = useTypingCtx();
-  const { best, finish, difficulty } = state;
+  const { best, difficulty } = state;
 
   const results = useRef({
     title: "Test Completed",
@@ -22,7 +22,7 @@ export function useResults() {
   });
 
   return {
-    results: results.current,
+    results: results,
 
     loadOtherResults: useCallback(
       (node: HTMLElement | null) => {
@@ -61,7 +61,7 @@ export function useResults() {
             dispatch({ action: "updateHighScore", payload: currentWPM });
         }
       },
-      [finish],
+      [best, difficulty, dispatch, state],
     ),
   };
 }
