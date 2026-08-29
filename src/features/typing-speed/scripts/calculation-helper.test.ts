@@ -1,4 +1,3 @@
-import type { AppState } from "../types";
 import {
   calculateAccuracy,
   calculateWPM,
@@ -9,40 +8,30 @@ import {
   splitText,
 } from "./calculation-helper";
 
-const createMockState = (overrides: Partial<AppState> = {}): AppState => ({
-  mode: "",
-  difficulty: "easy",
-  typing: false,
-  text: "hello world",
-  errorCount: 0,
-  finish: false,
-  best: 0,
-  oldMistakes: "",
-  ...overrides,
-});
+import { buildInitialState } from "./initial-state-helper";
 
 describe("Calculation Helper", () => {
   describe("get errors number", () => {
     it("should not increment error count when characters match", () => {
-      const state = createMockState({ text: "hello", errorCount: 0 });
+      const state = buildInitialState({ text: "hello", errorCount: 0 });
       const result = getErrorsNumber(state, "h");
       expect(result).toBe(0);
     });
 
     it("should increment error count when characters don't match", () => {
-      const state = createMockState({ text: "hello", errorCount: 0 });
+      const state = buildInitialState({ text: "hello", errorCount: 0 });
       const result = getErrorsNumber(state, "x");
       expect(result).toBe(1);
     });
 
     it("should not increment when input is empty", () => {
-      const state = createMockState({ text: "hello", errorCount: 2 });
+      const state = buildInitialState({ text: "hello", errorCount: 2 });
       const result = getErrorsNumber(state, "");
       expect(result).toBe(2);
     });
 
     it("should handle multiple errors", () => {
-      const state = createMockState({ text: "hello", errorCount: 1 });
+      const state = buildInitialState({ text: "hello", errorCount: 1 });
       const result = getErrorsNumber(state, "x");
       expect(result).toBe(2);
     });
@@ -50,14 +39,14 @@ describe("Calculation Helper", () => {
 
   describe("save textes", () => {
     it("should save input when typing normally", () => {
-      const state = createMockState({ text: "hello", input: "he" });
+      const state = buildInitialState({ text: "hello", input: "he" });
       const result = saveTextes(state, "hel");
       expect(result.input).toBe("hel");
       expect(result.typing).toBe(true);
     });
 
     it("should mark finish when input length matches text length", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         text: "hi",
         input: "h",
         errorCount: 0,
@@ -68,7 +57,7 @@ describe("Calculation Helper", () => {
     });
 
     it("should handle backspace correction", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         text: "hello",
         input: "hel",
         errorCount: 0,
@@ -78,7 +67,7 @@ describe("Calculation Helper", () => {
     });
 
     it("should track old mistakes when correcting", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         text: "hello",
         input: "hxl",
         oldMistakes: "",
@@ -91,25 +80,25 @@ describe("Calculation Helper", () => {
 
   describe("calculate accuracy", () => {
     it("should return 100 for perfect typing", () => {
-      const state = createMockState({ input: "hello", errorCount: 0 });
+      const state = buildInitialState({ input: "hello", errorCount: 0 });
       const result = calculateAccuracy(state);
       expect(result).toBe("100");
     });
 
     it("should calculate accuracy with errors", () => {
-      const state = createMockState({ input: "hello", errorCount: 1 });
+      const state = buildInitialState({ input: "hello", errorCount: 1 });
       const result = calculateAccuracy(state);
       expect(result).toBe("80");
     });
 
     it("should handle empty input", () => {
-      const state = createMockState({ input: "", errorCount: 0 });
+      const state = buildInitialState({ input: "", errorCount: 0 });
       const result = calculateAccuracy(state);
       expect(result).toBe("100");
     });
 
     it("should calculate multiple errors", () => {
-      const state = createMockState({ input: "hello world", errorCount: 3 });
+      const state = buildInitialState({ input: "hello world", errorCount: 3 });
       const result = calculateAccuracy(state);
       const expected = (((11 - 3) * 100) / 11).toFixed();
       expect(result).toBe(expected);
@@ -118,26 +107,26 @@ describe("Calculation Helper", () => {
 
   describe("calculate WPM", () => {
     it("should calculate words per minute", () => {
-      const state = createMockState({ input: "hello world", difference: 60 });
+      const state = buildInitialState({ input: "hello world", difference: 60 });
       const result = calculateWPM(state);
       const expected = ((2 * 60) / 60).toFixed();
       expect(result).toBe(expected);
     });
 
     it("should handle empty input", () => {
-      const state = createMockState({ input: "", difference: 60 });
+      const state = buildInitialState({ input: "", difference: 60 });
       const result = calculateWPM(state);
       expect(result).toBe("0");
     });
 
     it("should handle zero difference (avoid division by zero)", () => {
-      const state = createMockState({ input: "hello", difference: 0 });
+      const state = buildInitialState({ input: "hello", difference: 0 });
       const result = calculateWPM(state);
       expect(result).toBeDefined();
     });
 
     it("should calculate with different time durations", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         input: "hello world test",
         difference: 30,
       });
@@ -183,7 +172,7 @@ describe("Calculation Helper", () => {
 
   describe("get time display", () => {
     it("should format time during typing", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         typing: true,
         mode: 60,
         difference: 30,
@@ -193,7 +182,7 @@ describe("Calculation Helper", () => {
     });
 
     it("should show time left in timed mode", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         typing: true,
         mode: 60,
         difference: 30,
@@ -203,7 +192,7 @@ describe("Calculation Helper", () => {
     });
 
     it("should show elapsed time in passage mode", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         typing: true,
         mode: "",
         difference: 45,
@@ -213,7 +202,7 @@ describe("Calculation Helper", () => {
     });
 
     it("should show full mode time when not typing", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         typing: false,
         mode: 60,
         difference: 10,
@@ -223,7 +212,7 @@ describe("Calculation Helper", () => {
     });
 
     it("should show 0:00 when finished passage mode", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         typing: false,
         mode: "",
         difference: 10,
@@ -235,7 +224,7 @@ describe("Calculation Helper", () => {
 
   describe("get Time Range", () => {
     it("should return excellent for perfect timing", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         typing: false,
         mode: 60,
         difference: 5,
@@ -245,7 +234,7 @@ describe("Calculation Helper", () => {
     });
 
     it("should categorize good timing", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         typing: true,
         mode: 60,
         difference: 18,
@@ -255,7 +244,7 @@ describe("Calculation Helper", () => {
     });
 
     it("should categorize ok timing", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         typing: true,
         mode: 60,
         difference: 36,
@@ -265,7 +254,7 @@ describe("Calculation Helper", () => {
     });
 
     it("should categorize bad timing", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         typing: true,
         mode: 60,
         difference: 48,
@@ -275,7 +264,7 @@ describe("Calculation Helper", () => {
     });
 
     it("should work in passage mode", () => {
-      const state = createMockState({
+      const state = buildInitialState({
         typing: true,
         mode: "",
         difference: 30,

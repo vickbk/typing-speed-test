@@ -6,19 +6,12 @@ import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  plugins: [
-    react({
-      babel: {
-        plugins: [["babel-plugin-react-compiler"]],
-      },
-    }),
-    tailwindcss(),
-  ],
+  plugins: [react({}), tailwindcss()],
   base: mode === "production" ? "/typing-speed-test/" : "",
   resolve: {
     alias: {
-      "@": resolve(__dirname, "./src"),
-      "@tests": resolve(__dirname, "./tests"),
+      "@": resolve(import.meta.dirname, "./src"),
+      "@tests": resolve(import.meta.dirname, "./tests"),
     },
   },
   build: {
@@ -31,7 +24,7 @@ export default defineConfig(({ mode }) => ({
     setupFiles: "./tests/vitest/vitest-setup.ts",
     globals: true,
     coverage: {
-      reporter: ["text", "json", "html"],
+      reporter: ["text", "json", "html", "json-summary"],
       exclude: ["src/tests/*", "src/mocks/*"],
     },
   },

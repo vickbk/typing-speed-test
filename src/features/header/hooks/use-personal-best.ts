@@ -16,7 +16,7 @@ export function usePersonalBest() {
       ({ wpm: aWPM }, { wpm: bWPM }) => bWPM - aWPM,
     );
     dispatch({ action: "updateHighScore", payload: higher.wpm });
-  }, [difficulty, best]);
+  }, [difficulty, best, dispatch]);
 
   return { best };
 }

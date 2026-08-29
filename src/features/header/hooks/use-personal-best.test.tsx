@@ -1,4 +1,4 @@
-import { TypingContext, type AppState } from "@/features/typing-speed";
+import { TypingContext, buildInitialState } from "@/features/typing-speed";
 import { renderHook } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { usePersonalBest } from "./use-personal-best";
@@ -15,16 +15,7 @@ vi.mock("@/shared", () => ({
 
 describe("usePersonalBest", () => {
   it("should return best score", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 50,
-      oldMistakes: "",
-    };
+    const mockState = buildInitialState({ best: 50 });
 
     const mockDispatch = vi.fn();
 
@@ -47,16 +38,7 @@ describe("usePersonalBest", () => {
   });
 
   it("should dispatch updateHighScore action", () => {
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
+    const mockState = buildInitialState();
 
     const mockDispatch = vi.fn();
 
@@ -126,16 +108,7 @@ describe("usePersonalBest", () => {
 
   it("should handle results correctly for easy difficulty", () => {
     // Test with the easy difficulty which has mocked data
-    const mockState: AppState = {
-      mode: "",
-      difficulty: "easy",
-      typing: false,
-      text: "test",
-      errorCount: 0,
-      finish: false,
-      best: 0,
-      oldMistakes: "",
-    };
+    const mockState = buildInitialState();
 
     const mockDispatch = vi.fn();
 

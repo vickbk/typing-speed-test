@@ -1,4 +1,4 @@
-import type { AppState } from "@/features/typing-speed";
+import { buildInitialState } from "@/features/typing-speed";
 import { render, screen } from "@testing-library/react";
 import { ResultsStats } from "./results-stats";
 
@@ -12,7 +12,7 @@ vi.mock("../hooks", () => ({
 }));
 
 describe("ResultsStats Integration", () => {
-  const mockState: AppState = {
+  const mockState = buildInitialState({
     mode: 60,
     difficulty: "easy",
     typing: false,
@@ -23,7 +23,7 @@ describe("ResultsStats Integration", () => {
     oldMistakes: "",
     input: "hello world test",
     difference: 45,
-  };
+  });
 
   beforeEach(() => {
     vi.clearAllMocks();

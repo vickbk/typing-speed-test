@@ -16,6 +16,7 @@ export function useStartEdit() {
     }
     window.addEventListener("keyup", startOnKeyboardType);
     return () => window.removeEventListener("keyup", startOnKeyboardType);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { dispatch };

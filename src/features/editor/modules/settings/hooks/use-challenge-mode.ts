@@ -1,7 +1,8 @@
 import { useTypingCtx, type ModeType } from "@/features/typing-speed";
-import { getMemoItem, setMemoItem } from "@/shared";
+import { getMemoItem } from "@/shared";
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
+import { saveMode } from "../scripts";
 
 const times = [15, 30, 60, 120];
 const timingMode = [
@@ -26,8 +27,7 @@ export function useChallengeMode() {
     ...useMemo(
       () => ({
         setMode<T>(mode: T) {
-          setMemoItem("mode", mode);
-          dispatch({ action: "mode", payload: mode as ModeType });
+          dispatch({ action: "mode", payload: saveMode(mode as ModeType) });
         },
         loadMode(node: HTMLElement | null) {
           if (node) {
@@ -36,9 +36,9 @@ export function useChallengeMode() {
               action: "mode",
               payload:
                 (mode === ""
-                  ? ""
+                  ? saveMode("")
                   : mode !== null && times.includes(+mode)
-                    ? (+mode as ModeType)
+                    ? saveMode(+mode as ModeType)
                     : null) ??
                 getMemoItem<ModeType>("mode") ??
                 "",
@@ -46,7 +46,7 @@ export function useChallengeMode() {
           }
         },
       }),
-      [queries],
+      [dispatch, queries],
     ),
   };
 }

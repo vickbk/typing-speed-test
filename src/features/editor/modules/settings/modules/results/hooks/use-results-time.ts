@@ -28,7 +28,7 @@ export function useResultsTime() {
         1000,
       );
     } else clearTimeout(timer.current);
-  }, [typing, difference]);
+  }, [typing, difference, dispatch]);
 
   return { color: colors[getTimeRange(state)], display: getTimeDisplay(state) };
 }

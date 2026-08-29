@@ -2,6 +2,7 @@ import "@testing-library/jest-dom/vitest";
 
 beforeEach(() => {
   vi.resetAllMocks();
+  localStorage.clear();
 });
 
 beforeAll(() => {

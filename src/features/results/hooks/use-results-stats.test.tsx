@@ -1,5 +1,8 @@
-import { TypingContext, type AppState } from "@/features/typing-speed";
-import { getMockState } from "@/features/typing-speed/scripts/test-helpers";
+import {
+  buildInitialState,
+  TypingContext,
+  type AppState,
+} from "@/features/typing-speed";
 import { renderHook } from "@testing-library/react";
 import { useResultsStats } from "./use-results-stats";
 
@@ -7,7 +10,7 @@ describe("Use Results stats", () => {
   it("should return all state properties", () => {
     const { result } = renderUseResultsStats();
 
-    Object.keys(getMockState()).every((key) =>
+    Object.keys(buildInitialState()).every((key) =>
       expect(result.current[key as keyof AppState]).toBeDefined(),
     );
   });
@@ -43,7 +46,7 @@ describe("Use Results stats", () => {
 });
 
 function renderUseResultsStats(state: Partial<AppState> = {}) {
-  const mockState = getMockState(state);
+  const mockState = buildInitialState(state);
   const mockDispatch = vi.fn();
 
   const TestWrapper = ({ children }: { children: React.ReactNode }) => (

@@ -9,7 +9,9 @@ import { ResultsStats } from "./results-stats";
 export const ResultsLanding = () => {
   const {
     loadOtherResults,
-    results: { best, icon, title, text, button },
+    results: {
+      current: { best, icon, title, text, button },
+    },
     dispatch,
     state,
     width,

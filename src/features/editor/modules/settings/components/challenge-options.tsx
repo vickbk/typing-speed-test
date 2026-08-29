@@ -7,14 +7,14 @@ export const ChallengeOptions = () => {
     useChallengeOptions();
   return (
     <ChallengeParams
-      name="level"
+      name="difficulty"
       current={difficulty}
       updateCurrent={setDifficulty}
       options={options}
       key={difficulty}
     >
       <SROnly>Select your </SROnly>
-      <span ref={loadDifficulty} className="sr-only md:not-sr-only">
+      <span className="sr-only md:not-sr-only" ref={loadDifficulty}>
         Difficulty
       </span>
       <SROnly> level</SROnly>

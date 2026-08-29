@@ -20,3 +20,9 @@ export async function clickOn(element: HTMLElement) {
   const user = await userEvent.setup();
   await user.click(element);
 }
+
+/**
+ * Common constants
+ */
+
+export const HOOK_CALLER = document.createElement("div");
